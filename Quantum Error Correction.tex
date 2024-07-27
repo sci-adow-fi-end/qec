@@ -1,0 +1,300 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{braket}
+\usepackage{amsmath}
+\title{Quantum Error Correction Tecniques}
+\author{Alessio Delli Colli}
+\date{May 2024}
+
+\newtheorem{Solovay-Kitaev}{Theorem (Solovay Kitaev 1997)}
+
+\newtheorem{Prox-Universal-Set}{Theorem}
+ 
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+\subsection{Why quantum information?}
+
+
+
+\subsection{Why quantum error correction?}
+
+\newpage
+
+\section{From quantum physics to quantum information}
+
+\subsection{Foundations of quantum mechanics}
+
+\subsubsection{Cinematic axioms}
+
+\begin{enumerate}
+    %TODO find a better s symbol
+    \item To each quantum system S corresponds an Hilbert space $H_s$.\\
+      The space of pure\footnote{The definition of pure state will
+      be given in the section 4}
+      states is identified by the projective space $P(H_s)$.
+
+  \item Given two quantum systems $S_1$ and $S_2$ and their correspondent
+    Hilbert spaces $H_{s1}$ and $H_{s2}$ the space that characterizes the
+    compound system is $H_{s1} \otimes H_{s2}$, where $\otimes$ denotes
+    the tensor product.
+
+  \item A measure procedure on a quantum state S is described
+    by a family \\  $M := \{M_\alpha \}_{\alpha\in A}$ where:
+
+    \begin{itemize}
+        \item $M_\alpha \in B(H_s) $ $ \forall \alpha \in A$
+        \item $A \subset \mathbb{R}$
+        \item $\sum_{\alpha \in A} M_\alpha^\dag M_\alpha = Id(H_s)$
+    \end{itemize}
+
+    Where B(Hs) is the set of bounded operators in $H_s$ and A is the
+    set of all the possible outcomes of the measure.\\
+    Given the outcome $\alpha_0 \in A$ and the state $\ket{\psi}$,
+    the probability
+    of measuring the output $\alpha_0$ being in the state $\ket{\psi}$
+    is: 
+    \begin{center}
+      $P(\psi : \alpha_0) = \braket{\psi|M_{\alpha_0}^\dag M_{\alpha_0}\psi}$
+      
+    \end{center}
+
+    
+\subsubsection{Dynamic axioms}
+
+
+\item Given a quantum system $S_1$ and two time instants$ t_1$ and $t_2$
+  with $t_1<=t_2$ there is an unique unitary operator$U(t_1,t_2)$ that
+  describes the evolution of the system between the time instants.
+
+  The unitary operator should respect also some additional
+  properties:\\
+    $
+    \begin{cases}
+        U(t_1,t_1) = Id(H_s)\\
+        U(t_2,t_3)U(t_1,t_2) = U(t_1,t_3)
+    \end{cases} $ 
+
+  \item In the instant immediately after the measure
+    $M := \{M_\alpha \}_{\alpha\in A}$ is applied to the quantum
+    system S while being in the state $\ket{\psi}$ \\
+    the system will collapse to the state:
+    
+    \begin{center}
+      $\dfrac{M_{\alpha_0}\ket\psi}
+      {\sqrt{\braket{\psi|M_{\alpha_0}^\dag M_{\alpha_0}\psi}}}$
+    \end{center}
+\end{enumerate}
+
+
+\subsection{Qubits}
+
+%FIXME unclear
+The main reason we are interested in quantum systems in quantum
+information science is because they can be used to store information.\\
+Every physical system we can control can be used to store information
+but not all systems are practical for doing so. \\
+In fact, if we wanted to represent some complex information we
+could have choosen to use a single complex system that has many states,
+but doing so it would be very difficult to prepare it for the
+computation.\\
+Suppose for example that we had a way of quickly giving energy
+to the system to make it jump from one of its base' states to
+the next, and luckily we have it.\\
+In the case of one single system to reach the n-Th base state
+we would need n energy transfers, and that is quite unpractical.\\
+Even more so if we consider than using multiple occurrences of
+the simplest possible quantum system, that is the one that
+has only 2 base states,\\ we would need at most $\log_2{n}$ transfers.\\
+This simple quantum system is known as a qubit.\\
+
+\subsection{Qubit representation and Probability amplitudes}
+
+
+\section{One qubit systems}
+
+
+\subsection{Introduction to quantum gates}
+Quantum states are not very interesting when they are static, \\
+what we want to achieve is a way to make them evolve\\
+and accurately control their evolution over time.
+The element used in a quantum system in order to make it evolve
+in a controlled way is called a quantum gate.\\
+While in classical information there is just a single kind of one bit
+gate in quantum information there are infinitely many!
+In the next paragraph we will se the most important ones.
+
+\subsection{Some examples of one qubit gates}
+
+\begin{itemize}
+
+  %TODO insert matrix and definition of every port
+\item
+  Pauli Gates
+
+\item
+  Hadamard Gate
+  
+\item
+  Phase Gates
+  
+\end{itemize}
+
+\subsection{one qubit interference}
+
+%TODO insert immage 
+
+The reason why quantum algorithms can be faster than classical ones
+in some tasks is because they can exploit some propreties of quantum
+systems that classical systems lack.\\
+One of these propreties is interference.\\
+In quantum information interference is used to control the final
+state of our system.\\
+An example of this can be found in the circuit in Figure 1.
+The circuit consists in two Hadamard gates with a phase gate
+in between.\\
+Below is the time analisys of the system.
+\begin{itemize}
+
+\item $\ket{\psi_{t0}} = \ket{0}$
+\item $\ket{\psi_{t1}} = \dfrac{\ket{0}+\ket{1}}{\sqrt{2}}$
+\item $\ket{\psi_{t2}} = \dfrac{\ket{0}+e^{\phi}\ket{1}}{\sqrt{2}}$
+\item $\ket{\psi_{t0}} = \ket{0}$
+  
+  
+\end{itemize}
+
+
+%TODO insert graph of measure
+
+It is possible to observe that the output of the measure on the qubit
+depends only on the ammout of fase shift that has been inflicted
+to the qubit.
+
+
+
+\subsection{introduction to quantum universality}
+
+We have seen that our previous circuit allows us to manipulate a qubit
+in every possible way but that leaves us with a practical question.
+Is it possible to realize it in practice?
+The short answer to this question is no, but we can get very close.
+To elaborate more this answer we need to introduce a few definitions
+regarding quantum universality.
+\begin{itemize}
+
+\item
+  Strict universality
+  %TODO insert definition
+
+\item
+  Prox universality
+  %TODO insert definition
+
+\end{itemize}
+
+Unfortunately there isn't and can't be a finite set of strictly
+universal
+ports because of the fact that the space of unitary operators in a
+Hilbert space is continue while the possible combinations of
+operators we can get from a finite set of them is just countable.\\
+The proprety we can actually achieve in a real world circuit is
+prox-universality.\\
+
+\begin{Prox-Universal-Set}
+The set of gates {H,T,C-Not} is prox universal.
+\end{Prox-Universal-Set}
+
+Knowing it is possible to make a circuit that arbitrarly approximates
+every
+single quantum gate what we could be interested in discovering is how
+big that circuit would be.\\
+
+That is known thanks to an amazing result by Solovay and Kitaev which
+states
+that the number of ports we need to aproximate a circuit with a certain
+precision grows logaritmically with the precision we want to achieve.
+  
+\begin{Solovay-Kitaev}
+
+  Given a strictly universal set of gates S which is closed under inversion,
+  the number of gates needed to approximate every n qubit circuit made
+  from S whith precision $\epsilon$ is
+  $O\Bigl(n2^n+2^nlog_2 \Bigl( \dfrac{1}{\epsilon}\Bigl)\Bigl)$
+  
+
+\end{Solovay-Kitaev}
+
+
+\subsection{the bloch sphere}
+
+\newpage
+
+\section{Many qubits systems and subsystems}
+
+
+
+\subsection{many qubit gates}
+
+\subsection{quantum entanglement}
+
+%TODO insert image
+
+\subsection{from system to subsystem}
+
+When we study a quantum system we are not always interested in the
+system
+as a whole, sometimes we care only about a fraction of it.
+Compartmentalizing the system if for sure easy and intuitive when it
+is in a pure state, but can be more intricate when we are talking about
+an entangled state.\\
+In this latter case in fact we are not able to assign a state to the
+subsystem that is independent from the rest of the original system
+and we have to rely on the possibility of making statistical
+predictions
+about the outcomes of a measure on that subsystem.\\
+To do it in a convenient way we use a special operator called density
+operator.\\
+It is very important in quantum computation because lets us describe
+a not completely known ensamble of states.\\
+Immagine for example we had a system that could be in each of the
+states
+$\ket{\psi_i}$ with probability $p_i$, we call $\{p_i,\ket{\psi_i}\}$ an
+ensamble of pure states with an associate density operator
+$\rho:=\sum_i p_i \ket{\psi_i}\bra{\psi_i} $
+
+
+%TODO insert definition of density matrix.
+
+\section{Representing uncertainty}
+
+\subsection{Errors generate uncertainty}
+
+ 
+
+\subsection{Uncertainty in quantum states}
+
+\subsection{Uncertainty in quantum operations}
+
+\section{Measuring errors}
+
+\subsection{Static distance measures}
+
+\subsection{Dynamic distance measures}
+
+\section{Correcting errors}
+c
+\subsection{Brief introduction to classical error correction}
+
+Correcting errors is an ancient problem that puzzled the minds of
+information theorists long before the invention of quantum computation.
+
+\subsection{Quantum repetition codes}
+
+\end{document}
