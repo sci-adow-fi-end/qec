@@ -19,15 +19,92 @@
 
 \section{Introduction}
 
-\subsection{Why quantum information?}
+\subsection{The importance of quantum information}
+
+Maintaining fundamental properties of important documents, like secrecy
+and authenticity, through the process of digitalization has been one of the main
+quests of the last decades. These qualities have been currently achieved mainly
+by the route of clever mathematics, exploiting properties of our current com-
+puting machines and especially the knowledge, although not yet crystal clear,
+of what they can or can’t do in a reasonable time.
+It is possible to find a relevant example of this in the RSA protocol, that uses
+the difficulty of solving the factorization problem in available machines in order
+to construct a cryptosystem and also a digital signature scheme.
+
+\vspace{10pt}
+
+While the metric of ”being difficult to compute” may seem arbitrary at first
+glance, it is based on the solid theory of computational complexity.
+Such theory, founded on the Church-Turing Thesis, aims to measure the com-
+plexity of a problem in terms of the number of steps a Turing machine would
+take to solve it.
+More specifically, problems are said to be in the class P if there is a Turing
+machine able to solve them in an amount of time that is a polynomial function
+of the input size and are said to be in the class NP if there is a Turing machine
+that can verify a guessed solution in a similar polynomial time.
+The distinction between the classes P and NP has yet to be proved but it is
+generally assumed that these classes are not coincident.
+
+\vspace{10pt}
+
+This conjecture leads to believe that there are some problems that belong to
+the class NP but not to P so, for them, it is easy to verify if a configuration is
+a solution but not to find one. For these problems isn’t thus possible to find a
+solving algorithm that is substantially better than trying all the possible config-
+urations and verifying them one by one until a solution is found. This approach
+is known as an exhaustive search.
+If we were able to test the configurations efficiently that would lead to the possi-
+bility of constructing an algorithm that solves a problem without the knowledge
+of its structure, but just utilizing an ”oracle” which is a routine that is able to
+distinguish solutions from non solutions.
+Such approach is called a Black-Box algorithm.
+Unfortunately it is known that classical computation can’t make this kind of al-
+gorithm efficient but maybe in another form of computation the outcome could
+be different.
+
+\vspace{10pt}
+
+In 1996 Lov Grover showed that with quantum computing it is possible to
+complete an exhaustive search with only square root of n calls to the oracle,
+where n is the size of the input. While this is an extraordinary result, later
+studies have shown that it can’t be further improved.
+This means that no Black-Box algorithm can solve a non polynomial problem
+in polynomial time, even taking into consideration quantum computing.
+Though, quantum computing can be much more significative when the algorithm
+relies on the problem structure, as in the case of Shor’s algorithm.
+The Shor’s algorithm aims to find a solution to the factorization problem by
+doing a reduction to a simpler problem, at least from a quantum standpoint,
+which is finding the order of an element in an abelian group. This problem is
+then solved thanks to a procedure called Quantum Fourier Transform.
+The whole procedure has a just above quadratic time complexity and so, it is
+much faster than the better classical algorithm currently available which works
+is a sub-exponential time.
+The execution of this algorithm or it’s proper variants on a suitable hardware
+could allow to break most of the cryptosystems used today, like DHM, ECDHM,
+and the above mentioned RSA.
 
 
+\subsection{The need for quantum error correction}
 
-\subsection{Why quantum error correction?}
+The applications described above although feasible for quantum computers require
+very complex machines that are prone to errors.
+This comes from the fact that larger machines have a tendency to bond to the
+environment and this bonding makes them produce unpredictable results.
+Such tendency has put a limit to the implementation of quantum algorithms.
+An example of that could be that the largest number we have currently been
+able to reliably factorize using the Shor algorithm is 21.
+This seems rather underwhelming given the fact the numbers we aim to factorize
+whit it are in the realm of $2^{2000}$.
+Luckly there are techniques that allow us to catch and correct the errors
+when they arise, before they can propagate uncontrollaby and improving
+such tecniques will bring us closer to our goal.
 
-\newpage
 
 \section{From quantum physics to quantum information}
+
+To understand the technicalities behind the operations described above it is
+necessary to dive in the phisical processes involved in them.\\
+So will be done shortly in this section.
 
 \subsection{Foundations of quantum mechanics}
 
