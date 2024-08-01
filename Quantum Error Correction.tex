@@ -15,11 +15,19 @@
 
 \maketitle
 
+\newpage
+
 \tableofcontents
+
+\newpage
 
 \section{Introduction}
 
+\vspace{10pt}
+
 \subsection{The importance of quantum information}
+
+\vspace{10pt}
 
 Maintaining fundamental properties of important documents, like secrecy
 and authenticity, through the process of digitalization has been one of the main
@@ -62,7 +70,7 @@ Unfortunately it is known that classical computation can’t make this kind of a
 gorithm efficient but maybe in another form of computation the outcome could
 be different.
 
-\vspace{10pt}
+\newpage
 
 In 1996 Lov Grover showed that with quantum computing it is possible to
 complete an exhaustive search with only square root of n calls to the oracle,
@@ -83,8 +91,12 @@ The execution of this algorithm or it’s proper variants on a suitable hardware
 could allow to break most of the cryptosystems used today, like DHM, ECDHM,
 and the above mentioned RSA.
 
+\vspace{20pt}
+
 
 \subsection{The need for quantum error correction}
+
+\vspace{10pt}
 
 The applications described above although feasible for quantum computers require
 very complex machines that are prone to errors.
@@ -100,11 +112,14 @@ when they arise, before they can propagate uncontrollaby and improving
 such tecniques will bring us closer to our goal.
 
 
+
 \section{From quantum physics to quantum information}
 
 To understand the technicalities behind the operations described above it is
 necessary to dive in the phisical processes involved in them.\\
 So will be done shortly in this section.
+
+\newpage
 
 \subsection{Foundations of quantum mechanics}
 
@@ -172,27 +187,49 @@ So will be done shortly in this section.
 
 \subsection{Qubits}
 
-%FIXME unclear
-The main reason we are interested in quantum systems in quantum
-information science is because they can be used to store information.\\
-Every physical system we can control can be used to store information
+Physical systems can be used to store information
 but not all systems are practical for doing so. \\
 In fact, if we wanted to represent some complex information we
-could have choosen to use a single complex system that has many states,
+could choose to use a single complex system that has many states,
 but doing so it would be very difficult to prepare it for the
 computation.\\
 Suppose for example that we had a way of quickly giving energy
-to the system to make it jump from one of its base' states to
+to the system to make it jump from one of its base states to
 the next, and luckily we have it.\\
 In the case of one single system to reach the n-Th base state
 we would need n energy transfers, and that is quite unpractical.\\
 Even more so if we consider than using multiple occurrences of
-the simplest possible quantum system, that is the one that
+the simplest non trivial quantum system, that is the one that
 has only 2 base states,\\ we would need at most $\log_2{n}$ transfers.\\
 This simple quantum system is known as a qubit.\\
 
-\subsection{Qubit representation and Probability amplitudes}
+\subsection{Qubit representations and Probability amplitudes}
 
+The state of a qubit can be represented in many ways.\\
+Some useful representations are the unitary vectors in $\mathbb{C}^2$
+and the points of a unitary sphere called the Block Sphere.
+we are going to analyze each of them and their respective advantages.
+
+\subsubsection{State vectors}
+
+The state vector of a qubit consists in two components in $\mathbb{C}$
+that can be interpreted as the probability amplitudes of each of the
+base states.
+The probability amplitude of a base state is a complex number that,
+when squared, gives the probability that that state will be the outcome
+of a measure in the computational base. %FIXME rivedere la fine
+
+\subsubsection{The Bloch sphere}
+
+The Bloch sphere gives us an useful graphical representation of a
+qubit's state that is linked to the state vector by the following
+isomorphism.\\
+% TODO insert isomorphism.
+This representation is particularly advantagious because it allows
+to visualize the evolution of a qubit over time in the execution
+of a quantum algorithm.
+
+\newpage
 
 \section{One qubit systems}
 
@@ -308,8 +345,6 @@ precision grows logaritmically with the precision we want to achieve.
 
 \end{Solovay-Kitaev}
 
-
-\subsection{the bloch sphere}
 
 \newpage
 
