@@ -1,8 +1,9 @@
 \documentclass{article}
 \usepackage{graphicx}
 \usepackage{amsfonts}
-\usepackage{braket}
 \usepackage{amsmath}
+\usepackage{braket}
+\usepackage[qm]{qcircuit}
 \title{Quantum Error Correction Tecniques}
 \author{Alessio Delli Colli}
 \date{May 2024}
@@ -265,7 +266,8 @@ In the next paragraph we will se the most important ones.
 
 \subsection{one qubit interference}
 
-%TODO insert immage 
+
+
 
 The reason why quantum algorithms can be faster than classical ones
 in some tasks is because they can exploit some propreties of quantum
@@ -273,26 +275,70 @@ systems that classical systems lack.\\
 One of these propreties is interference.\\
 In quantum information interference is used to control the final
 state of our system.\\
+
+\scalebox{2.0}{
+\Qcircuit @C=1.0em @R=0.2em @!R { \\
+  \lstick{}
+  &{\hspace{70pt}  \rule{0,01em}{3em}}
+  &{\hspace{96pt}  \rule{0,01em}{3em}}
+  &{\hspace{122pt}  \rule{0,01em}{3em}}
+  &{\hspace{150pt}  \rule{0,01em}{3em}}
+  & \gate{\mathrm{H}}
+  & \gate{\mathrm{P}}
+  & \gate{\mathrm{H}}
+  & \qw }}
+
+\vspace{20pt}
+
+
+\hspace{88pt}$\ket{\psi_{t0}}$ \hspace{22pt}$\ket{\psi_{t1}}$
+\hspace{22pt}$\ket{\psi_{t2}}$\hspace{25pt}$\ket{\psi_{t3}}$
+
+\vspace{30pt}
+
+            
+
 An example of this can be found in the circuit in Figure 1.
-The circuit consists in two Hadamard gates with a phase gate
+The circuit consists of two Hadamard gates with a phase gate
 in between.\\
-Below is the time analisys of the system.
+Below is the time analisys of the circuit.
 \begin{itemize}
 
 \item $\ket{\psi_{t0}} = \ket{0}$
 \item $\ket{\psi_{t1}} = \dfrac{\ket{0}+\ket{1}}{\sqrt{2}}$
-\item $\ket{\psi_{t2}} = \dfrac{\ket{0}+e^{\phi}\ket{1}}{\sqrt{2}}$
-\item $\ket{\psi_{t0}} = \ket{0}$
+\item $\ket{\psi_{t2}} = \dfrac{\ket{0}+e^{i\phi}\ket{1}}{\sqrt{2}}$
+\item $\ket{\psi_{t3}} = \dfrac{\dfrac{\ket{0}+\ket{1}}{\sqrt{2}}+e^{i\phi}\dfrac{\ket{0}-\ket{1}}
+    {\sqrt{2}}}{\sqrt{2}}   = \dfrac{(1+e^{i\phi})\ket{0}+(1-e^{i\phi})\ket{1}}{2}$
+  
+  
   
   
 \end{itemize}
+
+\vspace{20pt}
+
+So the probability of measuring $\ket{1}$ at the end is the module squared of it's coefficient
+that is:\\
+\vspace{10pt}
+
+$\left|\dfrac{1-e^{i\phi}}{2}\right|^2 = \left(\dfrac{1-e^{i\phi}}{2}\right)\left(\dfrac{1-e^{-i\phi}}{2}\right) =$\\
+ \vspace{5pt}
+
+ 
+$ = \dfrac{2-e^{i\phi}+e^{-i\phi}}{4} = \dfrac{2-2\cos{\phi}}{4} =$\\
+
+\vspace{3pt}
+$ = sin^2{\left(\dfrac{\phi}{2}\right)}$
+
+\vspace{10pt}
 
 
 %TODO insert graph of measure
 
 It is possible to observe that the output of the measure on the qubit
 depends only on the ammout of fase shift that has been inflicted
-to the qubit.
+to the qubit, this can be seen as a manifestation of the phenomenon
+of interferece.
 
 
 
@@ -356,10 +402,29 @@ precision grows logaritmically with the precision we want to achieve.
 
 
 \subsection{many qubit gates}
+%FIXME whose?
+It is possible to construct gates whose output is determined by the state
+of many input qubits.
+The most common example of this kind of gates are controlled not gates.
+
+
 
 \subsection{quantum entanglement}
 
-%TODO insert image
+It often happens using many qubit gates that the states of the output
+qubits are no longer independent from each other so the probability
+of measuring a possible result on one qubit depends on the states of
+other qubits involved in the transformation.
+In this case we called this "bonded" qubits entangled.
+a clear example of this can be found in the circuit below.
+
+\scalebox{2.0}{
+\Qcircuit @C=1.0em @R=0.2em @!R { \\
+	 	\nghost{{q}_{0} :  } & \lstick{{q}_{0} :  } & \gate{\mathrm{H}} & \ctrl{1} & \meter & \qw & \qw & \qw\\
+	 	\nghost{{q}_{1} :  } & \lstick{{q}_{1} :  } & \qw & \targ & \qw & \meter & \qw & \qw\\
+	 	\nghost{\mathrm{{c} :  }} & \lstick{\mathrm{{c} :  }} & \lstick{/_{_{2}}} \cw & \cw & \dstick{_{_{\hspace{0.0em}0}}} \cw \ar @{<=} [-2,0] & \dstick{_{_{\hspace{0.0em}1}}} \cw \ar @{<=} [-1,0] & \cw & \cw\\
+\\ }}
+
 
 \subsection{from system to subsystem}
 
