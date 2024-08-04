@@ -3,7 +3,8 @@
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{braket}
-\usepackage[qm]{qcircuit}
+\usepackage{tikz}
+\usetikzlibrary{quantikz2}
 \title{Quantum Error Correction Tecniques}
 \author{Alessio Delli Colli}
 \date{May 2024}
@@ -252,16 +253,48 @@ In the next paragraph we will se the most important ones.
 
 \begin{itemize}
 
-	%TODO insert matrix and definition of every port
-	\item
-	      Pauli Gates
+	\item Pauli Gates\\
+	      can be seen as rotations on the three main axis of the bloch
+	      sphere
+	      \begin{center}
+		      $	X:=\begin{bmatrix}
+				      0 & 1 \\
+				      1 & 0
+			      \end{bmatrix}
+			      \hspace{10pt}
+			      Y:=\begin{bmatrix}
+				      0 & -i \\
+				      i & 0
+			      \end{bmatrix}
+			      \hspace{10pt}
+			      Z:=\begin{bmatrix}
+				      1 & 0  \\
+				      0 & -1
+			      \end{bmatrix}$
+	      \end{center}
 
-	\item
-	      Hadamard Gate
 
-	\item
-	      Phase Gates
+	\item Hadamard Gate\\
+	      brings the state $\ket{0}$ to
+	      $\ket{+} := \dfrac{\ket{0}+\ket{1}}{2}$
+	      and the state $\ket{1}$ to $\ket{-} := \dfrac{\ket{0}-\ket{1}}{2}$
+	      \begin{center}
+		      $	H:=\dfrac{1}{\sqrt{2}}\begin{bmatrix}
+				      1 & 1  \\
+				      1 & -1
+			      \end{bmatrix}$
+	      \end{center}
 
+	\item Phase Gate \\
+	      changes the phase of a qubit arbitrarly
+	      \begin{center}
+
+
+		      $	P:=\begin{bmatrix}
+				      1 & 0         \\
+				      0 & e^{i\phi}
+			      \end{bmatrix}$
+	      \end{center}
 \end{itemize}
 
 \subsection{one qubit interference}
@@ -276,29 +309,20 @@ One of these propreties is interference.\\
 In quantum information interference is used to control the final
 state of our system.\\
 
-\scalebox{2.0}{
-\Qcircuit @C=1.0em @R=0.2em @!R { \\
-\lstick{}
-&{\hspace{70pt}  \rule{0,01em}{3em}}
-&{\hspace{96pt}  \rule{0,01em}{3em}}
-&{\hspace{122pt}  \rule{0,01em}{3em}}
-&{\hspace{150pt}  \rule{0,01em}{3em}}
-& \gate{\mathrm{H}}
-& \gate{\mathrm{P}}
-& \gate{\mathrm{H}}
-& \qw }}
+\newpage
+\begin{center}
+	\scalebox{1.5}{
+		\begin{quantikz}
+			\slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t0}}}$}	& \gate{H}
+			\slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t1}}}$}	& \gate{P}
+			\slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t2}}}$}	& \gate{H}
+			\slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t3}}}$}	&
+		\end{quantikz}
+	}
+\end{center}
+\vspace{10pt}
 
-\vspace{20pt}
-
-
-\hspace{88pt}$\ket{\psi_{t0}}$ \hspace{22pt}$\ket{\psi_{t1}}$
-\hspace{22pt}$\ket{\psi_{t2}}$\hspace{25pt}$\ket{\psi_{t3}}$
-
-\vspace{30pt}
-
-
-
-An example of this can be found in the circuit in Figure 1.
+An example of this can be found in the circuit in Figure 1.\\
 The circuit consists of two Hadamard gates with a phase gate
 in between.\\
 Below is the time analisys of the circuit.
@@ -317,8 +341,8 @@ Below is the time analisys of the circuit.
 
 \vspace{20pt}
 
-So the probability of measuring $\ket{1}$ at the end is the module squared of it's coefficient
-that is:\\
+So the probability of measuring $\ket{1}$ at the end is the module squared of it's\\
+coefficient that is:\\
 \vspace{10pt}
 
 $\left|\dfrac{1-e^{i\phi}}{2}\right|^2 = \left(\dfrac{1-e^{i\phi}}{2}\right)\left(\dfrac{1-e^{-i\phi}}{2}\right) =$\\
@@ -416,15 +440,25 @@ qubits are no longer independent from each other so the probability
 of measuring a possible result on one qubit depends on the states of
 other qubits involved in the transformation.
 In this case we called this "bonded" qubits entangled.
-a clear example of this can be found in the circuit below.
+a clear example of this can be found in the circuit below.\\
 
-\scalebox{2.0}{
-\Qcircuit @C=1.0em @R=0.2em @!R { \\
-\nghost{{q}_{0} :  } & \lstick{{q}_{0} :  } & \gate{\mathrm{H}} & \ctrl{1} & \meter & \qw & \qw & \qw\\
-\nghost{{q}_{1} :  } & \lstick{{q}_{1} :  } & \qw & \targ & \qw & \meter & \qw & \qw\\
-\nghost{\mathrm{{c} :  }} & \lstick{\mathrm{{c} :  }} & \lstick{/_{_{2}}} \cw & \cw & \dstick{_{_{\hspace{0.0em}0}}} \cw \ar @{<=} [-2,0] & \dstick{_{_{\hspace{0.0em}1}}} \cw \ar @{<=} [-1,0] & \cw & \cw\\
-\\ }}
+\begin{center}
+	\scalebox{1.5}{
+		\begin{quantikz}
+			\slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t0}}}$}	& \gate{H}
+			\slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t1}}}$}	 &\ctrl{1}&\\
+			&& \targ{} \slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t2}}}$}	&
+		\end{quantikz}
+	}
+\end{center}
+\begin{itemize}
+	\item $\ket{\psi_{t0}} = \ket{0} \otimes \ket{0}$
+	\item $\ket{\psi_{t1}} = \dfrac{\ket{0}+\ket{1}}{\sqrt{2}} \otimes \ket{0} = \dfrac{\ket{00}+\ket{10}}{\sqrt{2}}$
+	\item $\ket{\psi_{t2}} = \dfrac{\ket{00}+\ket{11}}{\sqrt{2}}$
 
+\end{itemize}
+It can be observed that the final state of the circuit can't be split
+in a tensor product of states.
 
 \subsection{from system to subsystem}
 
