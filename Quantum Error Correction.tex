@@ -38,7 +38,7 @@ puting machines and especially the knowledge, although not yet crystal clear,
 of what they can or can’t do in a reasonable time.
 It is possible to find a relevant example of this in the RSA protocol, that uses
 the difficulty of solving the factorization problem in available machines in order
-to construct a cryptosystem and also a digital signature scheme.
+to construct a cryptosystem and also a digital signature scheme wow.
 
 \vspace{10pt}
 
@@ -127,62 +127,62 @@ So will be done shortly in this section.
 \subsubsection{Cinematic axioms}
 
 \begin{enumerate}
-    %TODO find a better s symbol
-    \item To each quantum system S corresponds an Hilbert space $H_s$.\\
-      The space of pure\footnote{The definition of pure state will
-      be given in the section 4}
-      states is identified by the projective space $P(H_s)$.
+	%TODO find a better s symbol
+	\item To each quantum system S corresponds an Hilbert space $H_s$.\\
+	      The space of pure\footnote{The definition of pure state will
+		      be given in the section 4}
+	      states is identified by the projective space $P(H_s)$.
 
-  \item Given two quantum systems $S_1$ and $S_2$ and their correspondent
-    Hilbert spaces $H_{s1}$ and $H_{s2}$ the space that characterizes the
-    compound system is $H_{s1} \otimes H_{s2}$, where $\otimes$ denotes
-    the tensor product.
+	\item Given two quantum systems $S_1$ and $S_2$ and their correspondent
+	      Hilbert spaces $H_{s1}$ and $H_{s2}$ the space that characterizes the
+	      compound system is $H_{s1} \otimes H_{s2}$, where $\otimes$ denotes
+	      the tensor product.
 
-  \item A measure procedure on a quantum state S is described
-    by a family \\  $M := \{M_\alpha \}_{\alpha\in A}$ where:
+	\item A measure procedure on a quantum state S is described
+	      by a family \\  $M := \{M_\alpha \}_{\alpha\in A}$ where:
 
-    \begin{itemize}
-        \item $M_\alpha \in B(H_s) $ $ \forall \alpha \in A$
-        \item $A \subset \mathbb{R}$
-        \item $\sum_{\alpha \in A} M_\alpha^\dag M_\alpha = Id(H_s)$
-    \end{itemize}
+	      \begin{itemize}
+		      \item $M_\alpha \in B(H_s) $ $ \forall \alpha \in A$
+		      \item $A \subset \mathbb{R}$
+		      \item $\sum_{\alpha \in A} M_\alpha^\dag M_\alpha = Id(H_s)$
+	      \end{itemize}
 
-    Where B(Hs) is the set of bounded operators in $H_s$ and A is the
-    set of all the possible outcomes of the measure.\\
-    Given the outcome $\alpha_0 \in A$ and the state $\ket{\psi}$,
-    the probability
-    of measuring the output $\alpha_0$ being in the state $\ket{\psi}$
-    is: 
-    \begin{center}
-      $P(\psi : \alpha_0) = \braket{\psi|M_{\alpha_0}^\dag M_{\alpha_0}\psi}$
-      
-    \end{center}
+	      Where B(Hs) is the set of bounded operators in $H_s$ and A is the
+	      set of all the possible outcomes of the measure.\\
+	      Given the outcome $\alpha_0 \in A$ and the state $\ket{\psi}$,
+	      the probability
+	      of measuring the output $\alpha_0$ being in the state $\ket{\psi}$
+	      is:
+	      \begin{center}
+		      $P(\psi : \alpha_0) = \braket{\psi|M_{\alpha_0}^\dag M_{\alpha_0}\psi}$
 
-    
-\subsubsection{Dynamic axioms}
+	      \end{center}
 
 
-\item Given a quantum system $S_1$ and two time instants$ t_1$ and $t_2$
-  with $t_1<=t_2$ there is an unique unitary operator$U(t_1,t_2)$ that
-  describes the evolution of the system between the time instants.
+	      \subsubsection{Dynamic axioms}
 
-  The unitary operator should respect also some additional
-  properties:\\
-    $
-    \begin{cases}
-        U(t_1,t_1) = Id(H_s)\\
-        U(t_2,t_3)U(t_1,t_2) = U(t_1,t_3)
-    \end{cases} $ 
 
-  \item In the instant immediately after the measure
-    $M := \{M_\alpha \}_{\alpha\in A}$ is applied to the quantum
-    system S while being in the state $\ket{\psi}$ \\
-    the system will collapse to the state:
-    
-    \begin{center}
-      $\dfrac{M_{\alpha_0}\ket\psi}
-      {\sqrt{\braket{\psi|M_{\alpha_0}^\dag M_{\alpha_0}\psi}}}$
-    \end{center}
+	\item Given a quantum system $S_1$ and two time instants$ t_1$ and $t_2$
+	      with $t_1<=t_2$ there is an unique unitary operator$U(t_1,t_2)$ that
+	      describes the evolution of the system between the time instants.
+
+	      The unitary operator should respect also some additional
+	      properties:\\
+	      $
+		      \begin{cases}
+			      U(t_1,t_1) = Id(H_s) \\
+			      U(t_2,t_3)U(t_1,t_2) = U(t_1,t_3)
+		      \end{cases} $
+
+	\item In the instant immediately after the measure
+	      $M := \{M_\alpha \}_{\alpha\in A}$ is applied to the quantum
+	      system S while being in the state $\ket{\psi}$ \\
+	      the system will collapse to the state:
+
+	      \begin{center}
+		      $\dfrac{M_{\alpha_0}\ket\psi}
+			      {\sqrt{\braket{\psi|M_{\alpha_0}^\dag M_{\alpha_0}\psi}}}$
+	      \end{center}
 \end{enumerate}
 
 
@@ -252,16 +252,16 @@ In the next paragraph we will se the most important ones.
 
 \begin{itemize}
 
-  %TODO insert matrix and definition of every port
-\item
-  Pauli Gates
+	%TODO insert matrix and definition of every port
+	\item
+	      Pauli Gates
 
-\item
-  Hadamard Gate
-  
-\item
-  Phase Gates
-  
+	\item
+	      Hadamard Gate
+
+	\item
+	      Phase Gates
+
 \end{itemize}
 
 \subsection{one qubit interference}
@@ -278,15 +278,15 @@ state of our system.\\
 
 \scalebox{2.0}{
 \Qcircuit @C=1.0em @R=0.2em @!R { \\
-  \lstick{}
-  &{\hspace{70pt}  \rule{0,01em}{3em}}
-  &{\hspace{96pt}  \rule{0,01em}{3em}}
-  &{\hspace{122pt}  \rule{0,01em}{3em}}
-  &{\hspace{150pt}  \rule{0,01em}{3em}}
-  & \gate{\mathrm{H}}
-  & \gate{\mathrm{P}}
-  & \gate{\mathrm{H}}
-  & \qw }}
+\lstick{}
+&{\hspace{70pt}  \rule{0,01em}{3em}}
+&{\hspace{96pt}  \rule{0,01em}{3em}}
+&{\hspace{122pt}  \rule{0,01em}{3em}}
+&{\hspace{150pt}  \rule{0,01em}{3em}}
+& \gate{\mathrm{H}}
+& \gate{\mathrm{P}}
+& \gate{\mathrm{H}}
+& \qw }}
 
 \vspace{20pt}
 
@@ -296,7 +296,7 @@ state of our system.\\
 
 \vspace{30pt}
 
-            
+
 
 An example of this can be found in the circuit in Figure 1.
 The circuit consists of two Hadamard gates with a phase gate
@@ -304,15 +304,15 @@ in between.\\
 Below is the time analisys of the circuit.
 \begin{itemize}
 
-\item $\ket{\psi_{t0}} = \ket{0}$
-\item $\ket{\psi_{t1}} = \dfrac{\ket{0}+\ket{1}}{\sqrt{2}}$
-\item $\ket{\psi_{t2}} = \dfrac{\ket{0}+e^{i\phi}\ket{1}}{\sqrt{2}}$
-\item $\ket{\psi_{t3}} = \dfrac{\dfrac{\ket{0}+\ket{1}}{\sqrt{2}}+e^{i\phi}\dfrac{\ket{0}-\ket{1}}
-    {\sqrt{2}}}{\sqrt{2}}   = \dfrac{(1+e^{i\phi})\ket{0}+(1-e^{i\phi})\ket{1}}{2}$
-  
-  
-  
-  
+	\item $\ket{\psi_{t0}} = \ket{0}$
+	\item $\ket{\psi_{t1}} = \dfrac{\ket{0}+\ket{1}}{\sqrt{2}}$
+	\item $\ket{\psi_{t2}} = \dfrac{\ket{0}+e^{i\phi}\ket{1}}{\sqrt{2}}$
+	\item $\ket{\psi_{t3}} = \dfrac{\dfrac{\ket{0}+\ket{1}}{\sqrt{2}}+e^{i\phi}\dfrac{\ket{0}-\ket{1}}
+		      {\sqrt{2}}}{\sqrt{2}}   = \dfrac{(1+e^{i\phi})\ket{0}+(1-e^{i\phi})\ket{1}}{2}$
+
+
+
+
 \end{itemize}
 
 \vspace{20pt}
@@ -322,9 +322,9 @@ that is:\\
 \vspace{10pt}
 
 $\left|\dfrac{1-e^{i\phi}}{2}\right|^2 = \left(\dfrac{1-e^{i\phi}}{2}\right)\left(\dfrac{1-e^{-i\phi}}{2}\right) =$\\
- \vspace{5pt}
+\vspace{5pt}
 
- 
+
 $ = \dfrac{2-e^{i\phi}+e^{-i\phi}}{4} = \dfrac{2-2\cos{\phi}}{4} =$\\
 
 \vspace{3pt}
@@ -352,13 +352,13 @@ To elaborate more this answer we need to introduce a few definitions
 regarding quantum universality.
 \begin{itemize}
 
-\item
-  Strict universality
-  %TODO insert definition
+	\item
+	      Strict universality
+	      %TODO insert definition
 
-\item
-  Prox universality
-  %TODO insert definition
+	\item
+	      Prox universality
+	      %TODO insert definition
 
 \end{itemize}
 
@@ -383,14 +383,14 @@ That is known thanks to an amazing result by Solovay and Kitaev which
 states
 that the number of ports we need to aproximate a circuit with a certain
 precision grows logaritmically with the precision we want to achieve.
-  
+
 \begin{Solovay-Kitaev}
 
-  Given a strictly universal set of gates S which is closed under inversion,
-  the number of gates needed to approximate every n qubit circuit made
-  from S whith precision $\epsilon$ is
-  $O\Bigl(n2^n+2^nlog_2 \Bigl( \dfrac{1}{\epsilon}\Bigl)\Bigl)$
-  
+Given a strictly universal set of gates S which is closed under inversion,
+the number of gates needed to approximate every n qubit circuit made
+from S whith precision $\epsilon$ is
+$O\Bigl(n2^n+2^nlog_2 \Bigl( \dfrac{1}{\epsilon}\Bigl)\Bigl)$
+
 
 \end{Solovay-Kitaev}
 
@@ -420,9 +420,9 @@ a clear example of this can be found in the circuit below.
 
 \scalebox{2.0}{
 \Qcircuit @C=1.0em @R=0.2em @!R { \\
-	 	\nghost{{q}_{0} :  } & \lstick{{q}_{0} :  } & \gate{\mathrm{H}} & \ctrl{1} & \meter & \qw & \qw & \qw\\
-	 	\nghost{{q}_{1} :  } & \lstick{{q}_{1} :  } & \qw & \targ & \qw & \meter & \qw & \qw\\
-	 	\nghost{\mathrm{{c} :  }} & \lstick{\mathrm{{c} :  }} & \lstick{/_{_{2}}} \cw & \cw & \dstick{_{_{\hspace{0.0em}0}}} \cw \ar @{<=} [-2,0] & \dstick{_{_{\hspace{0.0em}1}}} \cw \ar @{<=} [-1,0] & \cw & \cw\\
+\nghost{{q}_{0} :  } & \lstick{{q}_{0} :  } & \gate{\mathrm{H}} & \ctrl{1} & \meter & \qw & \qw & \qw\\
+\nghost{{q}_{1} :  } & \lstick{{q}_{1} :  } & \qw & \targ & \qw & \meter & \qw & \qw\\
+\nghost{\mathrm{{c} :  }} & \lstick{\mathrm{{c} :  }} & \lstick{/_{_{2}}} \cw & \cw & \dstick{_{_{\hspace{0.0em}0}}} \cw \ar @{<=} [-2,0] & \dstick{_{_{\hspace{0.0em}1}}} \cw \ar @{<=} [-1,0] & \cw & \cw\\
 \\ }}
 
 
@@ -456,7 +456,7 @@ $\rho:=\sum_i p_i \ket{\psi_i}\bra{\psi_i} $
 
 \subsection{Errors generate uncertainty}
 
- 
+
 
 \subsection{Uncertainty in quantum states}
 
