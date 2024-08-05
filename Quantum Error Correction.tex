@@ -313,7 +313,7 @@ state of our system.\\
 \begin{center}
 	\scalebox{1.5}{
 		\begin{quantikz}
-			\slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t0}}}$}	& \gate{H}
+			\lstick{$\ket{0}$}\slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t0}}}$}	& \gate{H}
 			\slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t1}}}$}	& \gate{P}
 			\slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t2}}}$}	& \gate{H}
 			\slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t3}}}$}	&
@@ -425,15 +425,15 @@ $O\Bigl(n2^n+2^nlog_2 \Bigl( \dfrac{1}{\epsilon}\Bigl)\Bigl)$
 
 
 
-\subsection{many qubit gates}
+\subsection{Many qubit gates}
 %FIXME whose?
 It is possible to construct gates whose output is determined by the state
 of many input qubits.
 The most common example of this kind of gates are controlled not gates.
+%TODO insert other examples
 
 
-
-\subsection{quantum entanglement}
+\subsection{Quantum entanglement}
 
 It often happens using many qubit gates that the states of the output
 qubits are no longer independent from each other so the probability
@@ -445,9 +445,9 @@ a clear example of this can be found in the circuit below.\\
 \begin{center}
 	\scalebox{1.5}{
 		\begin{quantikz}
-			\slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t0}}}$}	& \gate{H}
+			\lstick{$\ket{0}$}\slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t0}}}$}	& \gate{H}
 			\slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t1}}}$}	 &\ctrl{1}&\\
-			&& \targ{} \slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t2}}}$}	&
+			\lstick{$\ket{0}$}&& \targ{} \slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t2}}}$}	&
 		\end{quantikz}
 	}
 \end{center}
@@ -460,7 +460,7 @@ a clear example of this can be found in the circuit below.\\
 It can be observed that the final state of the circuit can't be split
 in a tensor product of states.
 
-\subsection{from system to subsystem}
+\subsection{From system to subsystem}
 
 When we study a quantum system we are not always interested in the
 system
@@ -488,6 +488,7 @@ $\rho:=\sum_i p_i \ket{\psi_i}\bra{\psi_i} $
 
 \section{Representing uncertainty}
 
+
 \subsection{Errors generate uncertainty}
 
 
@@ -508,7 +509,43 @@ c
 
 Correcting errors is an ancient problem that puzzled the minds of
 information theorists long before the invention of quantum computation.
+To achieve such task it is common to encode information in a subspace of
+the space of messages that can be sent trough the channel to be able to
+detect if a message has shifted away from this subspace because of an
+error and, if possible, correct it.\\
+A natural way of doing the above is using linear codes because they
+enable a compact representation of the code itself.\\
+A simple example of this concept is given by the three bit repetition
+code.\\
+To encode a message in this simple code we have to repeat each letter
+or digit three times es: example $\rightarrow$ eeexxxaaammmpppllleee.\\
+To decode a possible message we will choose from each triple the
+letter that appears in the most occurences es peexxxaanmmmpppllleee $\rightarrow$ example. \\
+If the channel introduces few errors we will often be able to recover
+the initial message completely.
+the problem with this simple code lies in the fact that it is not very
+efficient in terms of space occupied by the encoded message.
+Fourther developments of this idea brought us codes like the Hamming
+codes and the Reed-Solomon codes which are widely used to this day.
 
-\subsection{Quantum repetition codes}
+
+
+
+\subsection{Quantum coding theory}
+
+\subsection{Some examples of quantum codes}
+
+\subsubsection{Quantum repetition codes}
+
+\subsubsection{The Shor code}
+
+\subsubsection{Degenerate codes}
+
+\subsubsection{CSS codes}
+
+\subsubsection{Stabilizer codes}
+
+
+
 
 \end{document}
