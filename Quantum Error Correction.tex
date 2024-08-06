@@ -4,7 +4,10 @@
 \usepackage{amsmath}
 \usepackage{braket}
 \usepackage{tikz}
+\usepackage{float}
 \usetikzlibrary{quantikz2}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 \title{Quantum Error Correction Tecniques}
 \author{Alessio Delli Colli}
 \date{May 2024}
@@ -128,27 +131,26 @@ So will be done shortly in this section.
 \subsubsection{Cinematic axioms}
 
 \begin{enumerate}
-	%TODO find a better s symbol
-	\item To each quantum system S corresponds an Hilbert space $H_s$.\\
+	\item To each quantum system S corresponds an Hilbert space $H_S$.\\
 	      The space of pure\footnote{The definition of pure state will
 		      be given in the section 4}
-	      states is identified by the projective space $P(H_s)$.
+	      states is identified by the projective space $P(H_S)$.
 
 	\item Given two quantum systems $S_1$ and $S_2$ and their correspondent
-	      Hilbert spaces $H_{s1}$ and $H_{s2}$ the space that characterizes the
-	      compound system is $H_{s1} \otimes H_{s2}$, where $\otimes$ denotes
+	      Hilbert spaces $H_{S1}$ and $H_{S2}$ the space that characterizes the
+	      compound system is $H_{S1} \otimes H_{S2}$, where $\otimes$ denotes
 	      the tensor product.
 
 	\item A measure procedure on a quantum state S is described
 	      by a family \\  $M := \{M_\alpha \}_{\alpha\in A}$ where:
 
 	      \begin{itemize}
-		      \item $M_\alpha \in B(H_s) $ $ \forall \alpha \in A$
+		      \item $M_\alpha \in B(H_S) $ $ \forall \alpha \in A$
 		      \item $A \subset \mathbb{R}$
-		      \item $\sum_{\alpha \in A} M_\alpha^\dag M_\alpha = Id(H_s)$
+		      \item $\sum_{\alpha \in A} M_\alpha^\dag M_\alpha = Id(H_S)$
 	      \end{itemize}
 
-	      Where B(Hs) is the set of bounded operators in $H_s$ and A is the
+	      Where B(Hs) is the set of bounded operators in $H_S$ and A is the
 	      set of all the possible outcomes of the measure.\\
 	      Given the outcome $\alpha_0 \in A$ and the state $\ket{\psi}$,
 	      the probability
@@ -171,7 +173,7 @@ So will be done shortly in this section.
 	      properties:\\
 	      $
 		      \begin{cases}
-			      U(t_1,t_1) = Id(H_s) \\
+			      U(t_1,t_1) = Id(H_S) \\
 			      U(t_2,t_3)U(t_1,t_2) = U(t_1,t_3)
 		      \end{cases} $
 
@@ -222,19 +224,23 @@ when taken the absolute value squared, gives the probability that the
 above mentioned state will be the outcome
 of a measure. %FIXME rivedere la fine
 
+
 \subsubsection{The Bloch sphere}
 
+\begin{center}
+	\includegraphics[scale=0.5]{bloch-sphere.png}
+\end{center}
 The Bloch sphere gives us an useful graphical representation of a
 qubit's state that is linked to the state vector by the following
 isomorphism.\\
 
+$\ket{\psi} = \cos{\dfrac{\theta}{2}}\ket{0}+e^{i\phi}\sin{\dfrac{\theta}{2}}\ket{1}$ \\
 
-
+\vspace{10pt}
 This representation is particularly advantagious because it allows
 to visualize the evolution of a qubit over time in the execution
 of a quantum algorithm.
 
-\newpage
 
 \section{One qubit systems}
 
@@ -248,6 +254,8 @@ in a controlled way is called a quantum gate.\\
 While in classical information there is just a single kind of one bit
 gate in quantum information there are infinitely many!
 In the next paragraph we will se the most important ones.
+
+\newpage
 
 \subsection{Some examples of one qubit gates}
 
@@ -297,20 +305,20 @@ In the next paragraph we will se the most important ones.
 	      \end{center}
 \end{itemize}
 
-\subsection{one qubit interference}
+\subsection{One qubit interference}
 
 
 
 
 The reason why quantum algorithms can be faster than classical ones
 in some tasks is because they can exploit some propreties of quantum
-systems that classical systems lack.\\
+systems that classical systems lack. \\
 One of these propreties is interference.\\
-In quantum information interference is used to control the final
-state of our system.\\
-
-\newpage
-\begin{center}
+In quantum information interference is used to enhance the probability of
+getting a favourable state at the end of the computation.\\
+\vspace{10pt}
+\begin{figure}[H]
+	\centering
 	\scalebox{1.5}{
 		\begin{quantikz}
 			\lstick{$\ket{0}$}\slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t0}}}$}	& \gate{H}
@@ -319,12 +327,14 @@ state of our system.\\
 			\slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t3}}}$}	&
 		\end{quantikz}
 	}
-\end{center}
+	\caption{Ramsey interferometer}
+	\label{interference}
+\end{figure}
 \vspace{10pt}
-
-An example of this can be found in the circuit in Figure 1.\\
-The circuit consists of two Hadamard gates with a phase gate
+An example of this can be found in the circuit in Figure \ref{interference}.\\
+The circuit, called Ramsey interferometer, can be modeled by two Hadamard gates with a phase gate
 in between.\\
+\newpage
 Below is the time analisys of the circuit.
 \begin{itemize}
 
@@ -357,10 +367,39 @@ $ = sin^2{\left(\dfrac{\phi}{2}\right)}$
 \vspace{10pt}
 
 
-%TODO insert graph of measure
 
-It is possible to observe that the output of the measure on the qubit
-depends only on the ammout of fase shift that has been inflicted
+\begin{figure}[H]
+	\centering
+	\scalebox{1}{
+		\begin{tikzpicture}
+			\begin{axis}[
+					axis lines = middle,
+					xlabel = $\phi$,
+					ylabel = {$p(\ket{1}$)},
+					ymin = 0,
+					ymax = 1,
+					xtick={-pi, -pi/2, 0, pi/2, pi}, % Positions of the x-ticks
+					xticklabels={$-\pi$, $-\frac{\pi}{2}$, $0$, $\frac{\pi}{2}$, $\pi$}, % Labels for the x-ticks
+					width=10cm, % Width of the plot
+					height=4cm, % Height of the plot
+					axis equal, % Ensure x and y units are the same length
+				]
+				\addplot[
+					domain=-pi:pi,
+					samples=100,
+					color=blue,
+				]
+				{sin(deg(x))^2};
+			\end{axis}
+		\end{tikzpicture}
+	}
+	\caption{probability of measuring $\ket{1}$ for each value of $\phi$}
+	\label{interferencegraph}
+\end{figure}
+
+It is possible to observe in Figure \ref{interferencegraph}
+that the output of the measure on the qubit depends only on the
+ammout of fase shift that has been inflicted
 to the qubit, this can be seen as a manifestation of the phenomenon
 of interferece.
 
@@ -377,18 +416,18 @@ regarding quantum universality.
 \begin{itemize}
 
 	\item
-	      Strict universality
-	      %TODO insert definition
+	      a \textbf{Strictly universal} set of gates can generate every possible gate
+
 
 	\item
-	      Prox universality
-	      %TODO insert definition
+	      a \textbf{Prox universal} set of gate can approximate every possible gate to
+	      arbitrary precision
+
 
 \end{itemize}
 
-Unfortunately there isn't and can't be a finite set of strictly
-universal
-ports because of the fact that the space of unitary operators in a
+Unfortunately there isn't and can't be a finite and strictly universal
+set of ports because the space of unitary operators in a
 Hilbert space is continue while the possible combinations of
 operators we can get from a finite set of them is just countable.\\
 The proprety we can actually achieve in a real world circuit is
@@ -440,9 +479,10 @@ qubits are no longer independent from each other so the probability
 of measuring a possible result on one qubit depends on the states of
 other qubits involved in the transformation.
 In this case we called this "bonded" qubits entangled.
-a clear example of this can be found in the circuit below.\\
+a clear example of this can be found in the circuit in Figure \ref{entanglement}.\\
 
-\begin{center}
+\begin{figure}[H]
+	\centering
 	\scalebox{1.5}{
 		\begin{quantikz}
 			\lstick{$\ket{0}$}\slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t0}}}$}	& \gate{H}
@@ -450,7 +490,10 @@ a clear example of this can be found in the circuit below.\\
 			\lstick{$\ket{0}$}&& \targ{} \slice[style=blue, label style={pos=1, anchor=north}]{${\scriptstyle\ket{\psi_{t2}}}$}	&
 		\end{quantikz}
 	}
-\end{center}
+	\caption{Bell state generator}
+	\label{entanglement}
+\end{figure}
+
 \begin{itemize}
 	\item $\ket{\psi_{t0}} = \ket{0} \otimes \ket{0}$
 	\item $\ket{\psi_{t1}} = \dfrac{\ket{0}+\ket{1}}{\sqrt{2}} \otimes \ket{0} = \dfrac{\ket{00}+\ket{10}}{\sqrt{2}}$
@@ -459,6 +502,9 @@ a clear example of this can be found in the circuit below.\\
 \end{itemize}
 It can be observed that the final state of the circuit can't be split
 in a tensor product of states.
+Moreover it is one of the four Bell states.
+Such states have the interesting proprety of constituting a base for all
+the entangled states of two qubits.
 
 \subsection{From system to subsystem}
 
