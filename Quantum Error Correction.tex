@@ -407,6 +407,8 @@ of interferece.
 
 \subsection{introduction to quantum universality}
 
+%TODO move some things from here to the many qubits case
+
 We have seen that our previous circuit allows us to manipulate a qubit
 in every possible way but that leaves us with a practical question.
 Is it possible to realize it in practice?
@@ -501,35 +503,57 @@ a clear example of this can be found in the circuit in Figure \ref{entanglement}
 
 \end{itemize}
 It can be observed that the final state of the circuit can't be split
-in a tensor product of states.
+in a tensor product of states so it is possible to assign a state to
+the system as a whole but not to the the individual qubits that compose it.
 Moreover it is one of the four Bell states.
 Such states have the interesting proprety of constituting a base for all
-the entangled states of two qubits.
+the states of two qubits.
+
+
+%TODO insert universality for many qubits systems
+
+\subsection{Ensembles of states}
+
+Let's suppose a qubit is prepared either in state $\ket{0}$ or in
+state $\ket{1}$ based on the result of a coin toss.
+In this case it is not possible to assign a state to such qubit
+but it can be expected to get either result with probability
+$\dfrac{1}{2}$  when we measure it.
+This example can be generalized to when we have a so called
+"ensemble of states" $\{p_i,\ket{\psi_i}\}$ which is a set of
+states our system could be in each with an associate probability $p_i$
+of the system actually being in that state.\\
+This case suggest us that sometimes it is convenient to
+shift our attention from the state of our system itself to the
+statistical predictions we can make about the outcome of a measure on it.
+Such can be achieved thanks to the density operator that
+is usually identified with the letter $\rho$ and in the case of the above
+mentioned ensamble would assume the form $\sum_i p_i \ket{\psi_i}\bra{\psi_i}$
+which is the sum of the projectors on the states $\psi_i$ weighted with
+probabilities $p_i$. \\
+In the case when the ensemble is made by just one state,
+that is when the state of our qubit is certain,
+the density operator of our qubit is just the projector on
+that state.
+The outcome of a measure on a qubit is given by calculating
+the trace of the operator given by the multiplication of our
+measuring operator by the density operator.
+
 
 \subsection{From system to subsystem}
 
 When we study a quantum system we are not always interested in the
-system
-as a whole, sometimes we care only about a fraction of it.
+system as a whole, sometimes we care only about a fraction of it.
 Compartmentalizing the system if for sure easy and intuitive when it
 is in a pure state, but can be more intricate when we are talking about
 an entangled state.\\
 In this latter case in fact we are not able to assign a state to the
 subsystem that is independent from the rest of the original system
 and we have to rely on the possibility of making statistical
-predictions
-about the outcomes of a measure on that subsystem.\\
-To do it in a convenient way we use a special operator called density
-operator.\\
-It is very important in quantum computation because lets us describe
-a not completely known ensamble of states.\\
-Immagine for example we had a system that could be in each of the
-states
-$\ket{\psi_i}$ with probability $p_i$, we call $\{p_i,\ket{\psi_i}\}$ an
-ensamble of pure states with an associate density operator
-$\rho:=\sum_i p_i \ket{\psi_i}\bra{\psi_i} $
-
-
+predictions about the outcomes of a measure on that subsystem.\\
+This should suggest us that the density operator can come useful
+again but the question remains how get the density operator that
+describes a subsystem given the density operator of the system.
 \section{Representing uncertainty}
 
 \subsection{Errors generate uncertainty}
@@ -539,11 +563,16 @@ our qubits will entangle with other quantum systems that we cannot control.
 This will introduce some uncertanty both in the state of our quantum
 system in each given time and the transformations that state will go trough.
 To model a partially unknown quantum state it is best to use the above mentioned
-density operators while a partially unknown transformation is represented by the
+density operators while a partially unknown transformations are represented by the
 formalism of quantum operations.
 
 
 \subsection{Uncertainty in quantum states}
+
+To analyze a real world quantum system it is foundamental to consider
+it a subsystem of a bigger system composed by our circuit and the
+surrounding environment.
+
 
 \subsection{Uncertainty in quantum operations}
 
@@ -554,7 +583,7 @@ formalism of quantum operations.
 \subsection{Dynamic distance measures}
 
 \section{Correcting errors}
-c
+
 \subsection{Brief introduction to classical error correction}
 
 Correcting errors is an ancient problem that puzzled the minds of
