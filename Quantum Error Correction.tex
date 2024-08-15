@@ -24,7 +24,6 @@
 
 \tableofcontents
 
-\newpage
 
 \section{Introduction}
 
@@ -293,14 +292,22 @@ In the next paragraph we will se the most important ones.
 			      \end{bmatrix}$
 	      \end{center}
 
-	\item Phase Gate \\
-	      changes the phase of a qubit arbitrarly
+	\item Phase Gates \\
+	      change the phase of a qubit arbitrarly or by a fixed ammout
 	      \begin{center}
-
-
 		      $	P:=\begin{bmatrix}
 				      1 & 0         \\
 				      0 & e^{i\phi}
+			      \end{bmatrix}
+			      \hspace{10pt}
+			      S:=\begin{bmatrix}
+				      1 & 0                   \\
+				      0 & e^{i\tfrac{\pi}{2}}
+			      \end{bmatrix}
+			      \hspace{10pt}
+			      T:=\begin{bmatrix}
+				      1 & 0                   \\
+				      0 & e^{i\tfrac{\pi}{4}}
 			      \end{bmatrix}$
 	      \end{center}
 \end{itemize}
@@ -403,22 +410,25 @@ ammout of fase shift that has been inflicted
 to the qubit, this can be seen as a manifestation of the phenomenon
 of interferece.
 
-
+\newpage
 
 \subsection{introduction to quantum universality}
 
-%TODO move some things from here to the many qubits case
-
-We have seen that our previous circuit allows us to manipulate a qubit
-in every possible way but that leaves us with a practical question.
-Is it possible to realize it in practice?
+The circuit used in the previous section allows to manipulate a qubit in
+every possible way but it has to be noted that it utilizes a gate that
+applyes an arbitrary ammount of phase shift.
+Such gate has to be seen more like a family of gates.
+It is interesting to know if it would be possible to achieve the same
+result with a predeterminated and finite set of gates, that can actually
+be built.
 The short answer to this question is no, but we can get very close.
 To elaborate more this answer we need to introduce a few definitions
 regarding quantum universality.
 \begin{itemize}
 
 	\item
-	      a \textbf{Strictly universal} set of gates can generate every possible gate
+	      a \textbf{Strictly universal} set of gates can be used to equal
+	      every possible gate
 
 
 	\item
@@ -430,49 +440,33 @@ regarding quantum universality.
 
 Unfortunately there isn't and can't be a finite and strictly universal
 set of ports because the space of unitary operators in a
-Hilbert space is continue while the possible combinations of
-operators we can get from a finite set of them is just countable.\\
+Hilbert space is continuous while the possible circuits that can be built
+from a finite set of them is just countable.\\
 The proprety we can actually achieve in a real world circuit is
 prox-universality.\\
 
 \begin{Prox-Universal-Set}
-The set of gates {H,T,C-Not} is prox universal.
+The set of gates \{H, T\} is prox universal.
 \end{Prox-Universal-Set}
 
-Knowing it is possible to make a circuit that arbitrarly approximates
-every
-single quantum gate what we could be interested in discovering is how
-big that circuit would be.\\
-
-That is known thanks to an amazing result by Solovay and Kitaev which
-states
-that the number of ports we need to aproximate a circuit with a certain
-precision grows logaritmically with the precision we want to achieve.
-
-\begin{Solovay-Kitaev}
-
-Given a strictly universal set of gates S which is closed under inversion,
-the number of gates needed to approximate every n qubit circuit made
-from S whith precision $\epsilon$ is
-$O\Bigl(n2^n+2^nlog_2 \Bigl( \dfrac{1}{\epsilon}\Bigl)\Bigl)$
+This result is due to the fact that the operators defined by HTHT and THTH
+give rotations in two distint axis by an irrational multiple of $\pi$
 
 
-\end{Solovay-Kitaev}
+
+\section{Many qubits systems}
+
+
+
+\subsection{Many qubits gates}
+It is possible to construct gates that involve many qubits combining their states.\\
+The most common example of this kind of gates are controlled not gates.\\
+A controlled not gate involves two qubits and has a control and a target qubit.\\
+If the control qubit is in the state $\ket{1}$ the gate applies a bitflip
+operator on the target qubit, otherwise it applies the identity.
 
 
 \newpage
-
-\section{Many qubits systems and subsystems}
-
-
-
-\subsection{Many qubit gates}
-%FIXME whose?
-It is possible to construct gates whose output is determined by the state
-of many input qubits.
-The most common example of this kind of gates are controlled not gates.
-%TODO insert other examples
-
 
 \subsection{Quantum entanglement}
 
@@ -510,9 +504,48 @@ Such states have the interesting proprety of constituting a base for all
 the states of two qubits.
 
 
-%TODO insert universality for many qubits systems
+\subsection{Universality for multiple qubits}
+Knowing it is possible to make a circuit that arbitrarly approximates
+every
+single quantum gate what we could be interested in discovering is how
+big that circuit would be.\\
 
-\subsection{Ensembles of states}
+That is known thanks to an amazing result by Solovay and Kitaev which
+states
+that the number of ports we need to aproximate a circuit with a certain
+precision grows logaritmically with the precision we want to achieve.
+
+\begin{Solovay-Kitaev}
+
+Given a strictly universal set of gates S which is closed under inversion,
+the number of gates needed to approximate every n qubit circuit made
+from S whith precision $\epsilon$ is
+$O\Bigl(n2^n+2^nlog_2 \Bigl( \dfrac{1}{\epsilon}\Bigl)\Bigl)$
+
+
+\end{Solovay-Kitaev}
+
+
+
+\section{Representing uncertainty}
+
+\subsection{Errors generate uncertainty}
+
+To model an open quantum system we need to consider the fact that
+our qubits will entangle with other quantum systems that we cannot control.
+This will introduce some uncertanty both in the state of our quantum
+system in each given time and the transformations that state will go trough.
+To model a partially unknown quantum state it is best to use the above mentioned
+density operators while a partially unknown transformations are represented by the
+formalism of quantum operations.
+
+
+\subsection{Uncertainty in quantum states}
+
+To analyze a real world quantum system it is foundamental to consider
+it a subsystem of a bigger system composed by our circuit and the
+surrounding environment.
+\subsubsection{Ensembles of states}
 
 Let's suppose a qubit is prepared either in state $\ket{0}$ or in
 state $\ket{1}$ based on the result of a coin toss.
@@ -540,7 +573,7 @@ the trace of the operator given by the multiplication of our
 measuring operator by the density operator.
 
 
-\subsection{From system to subsystem}
+\subsubsection{From system to subsystem}
 
 When we study a quantum system we are not always interested in the
 system as a whole, sometimes we care only about a fraction of it.
@@ -554,28 +587,23 @@ predictions about the outcomes of a measure on that subsystem.\\
 This should suggest us that the density operator can come useful
 again but the question remains how get the density operator that
 describes a subsystem given the density operator of the system.
-\section{Representing uncertainty}
-
-\subsection{Errors generate uncertainty}
-
-To model an open quantum system we need to consider the fact that
-our qubits will entangle with other quantum systems that we cannot control.
-This will introduce some uncertanty both in the state of our quantum
-system in each given time and the transformations that state will go trough.
-To model a partially unknown quantum state it is best to use the above mentioned
-density operators while a partially unknown transformations are represented by the
-formalism of quantum operations.
+It turns out that the only way to obtain it is doing the partial
+trace of the density operator of the all system.
+This comes from the fact that we want to maintain consistency between
+applying the same transformation to the whole system or to the
+subsystem taken into consideration.
+%TODO consider adding more details.
 
 
-\subsection{Uncertainty in quantum states}
-
-To analyze a real world quantum system it is foundamental to consider
-it a subsystem of a bigger system composed by our circuit and the
-surrounding environment.
 
 
 \subsection{Uncertainty in quantum operations}
 
+\subsubsection{System environment representation}
+
+\subsubsection{The Operator sum representation}
+
+\subsubsection{Phisical axioms}
 \section{Measuring errors}
 
 \subsection{Static distance measures}
