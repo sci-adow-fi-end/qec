@@ -545,6 +545,7 @@ formalism of quantum operations.
 To analyze a real world quantum system it is foundamental to consider
 it a subsystem of a bigger system composed by our circuit and the
 surrounding environment.
+
 \subsubsection{Ensembles of states}
 
 Let's suppose a qubit is prepared either in state $\ket{0}$ or in
@@ -599,11 +600,21 @@ subsystem taken into consideration.
 
 \subsection{Uncertainty in quantum operations}
 
-\subsubsection{System environment representation}
+\subsubsection{System environment interaction}
+
+When the system is entangled with the environment it is desirable to
+have a way to represent how the system changes when some kind of
+transformation is applied to it.
+Suppose the system starts in an initial state $\rho$ and, after it gets
+inevitably entangled with the environment, that starts in state $\rho_{env}$,
+a unitary operator $U$ is
+applied to it;
+A the end the system will be in state
+$\rho' = tr_{env} \left[U (\rho \otimes \rho_{env})U^\dag \right]$
 
 \subsubsection{The Operator sum representation}
 
-\subsubsection{Phisical axioms}
+
 \section{Measuring errors}
 
 \subsection{Static distance measures}
