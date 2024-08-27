@@ -465,6 +465,7 @@ A controlled not gate involves two qubits and has a control and a target qubit.\
 If the control qubit is in the state $\ket{1}$ the gate applies a bitflip
 operator on the target qubit, otherwise it applies the identity.
 
+%TODO talk about the imposiibility of quantum cloning
 
 \newpage
 
@@ -595,7 +596,7 @@ applying the same transformation to the whole system or to the
 subsystem taken into consideration.
 %TODO consider adding more details.
 
-
+%TODO maybe add density operators on the bloch ball
 
 
 \subsection{Uncertainty in quantum transformations}
@@ -632,6 +633,10 @@ $\rho$ it is always possible to describe every admissible quantum operation
 with at most $d^2$ terms being the space of $d \times d $ matrices $d^2$-dimensional
 vector space.
 
+
+
+%TODO maybe add the most common quantum channel
+
 \section{Measuring errors}
 
 \subsection{The importance of distance measures}
@@ -652,9 +657,42 @@ measures.
 
 \subsection{Static distance measures}
 
-the mos
+%The most common static measures used are the trace distance and the fidelity.
+%They seem very different at first but obey to similar propreties and have deep
+%connections between them.
 
+The most common static distance measure for quantum states is the fidelity.
+It derives from the classical fidelity which is a distance measure between
+probability distributions.
+The quantum fidelity of states $\rho$ and $\sigma$ is defined as:
+\begin{equation}
+	F(\rho,\sigma):=tr \sqrt{\rho^\frac{1}{2}\sigma\rho^\frac{1}{2}}
+	\label{qfidelity}
+\end{equation}
 
+and when the operators $\rho$ and $\sigma$ commute they can be written as:
+
+\begin {equation}
+\rho = \sum_{i} r_i\ket{i}\bra{i}; \hspace{10pt} \sigma = \sum_{i} s_i \ket{i}\bra{i}
+\end{equation}
+
+so the equation \ref{qfidelity} becomes:
+
+\begin{equation}
+	F(\rho,\sigma) = tr \sqrt{\sum_{i} r_i s_i \ket{i}\bra{i} } = tr \left( \sum_{i} \sqrt{r_i s_i} \ket{i}\bra{i}
+	\right) = \sum_{i}\sqrt{r_i s_i}
+\end{equation}
+
+where the last expression is exactly the classical fidelity between the eigenvalue
+distributions $r_i$ and $s_i$ of $\rho$ and $\sigma$
+
+the fidelity has some important propreties:
+\begin{itemize}
+	\item invariance under unitary transformas
+	\item strong concavity
+	\item monotonicity
+	      %FIXME deshittify
+\end{itemize}
 \subsection{Dynamic distance measures}
 
 
@@ -683,9 +721,27 @@ efficient in terms of space occupied by the encoded message.
 Fourther developments of this idea brought us codes like the Hamming
 codes and the Reed-Solomon codes which are widely used to this day.
 
+\newpage
 
 \subsection{Quantum coding theory}
 
+Unfortunantly when it comes to error correction quantum systems encounter
+some additional problems unknown to classical systems and this makes the
+procedure more complex.
+\begin {itemize}
+
+\item The \textbf{No cloning principle} shows that is impossible to generate
+multiple copies of an unknown quantum state so the tecnique used for example
+in classical repetition code is unfeasible without some adaptations.
+
+\item Quantum states are by nature \textbf{continuous} as opposed to the
+discrete states of a classical computer.
+This makes so that errors that can occur are continuous too.
+
+\item The measurement procedure on quantum states is \textbf{disruptive} so it is not
+possible to measure a qubit to select the best procedure to correct it's state.
+
+\end{itemize}
 \subsection{Some examples of quantum codes}
 
 \subsubsection{Quantum repetition codes}
