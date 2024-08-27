@@ -598,28 +598,65 @@ subsystem taken into consideration.
 
 
 
-\subsection{Uncertainty in quantum operations}
+\subsection{Uncertainty in quantum transformations}
 
 \subsubsection{System environment interaction}
 
-When the system is entangled with the environment it is desirable to
-have a way to represent how the system changes when some kind of
-transformation is applied to it.
-Suppose the system starts in an initial state $\rho$ and, after it gets
-inevitably entangled with the environment, that starts in state $\rho_{env}$,
+It is often the case that the quantum system is embedded in an environment
+that can't be control therefore it is important to consider the interaction
+between the system and such environment.
+Suppose the system starts in an initial state $\rho$ and the environment
+starts in state $\rho_{env}$,
 a unitary operator $U$ is
-applied to it;
+applied to them;
 A the end the system will be in state
-$\rho' = tr_{env} \left[U (\rho \otimes \rho_{env})U^\dag \right]$
+$\rho' = tr_{env} \left[U (\rho \otimes \rho_{env})U^\dag \right]$.\\
+The finel state $\rho'$ is often referred as $\mathcal {E}(\rho)$ and
+$\mathcal {E}$ is said to be a quantum operation acting on the state $\rho$.
 
 \subsubsection{The Operator sum representation}
 
+It is useful to develop a self contained way to describe the evolution
+of a system that takes into consideration only the part we have control of.
+This is done by assuming the environment to always start in a pure state.
+Such assumption is fair because it is always possible to choose the environment
+"big enough" not to be entangled with any other state thanks to a procedure
+called purification.
+The traslation of the assumption on the above equation produces:
+$\mathcal{E}(\rho) =  \sum_{k} \bra{e_k}U \left[ \rho \otimes \ket{e_0}\bra{e_0}
+		\right] U^\dagger \ket{e_k} = \sum_k E_k \rho E_k^\dagger $ \\
+where $E_k=\ket{e_k}U\ket{e_0}$ and the operation elements $E_k$ satisfy
+the completness relation so $\sum_k E_k^\dagger E_k = I$
+If $d$ is the dimension of the hilbert space whoose state is described by
+$\rho$ it is always possible to describe every admissible quantum operation
+with at most $d^2$ terms being the space of $d \times d $ matrices $d^2$-dimensional
+vector space.
 
 \section{Measuring errors}
 
+\subsection{The importance of distance measures}
+
+When a system gets entangled with the environment the latter causes the system
+to deviate from it's expected evolution giving birth to an error.
+Considering only the presence or absence of errors though would be of little
+information because errors can vary wildly based on how much they shift the
+quantum state and so the probability of getting a certain result during
+the measurement procedure.
+The need for a way to measure the distance between two states to see, for example,
+how much errors have shifted the system away from the desires state, has resolved
+in the development of static distance measures.
+Static distance measures are then used to derive ways to quantify how much quantum
+informations gets lost by a system during transformations wich are dynamic distance
+measures.
+
+
 \subsection{Static distance measures}
 
+the mos
+
+
 \subsection{Dynamic distance measures}
+
 
 \section{Correcting errors}
 
@@ -645,8 +682,6 @@ the problem with this simple code lies in the fact that it is not very
 efficient in terms of space occupied by the encoded message.
 Fourther developments of this idea brought us codes like the Hamming
 codes and the Reed-Solomon codes which are widely used to this day.
-
-
 
 
 \subsection{Quantum coding theory}
