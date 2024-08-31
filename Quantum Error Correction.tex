@@ -15,6 +15,8 @@
 \newtheorem{Solovay-Kitaev}{Theorem (Solovay Kitaev 1997)}
 
 \newtheorem{Prox-Universal-Set}{Theorem}
+
+\newtheorem{Error-correction-conditions}{Theorem}
  
 \begin{document}
 
@@ -233,9 +235,9 @@ The Bloch sphere gives us an useful graphical representation of a
 qubit's state that is linked to the state vector by the following
 isomorphism.\\
 
-$\ket{\psi} = \cos{\dfrac{\theta}{2}}\ket{0}+e^{i\phi}\sin{\dfrac{\theta}{2}}\ket{1}$ \\
-
-\vspace{10pt}
+\begin{equation}
+	\ket{\psi} = \cos{\dfrac{\theta}{2}}\ket{0}+e^{i\phi}\sin{\dfrac{\theta}{2}}\ket{1} \\
+\end{equation}
 This representation is particularly advantagious because it allows
 to visualize the evolution of a qubit over time in the execution
 of a quantum algorithm.
@@ -611,7 +613,10 @@ starts in state $\rho_{env}$,
 a unitary operator $U$ is
 applied to them;
 A the end the system will be in state
-$\rho' = tr_{env} \left[U (\rho \otimes \rho_{env})U^\dag \right]$.\\
+
+\begin{equation}
+	\rho' = tr_{env} \left[U (\rho \otimes \rho_{env})U^\dag \right].
+\end{equation}
 The finel state $\rho'$ is often referred as $\mathcal {E}(\rho)$ and
 $\mathcal {E}$ is said to be a quantum operation acting on the state $\rho$.
 
@@ -624,8 +629,10 @@ Such assumption is fair because it is always possible to choose the environment
 "big enough" not to be entangled with any other state thanks to a procedure
 called purification.
 The traslation of the assumption on the above equation produces:
-$\mathcal{E}(\rho) =  \sum_{k} \bra{e_k}U \left[ \rho \otimes \ket{e_0}\bra{e_0}
-		\right] U^\dagger \ket{e_k} = \sum_k E_k \rho E_k^\dagger $ \\
+\begin{equation}
+	\mathcal{E}(\rho) =  \sum_{k} \bra{e_k}U \left[ \rho \otimes \ket{e_0}\bra{e_0}
+		\right] U^\dagger \ket{e_k} = \sum_k E_k \rho E_k^\dagger  \\
+\end{equation}
 where $E_k=\ket{e_k}U\ket{e_0}$ and the operation elements $E_k$ satisfy
 the completness relation so $\sum_k E_k^\dagger E_k = I$
 If $d$ is the dimension of the hilbert space whoose state is described by
@@ -674,7 +681,7 @@ and when the operators $\rho$ and $\sigma$ commute they can be written as:
 
 \begin {equation}
 \rho = \sum_{i} r_i\ket{i}\bra{i}; \hspace{10pt} \sigma = \sum_{i} s_i \ket{i}\bra{i}
-\end{equation}
+\end {equation}
 
 so the equation \ref{qfidelity} becomes:
 
@@ -688,12 +695,26 @@ distributions $r_i$ and $s_i$ of $\rho$ and $\sigma$
 
 the fidelity has some important propreties:
 \begin{itemize}
-	\item invariance under unitary transformas
-	\item strong concavity
-	\item monotonicity
+	\item Invariance under unitary transforms
+	\item \textbf{Strong concavity}: let $p_i$ and $q_i$ be probability distributions
+	      and $\rho_i$
+	\item Monotonicity
 	      %FIXME deshittify
 \end{itemize}
 \subsection{Dynamic distance measures}
+
+It is also possible to use the fidelity to construct a way to to measure how
+well quantum information is preserved during a generic quantum operation.
+To do it what is usually evaluated is how a quantum operation preserves
+entanglement.
+This gives rise to the concept of entanglement fidelity which is a function
+of the density operator of a state $\rho$ and a trace preserving quantum operation
+$\mathcal{E}$.
+
+\begin{equation}
+	F(\rho,\mathcal{E}) := F(RQ,R'Q')^2 = \bra{RQ} \left[ (I_R \otimes \mathbb{E})(\ket{RQ}\bra{RQ}) \right] \ket{RQ}
+\end{equation}
+
 
 
 \section{Correcting errors}
@@ -725,6 +746,8 @@ codes and the Reed-Solomon codes which are widely used to this day.
 
 \subsection{Quantum coding theory}
 
+\subsubsection{differences with the classical case}
+
 Unfortunantly when it comes to error correction quantum systems encounter
 some additional problems unknown to classical systems and this makes the
 procedure more complex.
@@ -739,9 +762,52 @@ discrete states of a classical computer.
 This makes so that errors that can occur are continuous too.
 
 \item The measurement procedure on quantum states is \textbf{disruptive} so it is not
-possible to measure a qubit to select the best procedure to correct it's state.
+possible to know the state of a qubit in order to select the best procedure
+to correct eventual errors on it.
 
 \end{itemize}
+Such problems have been tackled in the following ways.
+
+\subsubsection{Entranglement instead of cloning}
+
+The cloning done in classical error correction is substituted with
+the creation of a group of entangled qubits which are called physical qubits
+and encode the information of a single qubit, called logical qubit,  in order
+to preserve it trough the noisy channel.
+
+
+\subsubsection{Syndrome measurements}
+
+The measurement is aimed at extracting the error syndrome which
+is a quantity that contains information only about the error occurred
+in the channel and not about the state of the system.
+Not extracting any information from the state of the system
+this measurement procedure avoids altering it.
+
+
+
+\subsubsection{Finite error syndromes}
+
+The solution presented in the previus paragraph would be impossible to
+apply if the error syndromes would be infinite as it would be natural to
+immagine.
+Fortunately it is not the case but to understeand the reason for such
+an unexpected result it is necessary to introduce some intermediate steps.
+
+\begin{Error-correction-conditions}
+Let $C$ be a quantum code and $P$ be the projector onto $C$.
+Suppose $\mathcal{E}$ is a quantum operation with operation elements $\{E_i\}$.
+A necessary and sufficient condition for the existence of an error-correction
+operation $\mathcal{R}$ correcting $\mathcal{E}$ on $C$ is that
+
+\begin{equation}
+	P E_i^\dagger E_j P = \alpha_{ij} P
+\end{equation}
+for some Hermitian matrix $\alpha = (\alpha_{ij})$ of complex numbers.
+\end{Error-correction-conditions}
+
+
+
 \subsection{Some examples of quantum codes}
 
 \subsubsection{Quantum repetition codes}
