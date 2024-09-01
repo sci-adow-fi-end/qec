@@ -12,12 +12,8 @@
 \author{Alessio Delli Colli}
 \date{May 2024}
 
-\newtheorem{Solovay-Kitaev}{Theorem (Solovay Kitaev 1997)}
+\newtheorem{theorem}{Theorem}
 
-\newtheorem{Prox-Universal-Set}{Theorem}
-
-\newtheorem{Error-correction-conditions}{Theorem}
- 
 \begin{document}
 
 \maketitle
@@ -26,6 +22,7 @@
 
 \tableofcontents
 
+\newpage
 
 \section{Introduction}
 
@@ -447,9 +444,9 @@ from a finite set of them is just countable.\\
 The proprety we can actually achieve in a real world circuit is
 prox-universality.\\
 
-\begin{Prox-Universal-Set}
-The set of gates \{H, T\} is prox universal.
-\end{Prox-Universal-Set}
+\begin{theorem}
+	The set of gates \{H, T\} is prox universal.
+\end{theorem}
 
 This result is due to the fact that the operators defined by HTHT and THTH
 give rotations in two distint axis by an irrational multiple of $\pi$
@@ -518,15 +515,14 @@ states
 that the number of ports we need to aproximate a circuit with a certain
 precision grows logaritmically with the precision we want to achieve.
 
-\begin{Solovay-Kitaev}
+\begin{theorem}[Solovay-Kitaev 1995]
 
-Given a strictly universal set of gates S which is closed under inversion,
-the number of gates needed to approximate every n qubit circuit made
-from S whith precision $\epsilon$ is
-$O\Bigl(n2^n+2^nlog_2 \Bigl( \dfrac{1}{\epsilon}\Bigl)\Bigl)$
+	Given a strictly universal set of gates S which is closed under inversion,
+	the number of gates needed to approximate every n qubit circuit made
+	from S whith precision $\epsilon$ is
+	$O\Bigl(n2^n+2^n\log_2 \Bigl( \dfrac{1}{\epsilon}\Bigl)\Bigl)$
 
-
-\end{Solovay-Kitaev}
+\end{theorem}
 
 
 
@@ -538,9 +534,8 @@ To model an open quantum system we need to consider the fact that
 our qubits will entangle with other quantum systems that we cannot control.
 This will introduce some uncertanty both in the state of our quantum
 system in each given time and the transformations that state will go trough.
-To model a partially unknown quantum state it is best to use the above mentioned
-density operators while a partially unknown transformations are represented by the
-formalism of quantum operations.
+The concepts of density operators and quantum operations will be presented to
+model a partially unknown states and transformations.
 
 
 \subsection{Uncertainty in quantum states}
@@ -598,7 +593,7 @@ applying the same transformation to the whole system or to the
 subsystem taken into consideration.
 %TODO consider adding more details.
 
-%TODO maybe add density operators on the bloch ball
+\subsubsection{The Bloch ball}
 
 
 \subsection{Uncertainty in quantum transformations}
@@ -640,9 +635,57 @@ $\rho$ it is always possible to describe every admissible quantum operation
 with at most $d^2$ terms being the space of $d \times d $ matrices $d^2$-dimensional
 vector space.
 
+\subsubsection{Unitary freedom in the operator sum representation}
+
+\begin{theorem}
+	\label{freedom}
+	Given the operations $\mathcal{E}$ and $\mathcal{F}$ with operation elements
+	$\{E_1,...,E_m\}$ and $\{F_1,...,F_n\}$, after appending zero operators
+	to the end of the shorter list to ensure that m=n,
+	$\mathcal{E}=\mathcal{F}$ if and only if there exists an m by m unitary matrix
+	of complex numbers $u_{ij}$ such that $E_i = \sum_j u_{ij} F_j$
+
+\end{theorem}
 
 
-%TODO maybe add the most common quantum channel
+
+\subsubsection{Common quantum channels}
+
+Here is a list of the most common models of quantum channels and their respectiove
+operator-sum representations:
+
+\begin{itemize}
+
+	\item the \textbf{Bit flip channel} can flip the state of a qubit applying
+	      the operator $X$ with probability $1-p$ and do nothing with
+	      probability $p$.
+	      its operation elements are:
+	      \begin{equation}
+		      E_0 = \sqrt{p}I, \hspace{20pt} E_1 = \sqrt{1-p}X
+	      \end{equation}
+
+	\item the \textbf{Phase flip channel} can shift the phase by $\pi$ of a qubit applying
+	      the operator $Z$ with probability $1-p$ and do nothing with
+	      probability $p$.
+	      its operation elements are:
+	      \begin{equation}
+		      E_0 = \sqrt{p}I, \hspace{20pt} E_1 = \sqrt{1-p}Z
+	      \end{equation}
+
+	\item the \textbf{Depolarizing channel} can substitute the state of the system with the
+	      totally mixed state with probability $1-p$ and do nothing with
+	      probability $p$.
+	      The totally mixed state is a state with density operator $I/2$
+
+	      that holds no information.
+	      the operation elements of the depolarizing channel are:
+	      \begin{equation}
+		      E_0 = \sqrt{1-\tfrac{3}{4}p}I, \hspace{5pt} E_1 = \sqrt{1-p}X , \hspace{5pt}
+		      E_2 = \sqrt{1-p}Y , \hspace{5pt} E_3 = \sqrt{1-p}Z
+	      \end{equation}
+
+
+\end{itemize}
 
 \section{Measuring errors}
 
@@ -664,9 +707,6 @@ measures.
 
 \subsection{Static distance measures}
 
-%The most common static measures used are the trace distance and the fidelity.
-%They seem very different at first but obey to similar propreties and have deep
-%connections between them.
 
 The most common static distance measure for quantum states is the fidelity.
 It derives from the classical fidelity which is a distance measure between
@@ -742,7 +782,6 @@ efficient in terms of space occupied by the encoded message.
 Fourther developments of this idea brought us codes like the Hamming
 codes and the Reed-Solomon codes which are widely used to this day.
 
-\newpage
 
 \subsection{Quantum coding theory}
 
@@ -764,8 +803,9 @@ This makes so that errors that can occur are continuous too.
 \item The measurement procedure on quantum states is \textbf{disruptive} so it is not
 possible to know the state of a qubit in order to select the best procedure
 to correct eventual errors on it.
-
 \end{itemize}
+
+
 Such problems have been tackled in the following ways.
 
 \subsubsection{Entranglement instead of cloning}
@@ -792,21 +832,76 @@ The solution presented in the previus paragraph would be impossible to
 apply if the error syndromes would be infinite as it would be natural to
 immagine.
 Fortunately it is not the case but to understeand the reason for such
-an unexpected result it is necessary to introduce some intermediate steps.
+an unexpected result it is necessary to introduce an intermediary step.
 
-\begin{Error-correction-conditions}
-Let $C$ be a quantum code and $P$ be the projector onto $C$.
-Suppose $\mathcal{E}$ is a quantum operation with operation elements $\{E_i\}$.
-A necessary and sufficient condition for the existence of an error-correction
-operation $\mathcal{R}$ correcting $\mathcal{E}$ on $C$ is that
+\begin{theorem}[Knill-Laflamme condition 1997]
+	\label{conditions}
+	Let $C$ be a quantum code and $P$ be the projector onto $C$.
+	Suppose $\mathcal{E}$ is a quantum operation with operation elements $\{E_i\}$.
+	A necessary and sufficient condition for the existence of an error-correction
+	operation $\mathcal{R}$ correcting $\mathcal{E}$ on $C$ is that
+
+	\begin{equation}
+		P E_i^\dagger E_j P = \alpha_{ij} P
+		\label{eccondition}
+	\end{equation}
+	for some Hermitian matrix $\alpha = (\alpha_{ij})$ of complex numbers.
+\end{theorem}
+
+$Proof$
+The condition \ref{eccondition} is sufficient because it
+is possible to explicitly construct an error-correction operation
+$\mathcal{R}$ whenever it is satisfied.
+To construct $\mathcal{R}$ a set of quantum error correction is picked
+according to the condition \ref{eccondition}.
+By assumtion $\alpha$ is a Hermitian matrix, so it can be diagonalized
+$d =u^\dagger \alpha u$ where u is an unitary matrix and d is diagonal.
+Then the operators $F_k$ are defined in the following way:
+\begin{equation}
+	F_k := \sum_i u_{ik} E_i.
+\end{equation}
+Theorem \ref{freedom} shows that $\{F_k\}$ is also a set of operaton
+elements for $\mathcal{E}$ so it is possible to write:
 
 \begin{equation}
-	P E_i^\dagger E_j P = \alpha_{ij} P
+	\label{condition2}
+	P F_k^\dagger F_l P = \sum_{ij} u_{ki}^dagger u_{jl} P E_{i}^\dagger E_j P.
 \end{equation}
-for some Hermitian matrix $\alpha = (\alpha_{ij})$ of complex numbers.
-\end{Error-correction-conditions}
+
+Cobining \ref{condition2} with \ref{eccondition}
+the condition becomes:
+
+\begin{equation}
+	P F_k^\dagger F_l P = \sum_{ij} u_{ki}^\dagger \alpha_{ij} u_{jl} P.
+\end{equation}
+
+and since $d = u^\dagger \alpha u$
+
+\begin{equation}
+	P F_k^\dagger F_l P = d_{kl}P.
+\end{equation}
+
+which can be thought of as a simplification of the condition \ref{eccondition} ,
+because $d_{kl}$ is diagonal.
 
 
+\begin{theorem}
+	Suppose $C$ is a quantum code and $\mathcal{R}$ is the error-correction operation
+	constructed in the proof of theorem \ref{conditions}to correct a
+	noise process $\mathcal{E}$ with operation elements $\{E_i\}$.
+	Suppose $\mathcal{F}$ is a quantum operation with operation elements $\{F_j\}$
+	that can be written in the form $F_j = \sum_i m_{ij} E_i$ for some matrix $m_{ij}$
+	of complex numbers.
+	Then the error correction operation $\mathcal{R}$ also corrects for the effects
+	of the noise process $\mathcal{F}$ on the code $C$
+\end{theorem}
+
+$Proof$
+By Theorem \ref{conditions} the operaton elements $\{E_i\}$ must
+satisfy the quantum eroor-correction condition $PE_iE_j^\dag P = \alpha_{ij}P$.
+As shown in the proof of theorem \ref{conditions}, whithout loss
+of generality we may assume that the operation elements for $\mathcal{E}$ have been
+chosen such that $\alpha_{ij} = d_{ij}$ is diagonal with real entries.
 
 \subsection{Some examples of quantum codes}
 
