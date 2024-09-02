@@ -878,11 +878,66 @@ the condition becomes:
 and since $d = u^\dagger \alpha u$
 
 \begin{equation}
+	\label{simplecondition}
 	P F_k^\dagger F_l P = d_{kl}P.
 \end{equation}
 
 which can be thought of as a simplification of the condition \ref{eccondition} ,
 because $d_{kl}$ is diagonal.
+Using the polar decomposition and the the equation \ref{simplecondition} it is
+possible to see that for some unitary operator $U_k$
+
+\begin{equation}
+	F_k P = U_k \sqrt{PF_k^\dagger F_k P} = \sqrt{d_{kk}} U_k P
+\end{equation}
+
+The effect of $F_k$ is to rotate the coding subspace into a second subspace defined by
+the projector $P_k$ which is defined in the following way:
+
+\begin{equation}
+	\label{defpk}
+	P_k := U_k P U_k^\dagger = \dfrac{F_k P U_k^\dagger}{\sqrt{d_{kk}}}
+\end{equation}
+
+These subspaces are necessarly orthogonal because for equation \ref{simplecondition}
+when $k \neq l$:
+
+\begin{equation}
+	P_l P_k = P_l^\dagger P_k = \dfrac{U_l P F_l^\dagger F_k P U_k^\dagger}{\sqrt{d_{ll}d_{kk}}} = 0
+\end{equation}
+
+In this construction the syndrome measurement is a projective measurement defined by
+the operators $P_k$, augmented by an additional projector if necessary to satisfy
+the completeness relation $\sum_k P_k = I$.
+Recovery is accomplished simply by applying $U_k^\dagger$.
+It is possible to verify that the error correction is appropriate calculating
+$ \mathcal{R}(\mathcal{E}(\rho)) $ where $\mathcal{E}(\sigma) = U_k^\dagger P_k \sigma P_k U_k$
+is the combined detection-recovery step.
+
+Applying the definition \ref{defpk} and the condition \ref{simplecondition}
+it is possible to derive that:
+
+\begin{equation}
+	U_k^\dagger P_k F_l \sqrt{\rho} = U_k^\dagger P_k^\dagger F_l P \sqrt{\rho}
+\end{equation}
+
+\begin{equation}
+	=	\dfrac{U_k^\dagger U_k P F_k^\dagger F_l P \sqrt{\rho}}{\sqrt{d_{kk}}} = \dfrac{P F_k^\dagger F_l P \sqrt{\rho}}{\sqrt{d_{kk}}}
+\end{equation}
+
+\begin{equation}
+	= \delta_{kl} \sqrt{d_{kk}} P \sqrt{\rho} = \delta_{kl} \sqrt{d_{kk}} \sqrt{\rho}
+\end{equation}
+
+Thus
+
+\begin{equation}
+	\mathcal{R}(\mathcal{E}(\rho)) = \sum_{kl} U_k^\dagger P_k F_l \rho F_l^\dagger P_k U_k = \sum_{kl} \delta_{kl} d_{kk} \rho \propto \rho
+\end{equation}
+
+
+
+
 
 
 \begin{theorem}
