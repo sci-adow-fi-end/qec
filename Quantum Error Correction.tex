@@ -865,7 +865,7 @@ elements for $\mathcal{E}$ so it is possible to write:
 
 \begin{equation}
 	\label{condition2}
-	P F_k^\dagger F_l P = \sum_{ij} u_{ki}^dagger u_{jl} P E_{i}^\dagger E_j P.
+	P F_k^\dagger F_l P = \sum_{ij} u_{ki}^\dagger u_{jl} P E_{i}^\dagger E_j P.
 \end{equation}
 
 Cobining \ref{condition2} with \ref{eccondition}
@@ -926,6 +926,7 @@ it is possible to derive that:
 \end{equation}
 
 \begin{equation}
+	\label{conditionauxilary}
 	= \delta_{kl} \sqrt{d_{kk}} P \sqrt{\rho} = \delta_{kl} \sqrt{d_{kk}} \sqrt{\rho}
 \end{equation}
 
@@ -935,9 +936,43 @@ Thus
 	\mathcal{R}(\mathcal{E}(\rho)) = \sum_{kl} U_k^\dagger P_k F_l \rho F_l^\dagger P_k U_k = \sum_{kl} \delta_{kl} d_{kk} \rho \propto \rho
 \end{equation}
 
+as required.
+\vspace{20pt}
+To prove necessity suppose $\{E_i\}$ is a set of errors corrected by the error-correction
+operation $\mathcal{R}$ with operation elements $\{R_j\}$.\\
+Define a quantum operation $\mathcal{E}_C$ by $\mathcal{E}_C(\rho) := \mathcal{E}(P \rho P)$
+Since $P \rho P$ is in the code space for all $\rho$, it follows that
 
+\begin{equation}
+	\mathcal{R}(\mathcal{E}(\rho)) \propto P \rho P
+\end{equation}
 
+for all states $\rho$. Moreover, the proportionality factor must be a constant c, not
+depending on the imput state $\rho$, if both right and left side have to be linear.
+Rewriting the last equation explicitly in terms of the operation elements gives
 
+\begin{equation}
+	\sum_{ij} R_j E_i P \rho P E_i^\dagger R_j^\dagger = cP \rho P
+\end{equation}
+
+This equation holds for all $\rho$. It follows that the quantum operation with operation
+elements $\{R_jE_i\}$ is identical to the quantum operation with a single operation element
+$\sqrt{c}P$. Theorem \ref{freedom} implies that there exist complex numbers
+$c_{ki}$ such that
+\begin{equation}
+	R_k E_i P = c_{ki} P.
+\end{equation}
+Taking the adjoint of this equation gives $P E_i^\dagger R_k^\dagger = c_{ki}^* P$ and therefore\\
+$P E_i^\dagger R_k^\dagger R_k E_j P =
+	c_{ki}^* c_{kj} P$.
+But $R$ is a trace-preserving operation,\\
+so $\sum_k R_k^\dagger R_k = I$. \\ Summing the equation $P E_i^\dagger R_k^\dagger R_k E_j P = c_{ki}^* c_{kj} P$
+over $k$ we deduce that:
+\begin{equation}
+	P E_i^\dagger E_j P = \alpha_{ij} P
+\end{equation}
+where $\alpha_{ij} \equiv \sum_k c_{ki}^* c_{kj}$ is just a Hermitian matrix of complex numbers.\\
+These are the quantum error-correction conditions.
 
 
 \begin{theorem}
@@ -952,11 +987,29 @@ Thus
 \end{theorem}
 
 $Proof$
-By Theorem \ref{conditions} the operaton elements $\{E_i\}$ must
-satisfy the quantum eroor-correction condition $PE_iE_j^\dag P = \alpha_{ij}P$.
-As shown in the proof of theorem \ref{conditions}, whithout loss
-of generality we may assume that the operation elements for $\mathcal{E}$ have been
-chosen such that $\alpha_{ij} = d_{ij}$ is diagonal with real entries.
+By Theorem \ref{conditions} the operaton elements
+$\{E_i\}$ mustsatisfy the quantum eroor-correction condition $PE_iE_j^\dag P = \alpha_{ij}P$.
+As shown in the proof of theorem \ref{conditions},
+whithout loss of generality we may assume that the operation elements for $\mathcal{E}$
+have been chosen such that $\alpha_{ij} = d_{ij}$ is diagonal with real entries.
+The error-correction operation $\mathcal{R}$ has operation elements $U_k^\dagger P_k$, where by equation
+\ref{conditionauxilary} the $U_k$ and $P_k$ are chosen such that for any $\rho$ in
+the code space:
+
+\begin{equation}
+	U_k^\dagger P_k E_i \sqrt{\rho} = \delta_{ki} d_{kk} \sqrt{\rho}.
+\end{equation}
+
+Substituting $F_j = \sum_i m_{ji} E_i$ gives
+\begin{equation}
+	U_k^\dagger P_k F_j \sqrt{\rho} = \sum_i m_{ji} \delta_{ki} d_{kk} \sqrt{\rho} = m_{jk} d_{kk} \sqrt{\rho},
+\end{equation}
+and thus
+\begin{equation}
+	R(F(\rho)) = \sum_{kj} U_k^\dagger P_k F_j \rho F_j^\dagger P_k U_k = \sum_{kj} |m_{jk}|^2 d_{kk} \rho \propto \rho,
+\end{equation}
+as required.
+
 
 \subsection{Some examples of quantum codes}
 
