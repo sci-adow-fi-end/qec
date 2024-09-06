@@ -44,7 +44,7 @@ to construct a cryptosystem and also a digital signature scheme wow.
 
 \vspace{10pt}
 
-While the metric of ”being difficult to compute” may seem arbitrary at first
+\noindent While the metric of ”being difficult to compute” may seem arbitrary at first
 glance, it is based on the solid theory of computational complexity.
 Such theory, founded on the Church-Turing Thesis, aims to measure the com-
 plexity of a problem in terms of the number of steps a Turing machine would
@@ -58,7 +58,7 @@ generally assumed that these classes are not coincident.
 
 \vspace{10pt}
 
-This conjecture leads to believe that there are some problems that belong to
+\noindent This conjecture leads to believe that there are some problems that belong to
 the class NP but not to P so, for them, it is easy to verify if a configuration is
 a solution but not to find one. For these problems isn’t thus possible to find a
 solving algorithm that is substantially better than trying all the possible config-
@@ -75,7 +75,7 @@ be different.
 
 \newpage
 
-In 1996 Lov Grover showed that with quantum computing it is possible to
+\noindent In 1996 Lov Grover showed that with quantum computing it is possible to
 complete an exhaustive search with only square root of n calls to the oracle,
 where n is the size of the input. While this is an extraordinary result, later
 studies have shown that it can’t be further improved.
@@ -337,11 +337,11 @@ getting a favourable state at the end of the computation.\\
 	\label{interference}
 \end{figure}
 \vspace{10pt}
-An example of this can be found in the circuit in Figure \ref{interference}.\\
+\noindent An example of this can be found in the circuit in Figure \ref{interference}.\\
 The circuit, called Ramsey interferometer, can be modeled by two Hadamard gates with a phase gate
 in between.\\
 \newpage
-Below is the time analisys of the circuit.
+\noindent Below is the time analisys of the circuit.
 \begin{itemize}
 
 	\item $\ket{\psi_{t0}} = \ket{0}$
@@ -356,8 +356,7 @@ Below is the time analisys of the circuit.
 \end{itemize}
 
 \vspace{20pt}
-
-So the probability of measuring $\ket{1}$ at the end is the module squared of it's\\
+\noindent So the probability of measuring $\ket{1}$ at the end is the module squared of it's\\
 coefficient that is:\\
 \vspace{10pt}
 
@@ -402,7 +401,6 @@ $ = sin^2{\left(\dfrac{\phi}{2}\right)}$
 	\caption{probability of measuring $\ket{1}$ for each value of $\phi$}
 	\label{interferencegraph}
 \end{figure}
-
 It is possible to observe in Figure \ref{interferencegraph}
 that the output of the measure on the qubit depends only on the
 ammout of fase shift that has been inflicted
@@ -436,7 +434,6 @@ regarding quantum universality.
 
 
 \end{itemize}
-
 Unfortunately there isn't and can't be a finite and strictly universal
 set of ports because the space of unitary operators in a
 Hilbert space is continuous while the possible circuits that can be built
@@ -447,7 +444,6 @@ prox-universality.\\
 \begin{theorem}
 	The set of gates \{H, T\} is prox universal.
 \end{theorem}
-
 This result is due to the fact that the operators defined by HTHT and THTH
 give rotations in two distint axis by an irrational multiple of $\pi$
 
@@ -509,7 +505,6 @@ Knowing it is possible to make a circuit that arbitrarly approximates
 every
 single quantum gate what we could be interested in discovering is how
 big that circuit would be.\\
-
 That is known thanks to an amazing result by Solovay and Kitaev which
 states
 that the number of ports we need to aproximate a circuit with a certain
@@ -701,7 +696,7 @@ The need for a way to measure the distance between two states to see, for exampl
 how much errors have shifted the system away from the desires state, has resolved
 in the development of static distance measures.
 Static distance measures are then used to derive ways to quantify how much quantum
-informations gets lost by a system during transformations wich are dynamic distance
+information gets lost by a system during transformations which are dynamic distance
 measures.
 
 
@@ -716,24 +711,21 @@ The quantum fidelity of states $\rho$ and $\sigma$ is defined as:
 	F(\rho,\sigma):=tr \sqrt{\rho^\frac{1}{2}\sigma\rho^\frac{1}{2}}
 	\label{qfidelity}
 \end{equation}
-
 and when the operators $\rho$ and $\sigma$ commute they can be written as:
 
 \begin {equation}
 \rho = \sum_{i} r_i\ket{i}\bra{i}; \hspace{10pt} \sigma = \sum_{i} s_i \ket{i}\bra{i}
 \end {equation}
-
 so the equation \ref{qfidelity} becomes:
 
 \begin{equation}
 	F(\rho,\sigma) = tr \sqrt{\sum_{i} r_i s_i \ket{i}\bra{i} } = tr \left( \sum_{i} \sqrt{r_i s_i} \ket{i}\bra{i}
 	\right) = \sum_{i}\sqrt{r_i s_i}
 \end{equation}
-
 where the last expression is exactly the classical fidelity between the eigenvalue
 distributions $r_i$ and $s_i$ of $\rho$ and $\sigma$
 
-the fidelity has some important propreties:
+the fidelity has some important proprieties:
 \begin{itemize}
 	\item Invariance under unitary transforms
 	\item \textbf{Strong concavity}: let $p_i$ and $q_i$ be probability distributions
@@ -774,12 +766,12 @@ code.\\
 To encode a message in this simple code we have to repeat each letter
 or digit three times es: example $\rightarrow$ eeexxxaaammmpppllleee.\\
 To decode a possible message we will choose from each triple the
-letter that appears in the most occurences es peexxxaanmmmpppllleee $\rightarrow$ example. \\
+letter that appears in the most occurrences es peexxxaanmmmpppllleee $\rightarrow$ example. \\
 If the channel introduces few errors we will often be able to recover
 the initial message completely.
-the problem with this simple code lies in the fact that it is not very
+The problem with this simple code lies in the fact that it is not very
 efficient in terms of space occupied by the encoded message.
-Fourther developments of this idea brought us codes like the Hamming
+Further developments of this idea brought us codes like the Hamming
 codes and the Reed-Solomon codes which are widely used to this day.
 
 
@@ -787,13 +779,13 @@ codes and the Reed-Solomon codes which are widely used to this day.
 
 \subsubsection{differences with the classical case}
 
-Unfortunantly when it comes to error correction quantum systems encounter
+Unfortunately when it comes to error correction quantum systems encounter
 some additional problems unknown to classical systems and this makes the
 procedure more complex.
 \begin {itemize}
 
 \item The \textbf{No cloning principle} shows that is impossible to generate
-multiple copies of an unknown quantum state so the tecnique used for example
+multiple copies of an unknown quantum state so the technique used for example
 in classical repetition code is unfeasible without some adaptations.
 
 \item Quantum states are by nature \textbf{continuous} as opposed to the
@@ -828,10 +820,10 @@ this measurement procedure avoids altering it.
 
 \subsubsection{Finite error syndromes}
 
-The solution presented in the previus paragraph would be impossible to
+The solution presented in the previous paragraph would be impossible to
 apply if the error syndromes would be infinite as it would be natural to
-immagine.
-Fortunately it is not the case but to understeand the reason for such
+imagine.
+Fortunately it is not the case but to understand the reason for such
 an unexpected result it is necessary to introduce an intermediary step.
 
 \begin{theorem}[Knill-Laflamme condition 1997]
@@ -848,40 +840,38 @@ an unexpected result it is necessary to introduce an intermediary step.
 	for some Hermitian matrix $\alpha = (\alpha_{ij})$ of complex numbers.
 \end{theorem}
 
-$Proof$
+
+\noindent $Proof$ \hspace{10pt}
 The condition \ref{eccondition} is sufficient because it
 is possible to explicitly construct an error-correction operation
 $\mathcal{R}$ whenever it is satisfied.
 To construct $\mathcal{R}$ a set of quantum error correction is picked
 according to the condition \ref{eccondition}.
-By assumtion $\alpha$ is a Hermitian matrix, so it can be diagonalized
+By assumption $\alpha$ is a Hermitian matrix, so it can be diagonalized
 $d =u^\dagger \alpha u$ where u is an unitary matrix and d is diagonal.
 Then the operators $F_k$ are defined in the following way:
 \begin{equation}
 	F_k := \sum_i u_{ik} E_i.
 \end{equation}
-Theorem \ref{freedom} shows that $\{F_k\}$ is also a set of operaton
+Theorem \ref{freedom} shows that $\{F_k\}$ is also a set of operation
 elements for $\mathcal{E}$ so it is possible to write:
 
 \begin{equation}
 	\label{condition2}
 	P F_k^\dagger F_l P = \sum_{ij} u_{ki}^\dagger u_{jl} P E_{i}^\dagger E_j P.
 \end{equation}
-
-Cobining \ref{condition2} with \ref{eccondition}
+cobining \ref{condition2} with \ref{eccondition}
 the condition becomes:
 
 \begin{equation}
-	P F_k^\dagger F_l P = \sum_{ij} u_{ki}^\dagger \alpha_{ij} u_{jl} P.
+	P F_k^\dagger F_l P = \sum_{ij} u_{ki}^\dagger \alpha_{ij} u_{jl} P
 \end{equation}
-
 and since $d = u^\dagger \alpha u$
 
 \begin{equation}
 	\label{simplecondition}
-	P F_k^\dagger F_l P = d_{kl}P.
+	P F_k^\dagger F_l P = d_{kl}P
 \end{equation}
-
 which can be thought of as a simplification of the condition \ref{eccondition} ,
 because $d_{kl}$ is diagonal.
 Using the polar decomposition and the the equation \ref{simplecondition} it is
@@ -890,7 +880,6 @@ possible to see that for some unitary operator $U_k$
 \begin{equation}
 	F_k P = U_k \sqrt{PF_k^\dagger F_k P} = \sqrt{d_{kk}} U_k P
 \end{equation}
-
 The effect of $F_k$ is to rotate the coding subspace into a second subspace defined by
 the projector $P_k$ which is defined in the following way:
 
@@ -898,15 +887,14 @@ the projector $P_k$ which is defined in the following way:
 	\label{defpk}
 	P_k := U_k P U_k^\dagger = \dfrac{F_k P U_k^\dagger}{\sqrt{d_{kk}}}
 \end{equation}
-
-These subspaces are necessarly orthogonal because for equation \ref{simplecondition}
+These subspaces are necessarily orthogonal because for equation \ref{simplecondition}
 when $k \neq l$:
 
 \begin{equation}
 	P_l P_k = P_l^\dagger P_k = \dfrac{U_l P F_l^\dagger F_k P U_k^\dagger}{\sqrt{d_{ll}d_{kk}}} = 0
 \end{equation}
 
-In this construction the syndrome measurement is a projective measurement defined by
+\noindent In this construction the syndrome measurement is a projective measurement defined by
 the operators $P_k$, augmented by an additional projector if necessary to satisfy
 the completeness relation $\sum_k P_k = I$.
 Recovery is accomplished simply by applying $U_k^\dagger$.
@@ -914,7 +902,7 @@ It is possible to verify that the error correction is appropriate calculating
 $ \mathcal{R}(\mathcal{E}(\rho)) $ where $\mathcal{E}(\sigma) = U_k^\dagger P_k \sigma P_k U_k$
 is the combined detection-recovery step.
 
-Applying the definition \ref{defpk} and the condition \ref{simplecondition}
+\noindent Applying the definition \ref{defpk} and the condition \ref{simplecondition}
 it is possible to derive that:
 
 \begin{equation}
@@ -929,13 +917,11 @@ it is possible to derive that:
 	\label{conditionauxilary}
 	= \delta_{kl} \sqrt{d_{kk}} P \sqrt{\rho} = \delta_{kl} \sqrt{d_{kk}} \sqrt{\rho}
 \end{equation}
-
-Thus
+Thus:
 
 \begin{equation}
 	\mathcal{R}(\mathcal{E}(\rho)) = \sum_{kl} U_k^\dagger P_k F_l \rho F_l^\dagger P_k U_k = \sum_{kl} \delta_{kl} d_{kk} \rho \propto \rho
 \end{equation}
-
 as required.
 \vspace{20pt}
 To prove necessity suppose $\{E_i\}$ is a set of errors corrected by the error-correction
@@ -947,7 +933,7 @@ Since $P \rho P$ is in the code space for all $\rho$, it follows that
 	\mathcal{R}(\mathcal{E}(\rho)) \propto P \rho P
 \end{equation}
 
-for all states $\rho$. Moreover, the proportionality factor must be a constant c, not
+\noindent for all states $\rho$. Moreover, the proportionality factor must be a constant c, not
 depending on the imput state $\rho$, if both right and left side have to be linear.
 Rewriting the last equation explicitly in terms of the operation elements gives
 
@@ -955,7 +941,7 @@ Rewriting the last equation explicitly in terms of the operation elements gives
 	\sum_{ij} R_j E_i P \rho P E_i^\dagger R_j^\dagger = cP \rho P
 \end{equation}
 
-This equation holds for all $\rho$. It follows that the quantum operation with operation
+\noindent This equation holds for all $\rho$. It follows that the quantum operation with operation
 elements $\{R_jE_i\}$ is identical to the quantum operation with a single operation element
 $\sqrt{c}P$. Theorem \ref{freedom} implies that there exist complex numbers
 $c_{ki}$ such that
@@ -986,7 +972,8 @@ These are the quantum error-correction conditions.
 	of the noise process $\mathcal{F}$ on the code $C$
 \end{theorem}
 
-$Proof$
+
+\noindent $Proof$
 By Theorem \ref{conditions} the operaton elements
 $\{E_i\}$ mustsatisfy the quantum eroor-correction condition $PE_iE_j^\dag P = \alpha_{ij}P$.
 As shown in the proof of theorem \ref{conditions},
@@ -999,8 +986,7 @@ the code space:
 \begin{equation}
 	U_k^\dagger P_k E_i \sqrt{\rho} = \delta_{ki} d_{kk} \sqrt{\rho}.
 \end{equation}
-
-Substituting $F_j = \sum_i m_{ji} E_i$ gives
+Substituting $F_j = \sum_i m_{ji} E_i$ gives:
 \begin{equation}
 	U_k^\dagger P_k F_j \sqrt{\rho} = \sum_i m_{ji} \delta_{ki} d_{kk} \sqrt{\rho} = m_{jk} d_{kk} \sqrt{\rho},
 \end{equation}
@@ -1014,6 +1000,12 @@ as required.
 \subsection{Some examples of quantum codes}
 
 \subsubsection{Quantum repetition codes}
+
+Quantum repetition codes are similar to classical ones with the difference that, for the
+above mentioned reasons, they use entanglement instead of cloning.
+Simple repetition codes cannot correct an arbitrary error on a single qubit but they can
+be constructed to correct errors on a given quantum channel.
+Some examples are
 
 \subsubsection{The Shor code}
 
