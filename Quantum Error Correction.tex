@@ -5,6 +5,7 @@
 \usepackage{braket}
 \usepackage{tikz}
 \usepackage{float}
+\usepackage{hyperref}
 \usetikzlibrary{quantikz2}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
@@ -13,6 +14,14 @@
 \date{May 2024}
 
 \newtheorem{theorem}{Theorem}
+
+\hypersetup{
+colorlinks,
+citecolor=black,
+filecolor=black,
+linkcolor=black,
+urlcolor=black
+}
 
 \begin{document}
 
@@ -445,7 +454,7 @@ prox-universality.\\
 	The set of gates \{H, T\} is prox universal.
 \end{theorem}
 This result is due to the fact that the operators defined by HTHT and THTH
-give rotations in two distint axis by an irrational multiple of $\pi$
+give rotations in two distint axis by an irrational multiple of $\pi$.
 
 
 
@@ -590,6 +599,24 @@ subsystem taken into consideration.
 
 \subsubsection{The Bloch ball}
 
+Given that state vectors can be visualized as points of the Bloch sphere
+one could ask themselves if such a natural representation is possible
+using the formalism of density operators.
+The answer to this question is yes but the density operators of a qubit
+cannot be mapped to the points of a sphere but rather to the points of
+a ball.
+Such can be achieved with the following isomorphism:
+
+\begin{equation}
+	\rho = \dfrac{1}{2}(I + S_x \sigma_x + S_y \sigma_y + S_z \sigma_z)
+\end{equation}
+where $\rho$ is an arbitrary density operator of a qubit, $\{\sigma_i\}$ are
+the Pauli matrices and $\{S_i\}$ are the components of the Bloch vector.
+When comparing this to the similar definition given for state vectors
+the norm of the Bloch vector can be interpreted in the following way:
+The higher the norm of the Bloch vector the more the qubit will be
+entangled with other qubits and the surrounding environment and thus the
+lower will be the local information contained in it.
 
 \subsection{Uncertainty in quantum transformations}
 
@@ -773,7 +800,10 @@ The problem with this simple code lies in the fact that it is not very
 efficient in terms of space occupied by the encoded message.
 Further developments of this idea brought us codes like the Hamming
 codes and the Reed-Solomon codes which are widely used to this day.
-
+The most relevant characteristics when comparing quantum codes are
+the length of keywords and the distance between them in fact it is
+common to refer to a code that has words with length n and distance d
+as a [n, d] code.
 
 \subsection{Quantum coding theory}
 
@@ -1005,17 +1035,40 @@ Quantum repetition codes are similar to classical ones with the difference that,
 above mentioned reasons, they use entanglement instead of cloning.
 Simple repetition codes cannot correct an arbitrary error on a single qubit but they can
 be constructed to correct errors on a given quantum channel.
-Some examples are
+Some examples are the bit-flip correcting code and the phase-flip correcting code.
 
 \subsubsection{The Shor code}
+The 9 qubits Shor code combines the bit-flip correcting code with the phase-flip
+correcting code in order to be able to correct an arbitrary error on one qubit.
 
 \subsubsection{Degenerate codes}
 
+%TODO why the shor's code is degenerate?
+Degenerate codes are codes where different errors can lead to the same syndrome
+so they are handled with the same recovery procedure.
+This kind of codes are harder to analyze because they don't respect some bounds that are
+valid for non-degenerate codes but they can be better at encoding the same amount of
+information in fewer physical qubits because distinct errors don't necessarily need
+to take the code space to orthogonal spaces.
 \subsubsection{CSS codes}
+
+The Calderbank-Shor-Steane codes are quantum codes constructed using classical linear codes.
+Suppose fpr example $C_1$ and $C_2$ are $[n,k_1]$ and $[n,k_2]$ classical linear codes such that $C_2 \subset C_1$
+and $C_1$ and $C_2$ both correct t errors.
+It is possible to define a $[n, k_1 - k_2]$ quantum code called $CSS(C_1, C_2)$ capable of
+correcting errors on t qubits.
+Picking any codeword $x$ from $C_1$ it is possible to construct a quantum state $\ket{x + C_2}$
+in the following way:
+
+\begin{equation}
+	\ket{x + C_2} := \dfrac{1}{\sqrt{\|C_2\|}} \sum_{y \in C_2}\ket{x+y}
+\end{equation}
+where x is the bitwise addition modulo 2.
 
 \subsubsection{Stabilizer codes}
 
 
+\subsection{Fault tolerant quantum computation}
 
 
 \end{document}
