@@ -617,6 +617,9 @@ the norm of the Bloch vector can be interpreted in the following way:
 The higher the norm of the Bloch vector the more the qubit will be
 entangled with other qubits and the surrounding environment and thus the
 lower will be the local information contained in it.
+Some extreme examples of this concept are pure states that have a Bloch
+vector of norm 1 and the totally mixed state that contains no local
+information and has a Bloch vector of norm 0.
 
 \subsection{Uncertainty in quantum transformations}
 
@@ -659,6 +662,9 @@ vector space.
 
 \subsubsection{Unitary freedom in the operator sum representation}
 
+The operator sum representation of a quantum operation is not unique and there
+is a useful criteria to understand when two representation reference the same
+quantum operation.
 \begin{theorem}
 	\label{freedom}
 	Given the operations $\mathcal{E}$ and $\mathcal{F}$ with operation elements
@@ -801,9 +807,9 @@ efficient in terms of space occupied by the encoded message.
 Further developments of this idea brought us codes like the Hamming
 codes and the Reed-Solomon codes which are widely used to this day.
 The most relevant characteristics when comparing quantum codes are
-the length of keywords and the distance between them in fact it is
-common to refer to a code that has words with length n and distance d
-as a [n, d] code.
+the size of the code space and the bits of information encoded in fact
+it is common to refer to a linear code that encodes k bits of information
+in an n bit code space as a [n, k] code.
 
 \subsection{Quantum coding theory}
 
@@ -890,7 +896,7 @@ elements for $\mathcal{E}$ so it is possible to write:
 	\label{condition2}
 	P F_k^\dagger F_l P = \sum_{ij} u_{ki}^\dagger u_{jl} P E_{i}^\dagger E_j P.
 \end{equation}
-cobining \ref{condition2} with \ref{eccondition}
+combining \ref{condition2} with \ref{eccondition}
 the condition becomes:
 
 \begin{equation}
@@ -904,7 +910,7 @@ and since $d = u^\dagger \alpha u$
 \end{equation}
 which can be thought of as a simplification of the condition \ref{eccondition} ,
 because $d_{kl}$ is diagonal.
-Using the polar decomposition and the the equation \ref{simplecondition} it is
+Using the polar decomposition and the equation \ref{simplecondition} it is
 possible to see that for some unitary operator $U_k$
 
 \begin{equation}
@@ -964,7 +970,7 @@ Since $P \rho P$ is in the code space for all $\rho$, it follows that
 \end{equation}
 
 \noindent for all states $\rho$. Moreover, the proportionality factor must be a constant c, not
-depending on the imput state $\rho$, if both right and left side have to be linear.
+depending on the input state $\rho$, if both right and left side have to be linear.
 Rewriting the last equation explicitly in terms of the operation elements gives
 
 \begin{equation}
@@ -1005,9 +1011,9 @@ These are the quantum error-correction conditions.
 
 \noindent $Proof$
 By Theorem \ref{conditions} the operaton elements
-$\{E_i\}$ mustsatisfy the quantum eroor-correction condition $PE_iE_j^\dag P = \alpha_{ij}P$.
+$\{E_i\}$ must satisfy the quantum eroor-correction condition $PE_iE_j^\dag P = \alpha_{ij}P$.
 As shown in the proof of theorem \ref{conditions},
-whithout loss of generality we may assume that the operation elements for $\mathcal{E}$
+without loss of generality we may assume that the operation elements for $\mathcal{E}$
 have been chosen such that $\alpha_{ij} = d_{ij}$ is diagonal with real entries.
 The error-correction operation $\mathcal{R}$ has operation elements $U_k^\dagger P_k$, where by equation
 \ref{conditionauxilary} the $U_k$ and $P_k$ are chosen such that for any $\rho$ in
@@ -1034,7 +1040,7 @@ as required.
 Quantum repetition codes are similar to classical ones with the difference that, for the
 above mentioned reasons, they use entanglement instead of cloning.
 Simple repetition codes cannot correct an arbitrary error on a single qubit but they can
-be constructed to correct errors on a given quantum channel.
+be constructed to correct errors on some quantum channels.
 Some examples are the bit-flip correcting code and the phase-flip correcting code.
 
 \subsubsection{The Shor code}
@@ -1058,14 +1064,31 @@ and $C_1$ and $C_2$ both correct t errors.
 It is possible to define a $[n, k_1 - k_2]$ quantum code called $CSS(C_1, C_2)$ capable of
 correcting errors on t qubits.
 Picking any codeword $x$ from $C_1$ it is possible to construct a quantum state $\ket{x + C_2}$
-in the following way:
-
+in the following way.
 \begin{equation}
+	\label{cssword}
 	\ket{x + C_2} := \dfrac{1}{\sqrt{\|C_2\|}} \sum_{y \in C_2}\ket{x+y}
 \end{equation}
 where x is the bitwise addition modulo 2.
+It should be noted that if two keywords in $C_1$ belong to the same coset of $C_1/C_2$
+they will be brought by equation \ref{cssword} in the same quantum
+state while if they belong to different cosets they will be brought
+to orthonormal quantum states.
+The quantum code $CSS(C_1, C_2)$ will then be the vector space spanned the states
+$\ket{x+C_2}$ for all $x \in C_1$
+
 
 \subsubsection{Stabilizer codes}
+When talking about classical linear codes it is possible, as discussed above,
+to have a compact description.
+Such propriety is not present in every quantum code but a specific class of
+codes that happens to include most of the codes seen above has it.
+This class is "the stabilizer codes" and is founded on the concept of
+"the stabilizer".
+A stabilizer of a quantum state is a set of operators that, if applied to a
+quantum state, keep it unchanged.
+
+
 
 
 \subsection{Fault tolerant quantum computation}
