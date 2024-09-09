@@ -49,7 +49,7 @@ puting machines and especially the knowledge, although not yet crystal clear,
 of what they can or can’t do in a reasonable time.
 It is possible to find a relevant example of this in the RSA protocol, that uses
 the difficulty of solving the factorization problem in available machines in order
-to construct a cryptosystem and also a digital signature scheme wow.
+to construct a cryptosystem and also a digital signature scheme.
 
 \vspace{10pt}
 
@@ -68,19 +68,18 @@ generally assumed that these classes are not coincident.
 \vspace{10pt}
 
 \noindent This conjecture leads to believe that there are some problems that belong to
-the class NP but not to P so, for them, it is easy to verify if a configuration is
-a solution but not to find one. For these problems isn’t thus possible to find a
-solving algorithm that is substantially better than trying all the possible config-
-urations and verifying them one by one until a solution is found. This approach
-is known as an exhaustive search.
-If we were able to test the configurations efficiently that would lead to the possi-
-bility of constructing an algorithm that solves a problem without the knowledge
+the class NP but not to P so, for them, it is easy to verify if a given configuration is
+a solution but not to find a solution. For these problems isn’t thus possible to find a
+solving algorithm that is substantially better than trying all the possible configurations
+and verifying them one by one until a solution is found. This approach is known as an
+exhaustive search.
+If we were able to test the configurations efficiently that would lead to the possibility
+of constructing an algorithm that solves a problem without the knowledge
 of its structure, but just utilizing an ”oracle” which is a routine that is able to
 distinguish solutions from non solutions.
 Such approach is called a Black-Box algorithm.
-Unfortunately it is known that classical computation can’t make this kind of al-
-gorithm efficient but maybe in another form of computation the outcome could
-be different.
+Unfortunately it is known that classical computation can’t make this kind of algorithm
+efficient but maybe in another form of computation the outcome could be different.
 
 \newpage
 
@@ -92,12 +91,12 @@ This means that no Black-Box algorithm can solve a non polynomial problem
 in polynomial time, even taking into consideration quantum computing.
 Though, quantum computing can be much more significative when the algorithm
 relies on the problem structure, as in the case of Shor’s algorithm.
-The Shor’s algorithm aims to find a solution to the factorization problem by
-doing a reduction to a simpler problem, at least from a quantum standpoint,
+The Shor’s algorithm aims to find a solution to the factorization problem reducing
+it to a simpler problem, at least from a quantum standpoint,
 which is finding the order of an element in an abelian group. This problem is
 then solved thanks to a procedure called Quantum Fourier Transform.
-The whole procedure has a just above quadratic time complexity and so, it is
-much faster than the better classical algorithm currently available which works
+The whole procedure has a just above quadratic time complexity so it is
+much faster than the better classical algorithm currently available that works
 is a sub-exponential time.
 The execution of this algorithm or it’s proper variants on a suitable hardware
 could allow to break most of the cryptosystems used today, like DHM, ECDHM,
@@ -110,26 +109,26 @@ and the above mentioned RSA.
 
 \vspace{10pt}
 
-The applications described above although feasible for quantum computers require
+The applications described above, although feasible for quantum computers, require
 very complex machines that are prone to errors.
 This comes from the fact that larger machines have a tendency to bond to the
-environment and this bonding makes them produce unpredictable results.
-Such tendency has put a limit to the implementation of quantum algorithms.
-An example of that could be that the largest number we have currently been
-able to reliably factorize using the Shor algorithm is 21.
+environment and this makes them produce unpredictable results.
+Such tendency limits the implementation of quantum algorithms.
+For example the largest number we have currently been able to reliably factorize
+using the Shor algorithm is 21.
 This seems rather underwhelming given the fact the numbers we aim to factorize
-whit it are in the realm of $2^{2000}$.
-Luckly there are techniques that allow us to catch and correct the errors
-when they arise, before they can propagate uncontrollaby and improving
-such tecniques will bring us closer to our goal.
+are in the realm of $2^{2000}$.
+Luckily there are techniques to catch and correct the errors
+when they arise, before they can propagate uncontrollably and improving
+such techniques will bring us closer to our goal.
 
 
 
 \section{From quantum physics to quantum information}
 
-To understand the technicalities behind the operations described above it is
-necessary to dive in the phisical processes involved in them.\\
-So will be done shortly in this section.
+To understand the details of the operations described above it is
+necessary to dive in the physical processes involved in them.\\
+This will be done shortly in this section.
 
 \newpage
 
@@ -150,12 +149,13 @@ So will be done shortly in this section.
 
 	\item A measure procedure on a quantum state S is described
 	      by a family \\  $M := \{M_\alpha \}_{\alpha\in A}$ where:
-
-	      \begin{itemize}
-		      \item $M_\alpha \in B(H_S) $ $ \forall \alpha \in A$
-		      \item $A \subset \mathbb{R}$
-		      \item $\sum_{\alpha \in A} M_\alpha^\dag M_\alpha = Id(H_S)$
-	      \end{itemize}
+	      \begin{flalign}
+		      \begin{cases}
+			      M_\alpha \in B(H_S) \forall \alpha \in A \\
+			      A \subset \mathbb{R}                     \\
+			      \sum_{\alpha \in A} M_\alpha^\dag M_\alpha = Id(H_S)
+		      \end{cases} &  &
+	      \end{flalign}
 
 	      Where B(Hs) is the set of bounded operators in $H_S$ and A is the
 	      set of all the possible outcomes of the measure.\\
@@ -163,10 +163,9 @@ So will be done shortly in this section.
 	      the probability
 	      of measuring the output $\alpha_0$ being in the state $\ket{\psi}$
 	      is:
-	      \begin{center}
-		      $P(\psi : \alpha_0) = \braket{\psi|M_{\alpha_0}^\dag M_{\alpha_0}\psi}$
-
-	      \end{center}
+	      \begin{equation}
+		      P(\psi : \alpha_0) = \braket{\psi|M_{\alpha_0}^\dag M_{\alpha_0}\psi}.
+	      \end{equation}
 
 
 	      \subsubsection{Dynamic axioms}
@@ -178,21 +177,23 @@ So will be done shortly in this section.
 
 	      The unitary operator should respect also some additional
 	      properties:\\
-	      $
+	      \begin{flalign}
 		      \begin{cases}
 			      U(t_1,t_1) = Id(H_S) \\
 			      U(t_2,t_3)U(t_1,t_2) = U(t_1,t_3)
-		      \end{cases} $
+		      \end{cases} &  &
+	      \end{flalign}
 
 	\item In the instant immediately after the measure
 	      $M := \{M_\alpha \}_{\alpha\in A}$ is applied to the quantum
 	      system S while being in the state $\ket{\psi}$ \\
 	      the system will collapse to the state:
 
-	      \begin{center}
-		      $\dfrac{M_{\alpha_0}\ket\psi}
-			      {\sqrt{\braket{\psi|M_{\alpha_0}^\dag M_{\alpha_0}\psi}}}$
-	      \end{center}
+	      \begin{equation}
+		      \label{axiom5}
+		      \dfrac{M_{\alpha_0}\ket\psi}
+		      {\sqrt{\braket{\psi|M_{\alpha_0}^\dag M_{\alpha_0}\psi}}}.
+	      \end{equation}
 \end{enumerate}
 
 
@@ -200,51 +201,58 @@ So will be done shortly in this section.
 
 Physical systems can be used to store information
 but not all systems are practical for doing so. \\
-In fact, if we wanted to represent some complex information we
-could choose to use a single complex system that has many states,
-but doing so it would be very difficult to prepare it for the
-computation.\\
-Suppose for example that we had a way of quickly giving energy
-to the system to make it jump from one of its base states to
-the next, and luckily we have it.\\
-In the case of one single system to reach the n-Th base state
-we would need n energy transfers, and that is quite unpractical.\\
-Even more so if we consider than using multiple occurrences of
-the simplest non trivial quantum system, that is the one that
-has only 2 base states,\\ we would need at most $\log_2{n}$ transfers.\\
-This simple quantum system is known as a qubit.\\
+In fact, to represent complex information we it would be reasonable
+to use a single complex system that has many states
+but, doing so, would make operations like preparing the system
+for the computation very difficult as the its size rises.
+Suppose for example to have a way quickly giving energy
+to the system to make it jump to one of its basis states.
+Setting a big monolithic system with n states would require
+to tune this procedure to n possible energy levels and this
+can quickly become impossible as n rises.
+If instead many simple systems are chosen and combined following
+the axiom 2 the same procedure would need to be tuned to much less
+energy levels.
+Taking this concept to the limit leads to choose the simplest
+non-trivial quantum system for quantum computation.
+This system is described by a 2-dimentional Hilbert space
+spanned by the states $\ket{0}$ and $\ket{1}$ and it is
+commonly referred as a qubit.
 
 \subsection{Qubit representations and Probability amplitudes}
 
 The state of a qubit can be represented in many ways.\\
-Some useful representations are the unitary vectors in $\mathbb{C}^2$
-and the points of a unitary sphere called the Block Sphere.
-we are going to analyze each of them and their respective advantages.
+Useful representations are the unitary vectors in $\mathbb{C}^2$
+and the points of a unitary sphere called the Bloch Sphere.
+Here are the characteristics of each and the respective advantages.
 
 \subsubsection{State vectors}
 
 The state vector of a qubit consists in two components in $\mathbb{C}$
 that can be interpreted as the probability amplitudes of each of the
-base states.
-The probability amplitude of a base state is a complex number that,
-when taken the absolute value squared, gives the probability that the
-above mentioned state will be the outcome
-of a measure. %FIXME rivedere la fine
+basis states.
+The probability amplitude of a basis state is a complex number such
+as its squared absolute value equals the probability that a
+projective measurement on that state will yield a positive result.
 
 
 \subsubsection{The Bloch sphere}
 
-\begin{center}
+\begin{figure}
+	\centering
+
 	\includegraphics[scale=0.5]{bloch-sphere.png}
-\end{center}
-The Bloch sphere gives us an useful graphical representation of a
-qubit's state that is linked to the state vector by the following
-isomorphism.\\
+	\caption{Bloch sphere with notable quantum states}
+	\label{blsphere}
+\end{figure}
+The Bloch sphere, in Figure \ref{blsphere},
+is an useful graphical representation of a qubit's state
+that is linked to the state vector by the following relation:
 
 \begin{equation}
 	\ket{\psi} = \cos{\dfrac{\theta}{2}}\ket{0}+e^{i\phi}\sin{\dfrac{\theta}{2}}\ket{1} \\
 \end{equation}
-This representation is particularly advantagious because it allows
+This representation is particularly advantageous because it allows
 to visualize the evolution of a qubit over time in the execution
 of a quantum algorithm.
 
@@ -253,84 +261,96 @@ of a quantum algorithm.
 
 
 \subsection{Introduction to quantum gates}
-Quantum states are not very interesting when they are static, \\
-what we want to achieve is a way to make them evolve\\
-and accurately control their evolution over time.
-The element used in a quantum system in order to make it evolve
-in a controlled way is called a quantum gate.\\
-While in classical information there is just a single kind of one bit
+
+Static quantum states are not useful for computation so it is
+fundamental to have a way to make them evolve controllably.
+This is achieved with quantum gates.\\
+While in classical information there is just a single one bit
 gate in quantum information there are infinitely many!
-In the next paragraph we will se the most important ones.
+In the next paragraph the most relevant ones will be presented.
 
-\newpage
 
-\subsection{Some examples of one qubit gates}
+\subsubsection{Some examples of one qubit gates}
 
 \begin{itemize}
 
 	\item Pauli Gates\\
-	      can be seen as rotations on the three main axis of the bloch
+	      can be seen as rotations on the three main axis of the Bloch
 	      sphere
-	      \begin{center}
-		      $	X:=\begin{bmatrix}
-				      0 & 1 \\
-				      1 & 0
-			      \end{bmatrix}
-			      \hspace{10pt}
-			      Y:=\begin{bmatrix}
-				      0 & -i \\
-				      i & 0
-			      \end{bmatrix}
-			      \hspace{10pt}
-			      Z:=\begin{bmatrix}
-				      1 & 0  \\
-				      0 & -1
-			      \end{bmatrix}$
-	      \end{center}
+	      \begin{equation}
+		      X:=\begin{bmatrix}
+			      0 & 1 \\
+			      1 & 0
+		      \end{bmatrix}
+		      \hspace{10pt}
+		      Y:=\begin{bmatrix}
+			      0 & -i \\
+			      i & 0
+		      \end{bmatrix}
+		      \hspace{10pt}
+		      Z:=\begin{bmatrix}
+			      1 & 0  \\
+			      0 & -1
+		      \end{bmatrix}
+	      \end{equation}
 
 
 	\item Hadamard Gate\\
 	      brings the state $\ket{0}$ to
 	      $\ket{+} := \dfrac{\ket{0}+\ket{1}}{2}$
 	      and the state $\ket{1}$ to $\ket{-} := \dfrac{\ket{0}-\ket{1}}{2}$
-	      \begin{center}
-		      $	H:=\dfrac{1}{\sqrt{2}}\begin{bmatrix}
-				      1 & 1  \\
-				      1 & -1
-			      \end{bmatrix}$
-	      \end{center}
+	      \begin{equation}
+		      H:=\dfrac{1}{\sqrt{2}}\begin{bmatrix}
+			      1 & 1  \\
+			      1 & -1
+		      \end{bmatrix}
+	      \end{equation}
 
 	\item Phase Gates \\
-	      change the phase of a qubit arbitrarly or by a fixed ammout
-	      \begin{center}
-		      $	P:=\begin{bmatrix}
-				      1 & 0         \\
-				      0 & e^{i\phi}
-			      \end{bmatrix}
-			      \hspace{10pt}
-			      S:=\begin{bmatrix}
-				      1 & 0                   \\
-				      0 & e^{i\tfrac{\pi}{2}}
-			      \end{bmatrix}
-			      \hspace{10pt}
-			      T:=\begin{bmatrix}
-				      1 & 0                   \\
-				      0 & e^{i\tfrac{\pi}{4}}
-			      \end{bmatrix}$
-	      \end{center}
+	      change the phase of a qubit arbitrarily or by a fixed amount
+	      \begin{equation}
+		      P:=\begin{bmatrix}
+			      1 & 0         \\
+			      0 & e^{i\phi}
+		      \end{bmatrix}
+		      \hspace{10pt}
+		      S:=\begin{bmatrix}
+			      1 & 0                   \\
+			      0 & e^{i\tfrac{\pi}{2}}
+		      \end{bmatrix}
+		      \hspace{10pt}
+		      T:=\begin{bmatrix}
+			      1 & 0                   \\
+			      0 & e^{i\tfrac{\pi}{4}}
+		      \end{bmatrix}
+	      \end{equation}
 \end{itemize}
+\subsubsection{Distance between operators}
+It is possible to define a concept of distance between quantum gates or operators
+in general that will then be useful to define the concept of approximation of a
+quantum circuit.
+
+\begin{equation}
+	d(A,B) := \sup_{\| \ket{\psi}\|=1} \|(A-B)\ket{\psi}\|
+	\label{distance}
+\end{equation}
+Where A and B are operators in an Hilbert space
 
 \subsection{One qubit interference}
 
 
 
 
-The reason why quantum algorithms can be faster than classical ones
-in some tasks is because they can exploit some propreties of quantum
-systems that classical systems lack. \\
-One of these propreties is interference.\\
+Quantum algorithms can be faster than classical ones
+in some tasks is because they can exploit some proprieties of quantum
+systems that classical systems lack.
+One of these proprieties is interference.\\
 In quantum information interference is used to enhance the probability of
-getting a favourable state at the end of the computation.\\
+obtaining a desired state at the end of the computation by employing quantum gates
+to create constructive interference around solution states and destructive
+interference around non solution states.
+The following example will show how to create constructive or destructive interference
+around a state in a simple one qubit system.
 \vspace{10pt}
 \begin{figure}[H]
 	\centering
@@ -346,10 +366,11 @@ getting a favourable state at the end of the computation.\\
 	\label{interference}
 \end{figure}
 \vspace{10pt}
-\noindent An example of this can be found in the circuit in Figure \ref{interference}.\\
-The circuit, called Ramsey interferometer, can be modeled by two Hadamard gates with a phase gate
-in between.\\
-\newpage
+\noindent The circuit in Figure \ref{interference} is a model
+that follows the notation of quantum computing of the Ramsey interferometer and consists of
+two Hadamard gates with a phase gate in between.\\
+
+
 \noindent Below is the time analisys of the circuit.
 \begin{itemize}
 
@@ -410,36 +431,37 @@ $ = sin^2{\left(\dfrac{\phi}{2}\right)}$
 	\caption{probability of measuring $\ket{1}$ for each value of $\phi$}
 	\label{interferencegraph}
 \end{figure}
-It is possible to observe in Figure \ref{interferencegraph}
+\noindent It is possible to observe in Figure \ref{interferencegraph}
 that the output of the measure on the qubit depends only on the
-ammout of fase shift that has been inflicted
+amount of phase shift that has been inflicted
 to the qubit, this can be seen as a manifestation of the phenomenon
-of interferece.
+of interference.
 
-\newpage
 
 \subsection{introduction to quantum universality}
 
-The circuit used in the previous section allows to manipulate a qubit in
-every possible way but it has to be noted that it utilizes a gate that
-applyes an arbitrary ammount of phase shift.
+The circuit used in the previous section allows to manipulate a qubit arbitrarily
+but to do so it utilizes a gate that applies an arbitrary amount of phase shift.
 Such gate has to be seen more like a family of gates.
-It is interesting to know if it would be possible to achieve the same
-result with a predeterminated and finite set of gates, that can actually
-be built.
-The short answer to this question is no, but we can get very close.
-To elaborate more this answer we need to introduce a few definitions
-regarding quantum universality.
+It is interesting to know if it is possible to achieve the same result with a
+predetermined and finite set of gates, that can actually be built.
+The short answer to this question is no, but it is possible to come very close to it.
+To elaborate more this answer a few definitions regarding quantum universality are needed.
 \begin{itemize}
 
-	\item
-	      a \textbf{Strictly universal} set of gates can be used to equal
-	      every possible gate
+	\item a \textbf{Strictly universal} set of gates can be used to build every
+	      possible quantum circuit using only gates from that set.
 
 
-	\item
-	      a \textbf{Prox universal} set of gate can approximate every possible gate to
-	      arbitrary precision
+	\item a \textbf{Prox-universal} set of gates can be used to construct a circuit
+	      described by an unitary operator $U$ that approximates every quantum
+	      circuit described by a generic unitary operator $U^*$ with an arbitrary
+	      precision, which means that:
+	      \begin{equation}
+		      d(U,U^*) < \epsilon \hspace{10pt} \forall \epsilon \in \mathbb{R}_{>0}
+	      \end{equation}
+	      where d is the notion of distance between operators defined in
+	      equation \ref{distance}.
 
 
 \end{itemize}
@@ -447,11 +469,12 @@ Unfortunately there isn't and can't be a finite and strictly universal
 set of ports because the space of unitary operators in a
 Hilbert space is continuous while the possible circuits that can be built
 from a finite set of them is just countable.\\
-The proprety we can actually achieve in a real world circuit is
+The propriety that can be actually achieved in a real world circuit is
 prox-universality.\\
 
 \begin{theorem}
 	The set of gates \{H, T\} is prox universal.
+	\label{univone}
 \end{theorem}
 This result is due to the fact that the operators defined by HTHT and THTH
 give rotations in two distint axis by an irrational multiple of $\pi$.
@@ -463,24 +486,27 @@ give rotations in two distint axis by an irrational multiple of $\pi$.
 
 
 \subsection{Many qubits gates}
-It is possible to construct gates that involve many qubits combining their states.\\
+It is possible to construct gates that operate on many qubits and combine their states.\\
 The most common example of this kind of gates are controlled not gates.\\
 A controlled not gate involves two qubits and has a control and a target qubit.\\
 If the control qubit is in the state $\ket{1}$ the gate applies a bitflip
 operator on the target qubit, otherwise it applies the identity.
+It should be noted that if a qubit that is in one of its basis states
+is used to control another "auxiliary" qubit that starts in the state
+$\ket{0}$, this second qubit will effectively be a copy of the first one.
+This works only for basis states though because cloning an arbitrary
+state would correspond to applying an operator that is not necessarily
+unitary and so violate axiom 4.
 
-%TODO talk about the imposiibility of quantum cloning
 
-\newpage
 
 \subsection{Quantum entanglement}
 
-It often happens using many qubit gates that the states of the output
-qubits are no longer independent from each other so the probability
-of measuring a possible result on one qubit depends on the states of
-other qubits involved in the transformation.
+Often using many qubit gates the states of the output qubits are no longer
+independent from each other so the probability of measuring a possible result
+on one qubit depends on the states of other qubits involved in the transformation.
 In this case we called this "bonded" qubits entangled.
-a clear example of this can be found in the circuit in Figure \ref{entanglement}.\\
+A clear example of this can be found in the circuit in Figure \ref{entanglement}.\\
 
 \begin{figure}[H]
 	\centering
@@ -504,20 +530,21 @@ a clear example of this can be found in the circuit in Figure \ref{entanglement}
 It can be observed that the final state of the circuit can't be split
 in a tensor product of states so it is possible to assign a state to
 the system as a whole but not to the the individual qubits that compose it.
-Moreover it is one of the four Bell states.
+Moreover, it is one of the four Bell states.
 Such states have the interesting proprety of constituting a base for all
 the states of two qubits.
 
 
 \subsection{Universality for multiple qubits}
-Knowing it is possible to make a circuit that arbitrarly approximates
-every
-single quantum gate what we could be interested in discovering is how
-big that circuit would be.\\
-That is known thanks to an amazing result by Solovay and Kitaev which
-states
-that the number of ports we need to aproximate a circuit with a certain
-precision grows logaritmically with the precision we want to achieve.
+Knowing it is possible to have a finite set of gates that arbitrarily approximates
+every single quantum circuit it could be interesting to discover if this result
+can be extended to the many qubits case and how many gates are needed to reach this goal.\\
+Such extension can be achieved simply by adding the C-NOT gate to the ones listed in
+Theorem \ref{univone} while an answer to the second question can be found
+thanks to an amazing result by Solovay and Kitaev, which
+states that the number of ports we need to approximate a circuit with a certain
+precision grows logaritmically with the precision we want to achieve and exponentially
+whith the number of qubits involved.
 
 \begin{theorem}[Solovay-Kitaev 1995]
 
@@ -534,19 +561,22 @@ precision grows logaritmically with the precision we want to achieve.
 
 \subsection{Errors generate uncertainty}
 
+Quantum systems that are not completely isolated from the rest of
+the world are called open quantum systems.
 To model an open quantum system we need to consider the fact that
-our qubits will entangle with other quantum systems that we cannot control.
-This will introduce some uncertanty both in the state of our quantum
-system in each given time and the transformations that state will go trough.
+its qubits will entangle with other quantum systems that cannot be controlled.
+This will introduce uncertainty both in the state of our quantum
+system in each given time and the transformations that will affect such system.
 The concepts of density operators and quantum operations will be presented to
-model a partially unknown states and transformations.
+model partially unknown states and transformations.
 
 
 \subsection{Uncertainty in quantum states}
 
-To analyze a real world quantum system it is foundamental to consider
-it a subsystem of a bigger system composed by our circuit and the
-surrounding environment.
+The concept of density operators can arise from two different needs in quantum
+computation that are the ability to model a computation over an ensemble of states
+and the possibility of analyzing a subsystem of a bigger system independently from
+the rest of it.
 
 \subsubsection{Ensembles of states}
 
@@ -564,7 +594,7 @@ shift our attention from the state of our system itself to the
 statistical predictions we can make about the outcome of a measure on it.
 Such can be achieved thanks to the density operator that
 is usually identified with the letter $\rho$ and in the case of the above
-mentioned ensamble would assume the form $\sum_i p_i \ket{\psi_i}\bra{\psi_i}$
+mentioned ensemble would assume the form $\sum_i p_i \ket{\psi_i}\bra{\psi_i}$
 which is the sum of the projectors on the states $\psi_i$ weighted with
 probabilities $p_i$. \\
 In the case when the ensemble is made by just one state,
@@ -632,12 +662,12 @@ Suppose the system starts in an initial state $\rho$ and the environment
 starts in state $\rho_{env}$,
 a unitary operator $U$ is
 applied to them;
-A the end the system will be in state
+At the end the system will be in state:
 
 \begin{equation}
 	\rho' = tr_{env} \left[U (\rho \otimes \rho_{env})U^\dag \right].
 \end{equation}
-The finel state $\rho'$ is often referred as $\mathcal {E}(\rho)$ and
+The final state $\rho'$ is often referred as $\mathcal {E}(\rho)$ and
 $\mathcal {E}$ is said to be a quantum operation acting on the state $\rho$.
 
 \subsubsection{The Operator sum representation}
@@ -648,14 +678,14 @@ This is done by assuming the environment to always start in a pure state.
 Such assumption is fair because it is always possible to choose the environment
 "big enough" not to be entangled with any other state thanks to a procedure
 called purification.
-The traslation of the assumption on the above equation produces:
+The translation of the assumption on the above equation produces:
 \begin{equation}
 	\mathcal{E}(\rho) =  \sum_{k} \bra{e_k}U \left[ \rho \otimes \ket{e_0}\bra{e_0}
 		\right] U^\dagger \ket{e_k} = \sum_k E_k \rho E_k^\dagger  \\
 \end{equation}
 where $E_k=\ket{e_k}U\ket{e_0}$ and the operation elements $E_k$ satisfy
-the completness relation so $\sum_k E_k^\dagger E_k = I$
-If $d$ is the dimension of the hilbert space whoose state is described by
+the completeness relation so $\sum_k E_k^\dagger E_k = I$
+If $d$ is the dimension of the Hilbert space whose state is described by
 $\rho$ it is always possible to describe every admissible quantum operation
 with at most $d^2$ terms being the space of $d \times d $ matrices $d^2$-dimensional
 vector space.
@@ -678,8 +708,8 @@ quantum operation.
 
 
 \subsubsection{Common quantum channels}
-
-Here is a list of the most common models of quantum channels and their respectiove
+A quantum channel is a portion of a quantum circuit that can be subject to errors.
+Here is a list of the most common models of quantum channels and their respective
 operator-sum representations:
 
 \begin{itemize}
