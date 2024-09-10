@@ -1,11 +1,13 @@
 \documentclass{article}
 \usepackage{graphicx}
+\usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{braket}
 \usepackage{tikz}
 \usepackage{float}
 \usepackage{hyperref}
+\usepackage{subcaption}
 \usetikzlibrary{quantikz2}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
@@ -325,6 +327,17 @@ In the next paragraph the most relevant ones will be presented.
 		      \end{bmatrix}
 	      \end{equation}
 \end{itemize}
+
+\subsubsection{The Pauli group}
+The Pauli operators described above with multiplicative factors $\pm 1$ and $\pm i$ have the
+interesting propriety of forming a group under matrix multiplication:
+
+\begin{equation}
+	G_1 := \{\pm I, \pm iI, \pm X, \pm iX, \pm Y, \pm iY, \pm Z, \pm iZ\}.
+	\label{pauligrup}
+\end{equation}
+
+
 \subsubsection{Distance between operators}
 It is possible to define a concept of distance between quantum gates or operators
 in general that will then be useful to define the concept of approximation of a
@@ -337,8 +350,6 @@ quantum circuit.
 Where A and B are operators in an Hilbert space
 
 \subsection{One qubit interference}
-
-
 
 
 Quantum algorithms can be faster than classical ones
@@ -580,16 +591,16 @@ the rest of it.
 
 \subsubsection{Ensembles of states}
 
-Let's suppose a qubit is prepared either in state $\ket{0}$ or in
+Suppose a qubit is prepared either in state $\ket{0}$ or in
 state $\ket{1}$ based on the result of a coin toss.
 In this case it is not possible to assign a state to such qubit
 but it can be expected to get either result with probability
 $\dfrac{1}{2}$  when we measure it.
-This example can be generalized to when we have a so called
+This example can be generalized to when there is a so called
 "ensemble of states" $\{p_i,\ket{\psi_i}\}$ which is a set of
 states our system could be in each with an associate probability $p_i$
 of the system actually being in that state.\\
-This case suggest us that sometimes it is convenient to
+This case suggest that sometimes it is convenient to
 shift our attention from the state of our system itself to the
 statistical predictions we can make about the outcome of a measure on it.
 Such can be achieved thanks to the density operator that
@@ -601,41 +612,37 @@ In the case when the ensemble is made by just one state,
 that is when the state of our qubit is certain,
 the density operator of our qubit is just the projector on
 that state.
-The outcome of a measure on a qubit is given by calculating
-the trace of the operator given by the multiplication of our
-measuring operator by the density operator.
 
 
 \subsubsection{From system to subsystem}
 
-When we study a quantum system we are not always interested in the
-system as a whole, sometimes we care only about a fraction of it.
-Compartmentalizing the system if for sure easy and intuitive when it
+Studying a quantum system it is often preferable not to focus on the
+system as a whole but only about on fraction of it.
+Compartmentalizing the system is for sure easy and intuitive when it
 is in a pure state, but can be more intricate when we are talking about
 an entangled state.\\
-In this latter case in fact we are not able to assign a state to the
+In this latter case, in fact, it is not possible to assign a state to the
 subsystem that is independent from the rest of the original system
 and we have to rely on the possibility of making statistical
 predictions about the outcomes of a measure on that subsystem.\\
-This should suggest us that the density operator can come useful
-again but the question remains how get the density operator that
+This suggests that the density operator can come useful
+again but one could ask how to get the density operator that
 describes a subsystem given the density operator of the system.
 It turns out that the only way to obtain it is doing the partial
 trace of the density operator of the all system.
 This comes from the fact that we want to maintain consistency between
 applying the same transformation to the whole system or to the
 subsystem taken into consideration.
-%TODO consider adding more details.
 
-\subsubsection{The Bloch ball}
+\subsubsection{Density operators on the Bloch sphere}
 
-Given that state vectors can be visualized as points of the Bloch sphere
+Since state vectors can be visualized as points of the Bloch sphere
 one could ask themselves if such a natural representation is possible
 using the formalism of density operators.
 The answer to this question is yes but the density operators of a qubit
 cannot be mapped to the points of a sphere but rather to the points of
 a ball.
-Such can be achieved with the following isomorphism:
+Such can be achieved with the following relation:
 
 \begin{equation}
 	\rho = \dfrac{1}{2}(I + S_x \sigma_x + S_y \sigma_y + S_z \sigma_z)
@@ -655,13 +662,11 @@ information and has a Bloch vector of norm 0.
 
 \subsubsection{System environment interaction}
 
-It is often the case that the quantum system is embedded in an environment
-that can't be control therefore it is important to consider the interaction
+Often the  the quantum system is embedded in an environment that can't be
+controlled therefore it is important to consider the interaction
 between the system and such environment.
 Suppose the system starts in an initial state $\rho$ and the environment
-starts in state $\rho_{env}$,
-a unitary operator $U$ is
-applied to them;
+starts in state $\rho_{env}$, a unitary operator $U$ is applied to them;
 At the end the system will be in state:
 
 \begin{equation}
@@ -678,13 +683,13 @@ This is done by assuming the environment to always start in a pure state.
 Such assumption is fair because it is always possible to choose the environment
 "big enough" not to be entangled with any other state thanks to a procedure
 called purification.
-The translation of the assumption on the above equation produces:
+The translation of such assumption on the above equation produces:
 \begin{equation}
 	\mathcal{E}(\rho) =  \sum_{k} \bra{e_k}U \left[ \rho \otimes \ket{e_0}\bra{e_0}
 		\right] U^\dagger \ket{e_k} = \sum_k E_k \rho E_k^\dagger  \\
 \end{equation}
 where $E_k=\ket{e_k}U\ket{e_0}$ and the operation elements $E_k$ satisfy
-the completeness relation so $\sum_k E_k^\dagger E_k = I$
+the completeness relation so $\sum_k E_k^\dagger E_k = I$.
 If $d$ is the dimension of the Hilbert space whose state is described by
 $\rho$ it is always possible to describe every admissible quantum operation
 with at most $d^2$ terms being the space of $d \times d $ matrices $d^2$-dimensional
@@ -701,7 +706,7 @@ quantum operation.
 	$\{E_1,...,E_m\}$ and $\{F_1,...,F_n\}$, after appending zero operators
 	to the end of the shorter list to ensure that m=n,
 	$\mathcal{E}=\mathcal{F}$ if and only if there exists an m by m unitary matrix
-	of complex numbers $u_{ij}$ such that $E_i = \sum_j u_{ij} F_j$
+	of complex numbers $u_{ij}$ such that $E_i = \sum_j u_{ij} F_j$.
 
 \end{theorem}
 
@@ -719,7 +724,7 @@ operator-sum representations:
 	      probability $p$.
 	      its operation elements are:
 	      \begin{equation}
-		      E_0 = \sqrt{p}I, \hspace{20pt} E_1 = \sqrt{1-p}X
+		      E_0 = \sqrt{p}I, \hspace{20pt} E_1 = \sqrt{1-p}X;
 	      \end{equation}
 
 	\item the \textbf{Phase flip channel} can shift the phase by $\pi$ of a qubit applying
@@ -727,19 +732,18 @@ operator-sum representations:
 	      probability $p$.
 	      its operation elements are:
 	      \begin{equation}
-		      E_0 = \sqrt{p}I, \hspace{20pt} E_1 = \sqrt{1-p}Z
+		      E_0 = \sqrt{p}I, \hspace{20pt} E_1 = \sqrt{1-p}Z;
 	      \end{equation}
 
 	\item the \textbf{Depolarizing channel} can substitute the state of the system with the
 	      totally mixed state with probability $1-p$ and do nothing with
 	      probability $p$.
-	      The totally mixed state is a state with density operator $I/2$
-
+	      The totally mixed state is a state with associated density operator $I/2$
 	      that holds no information.
-	      the operation elements of the depolarizing channel are:
+	      The operation elements of the depolarizing channel are:
 	      \begin{equation}
 		      E_0 = \sqrt{1-\tfrac{3}{4}p}I, \hspace{5pt} E_1 = \sqrt{1-p}X , \hspace{5pt}
-		      E_2 = \sqrt{1-p}Y , \hspace{5pt} E_3 = \sqrt{1-p}Z
+		      E_2 = \sqrt{1-p}Y , \hspace{5pt} E_3 = \sqrt{1-p}Z.
 	      \end{equation}
 
 
@@ -750,16 +754,16 @@ operator-sum representations:
 \subsection{The importance of distance measures}
 
 When a system gets entangled with the environment the latter causes the system
-to deviate from it's expected evolution giving birth to an error.
-Considering only the presence or absence of errors though would be of little
+to deviate from it's expected evolution producing errors.
+Considering only the presence or absence of errors, though, would be of little
 information because errors can vary wildly based on how much they shift the
 quantum state and so the probability of getting a certain result during
 the measurement procedure.
 The need for a way to measure the distance between two states to see, for example,
-how much errors have shifted the system away from the desires state, has resolved
-in the development of static distance measures.
+how much errors have shifted the system away from the desires state, has been resolved
+by the development of static distance measures.
 Static distance measures are then used to derive ways to quantify how much quantum
-information gets lost by a system during transformations which are dynamic distance
+information gets lost by a system during transformations, which are dynamic distance
 measures.
 
 
@@ -771,36 +775,28 @@ It derives from the classical fidelity which is a distance measure between
 probability distributions.
 The quantum fidelity of states $\rho$ and $\sigma$ is defined as:
 \begin{equation}
-	F(\rho,\sigma):=tr \sqrt{\rho^\frac{1}{2}\sigma\rho^\frac{1}{2}}
+	F(\rho,\sigma):=tr \sqrt{\rho^\frac{1}{2}\sigma\rho^\frac{1}{2}},
 	\label{qfidelity}
 \end{equation}
 and when the operators $\rho$ and $\sigma$ commute they can be written as:
 
 \begin {equation}
-\rho = \sum_{i} r_i\ket{i}\bra{i}; \hspace{10pt} \sigma = \sum_{i} s_i \ket{i}\bra{i}
+\rho = \sum_{i} r_i\ket{i}\bra{i}; \hspace{10pt} \sigma = \sum_{i} s_i \ket{i}\bra{i},
 \end {equation}
 so the equation \ref{qfidelity} becomes:
 
 \begin{equation}
-	F(\rho,\sigma) = tr \sqrt{\sum_{i} r_i s_i \ket{i}\bra{i} } = tr \left( \sum_{i} \sqrt{r_i s_i} \ket{i}\bra{i}
+	F(\rho,\sigma) = tr \sqrt{\sum_{i} r_i s_i \ket{i}\bra{i} } = tr \left( \sum_{i} \sqrt{r_i s_i} \ket{i}\bra{i},
 	\right) = \sum_{i}\sqrt{r_i s_i}
 \end{equation}
 where the last expression is exactly the classical fidelity between the eigenvalue
 distributions $r_i$ and $s_i$ of $\rho$ and $\sigma$
 
-the fidelity has some important proprieties:
-\begin{itemize}
-	\item Invariance under unitary transforms
-	\item \textbf{Strong concavity}: let $p_i$ and $q_i$ be probability distributions
-	      and $\rho_i$
-	\item Monotonicity
-	      %FIXME deshittify
-\end{itemize}
 \subsection{Dynamic distance measures}
 
-It is also possible to use the fidelity to construct a way to to measure how
+It is also possible to use the fidelity to construct a measure of how
 well quantum information is preserved during a generic quantum operation.
-To do it what is usually evaluated is how a quantum operation preserves
+Usually, what is evaluated is how a quantum operation preserves
 entanglement.
 This gives rise to the concept of entanglement fidelity which is a function
 of the density operator of a state $\rho$ and a trace preserving quantum operation
@@ -845,7 +841,7 @@ in an n bit code space as a [n, k] code.
 
 \subsubsection{differences with the classical case}
 
-Unfortunately when it comes to error correction quantum systems encounter
+Unfortunately, when it comes to error correction, quantum systems encounter
 some additional problems unknown to classical systems and this makes the
 procedure more complex.
 \begin {itemize}
@@ -866,7 +862,7 @@ to correct eventual errors on it.
 
 Such problems have been tackled in the following ways.
 
-\subsubsection{Entranglement instead of cloning}
+\subsubsection{Entanglement instead of cloning}
 
 The cloning done in classical error correction is substituted with
 the creation of a group of entangled qubits which are called physical qubits
@@ -881,15 +877,19 @@ is a quantity that contains information only about the error occurred
 in the channel and not about the state of the system.
 Not extracting any information from the state of the system
 this measurement procedure avoids altering it.
+Recalling the axioms 3 and 5 this would mean choosing the measurement
+operators $M_\alpha$ such that one of them, if applied to the state of
+the system, would keep it unchanged while all the others would bring
+it to the zero vector.
 
 
 
 \subsubsection{Finite error syndromes}
 
 The solution presented in the previous paragraph would be impossible to
-apply if the error syndromes would be infinite as it would be natural to
-imagine.
-Fortunately it is not the case but to understand the reason for such
+apply if the possible error syndromes, and thus measurement operator required, would be
+infinite as it would be natural to imagine.
+Fortunately this is not the case but to understand the reason for such
 an unexpected result it is necessary to introduce an intermediary step.
 
 \begin{theorem}[Knill-Laflamme condition 1997]
@@ -926,17 +926,17 @@ elements for $\mathcal{E}$ so it is possible to write:
 	\label{condition2}
 	P F_k^\dagger F_l P = \sum_{ij} u_{ki}^\dagger u_{jl} P E_{i}^\dagger E_j P.
 \end{equation}
-combining \ref{condition2} with \ref{eccondition}
+Combining \ref{condition2} with \ref{eccondition}
 the condition becomes:
 
 \begin{equation}
-	P F_k^\dagger F_l P = \sum_{ij} u_{ki}^\dagger \alpha_{ij} u_{jl} P
+	P F_k^\dagger F_l P = \sum_{ij} u_{ki}^\dagger \alpha_{ij} u_{jl} P,
 \end{equation}
 and since $d = u^\dagger \alpha u$
 
 \begin{equation}
 	\label{simplecondition}
-	P F_k^\dagger F_l P = d_{kl}P
+	P F_k^\dagger F_l P = d_{kl}P,
 \end{equation}
 which can be thought of as a simplification of the condition \ref{eccondition} ,
 because $d_{kl}$ is diagonal.
@@ -944,23 +944,23 @@ Using the polar decomposition and the equation \ref{simplecondition} it is
 possible to see that for some unitary operator $U_k$
 
 \begin{equation}
-	F_k P = U_k \sqrt{PF_k^\dagger F_k P} = \sqrt{d_{kk}} U_k P
+	F_k P = U_k \sqrt{PF_k^\dagger F_k P} = \sqrt{d_{kk}} U_k P.
 \end{equation}
 The effect of $F_k$ is to rotate the coding subspace into a second subspace defined by
 the projector $P_k$ which is defined in the following way:
 
 \begin{equation}
 	\label{defpk}
-	P_k := U_k P U_k^\dagger = \dfrac{F_k P U_k^\dagger}{\sqrt{d_{kk}}}
+	P_k := U_k P U_k^\dagger = \dfrac{F_k P U_k^\dagger}{\sqrt{d_{kk}}}.
 \end{equation}
 These subspaces are necessarily orthogonal because for equation \ref{simplecondition}
 when $k \neq l$:
 
 \begin{equation}
-	P_l P_k = P_l^\dagger P_k = \dfrac{U_l P F_l^\dagger F_k P U_k^\dagger}{\sqrt{d_{ll}d_{kk}}} = 0
+	P_l P_k = P_l^\dagger P_k = \dfrac{U_l P F_l^\dagger F_k P U_k^\dagger}{\sqrt{d_{ll}d_{kk}}} = 0.
 \end{equation}
 
-\noindent In this construction the syndrome measurement is a projective measurement defined by
+\noindent In this construction, the syndrome measurement is a projective measurement defined by
 the operators $P_k$, augmented by an additional projector if necessary to satisfy
 the completeness relation $\sum_k P_k = I$.
 Recovery is accomplished simply by applying $U_k^\dagger$.
@@ -981,22 +981,23 @@ it is possible to derive that:
 
 \begin{equation}
 	\label{conditionauxilary}
-	= \delta_{kl} \sqrt{d_{kk}} P \sqrt{\rho} = \delta_{kl} \sqrt{d_{kk}} \sqrt{\rho}
+	= \delta_{kl} \sqrt{d_{kk}} P \sqrt{\rho} = \delta_{kl} \sqrt{d_{kk}} \sqrt{\rho}.
 \end{equation}
 Thus:
 
 \begin{equation}
 	\mathcal{R}(\mathcal{E}(\rho)) = \sum_{kl} U_k^\dagger P_k F_l \rho F_l^\dagger P_k U_k = \sum_{kl} \delta_{kl} d_{kk} \rho \propto \rho
 \end{equation}
-as required.
+as required.\\
 \vspace{20pt}
-To prove necessity suppose $\{E_i\}$ is a set of errors corrected by the error-correction
-operation $\mathcal{R}$ with operation elements $\{R_j\}$.\\
-Define a quantum operation $\mathcal{E}_C$ by $\mathcal{E}_C(\rho) := \mathcal{E}(P \rho P)$
-Since $P \rho P$ is in the code space for all $\rho$, it follows that
+
+\noindent To prove necessity suppose $\{E_i\}$ is a set of errors corrected by the error-correction
+operation $\mathcal{R}$ with operation elements $\{R_j\}$.
+Define a quantum operation $\mathcal{E}_C$ by $\mathcal{E}_C(\rho) := \mathcal{E}(P \rho P)$. \\
+Since $P \rho P$ is in the code space for all $\rho$, it follows that:
 
 \begin{equation}
-	\mathcal{R}(\mathcal{E}(\rho)) \propto P \rho P
+	\mathcal{R}(\mathcal{E}(\rho)) \propto P \rho P,
 \end{equation}
 
 \noindent for all states $\rho$. Moreover, the proportionality factor must be a constant c, not
@@ -1004,13 +1005,13 @@ depending on the input state $\rho$, if both right and left side have to be line
 Rewriting the last equation explicitly in terms of the operation elements gives
 
 \begin{equation}
-	\sum_{ij} R_j E_i P \rho P E_i^\dagger R_j^\dagger = cP \rho P
+	\sum_{ij} R_j E_i P \rho P E_i^\dagger R_j^\dagger = cP \rho P.
 \end{equation}
 
 \noindent This equation holds for all $\rho$. It follows that the quantum operation with operation
 elements $\{R_jE_i\}$ is identical to the quantum operation with a single operation element
 $\sqrt{c}P$. Theorem \ref{freedom} implies that there exist complex numbers
-$c_{ki}$ such that
+$c_{ki}$ such that:
 \begin{equation}
 	R_k E_i P = c_{ki} P.
 \end{equation}
@@ -1024,8 +1025,12 @@ over $k$ we deduce that:
 	P E_i^\dagger E_j P = \alpha_{ij} P
 \end{equation}
 where $\alpha_{ij} \equiv \sum_k c_{ki}^* c_{kj}$ is just a Hermitian matrix of complex numbers.\\
-These are the quantum error-correction conditions.
+These are the quantum error-correction conditions, so necessity is also proved.
+QED.
 
+\vspace{10pt}
+
+\noindent This condition will now be used to prove the following theorem:
 
 \begin{theorem}
 	Suppose $C$ is a quantum code and $\mathcal{R}$ is the error-correction operation
@@ -1060,8 +1065,20 @@ and thus
 \begin{equation}
 	R(F(\rho)) = \sum_{kj} U_k^\dagger P_k F_j \rho F_j^\dagger P_k U_k = \sum_{kj} |m_{jk}|^2 d_{kk} \rho \propto \rho,
 \end{equation}
-as required.
+as required. \\
+QED.
 
+\vspace{10pt}
+
+\noindent This theorem shows that, in order to correct every possible error on a quantum channel,
+it is not needed to be able to identify each individual error that can occur.
+Instead, it suffices to correct the operation elements that compose those errors.
+This is an extraordinary result given that the above mentioned operation elements belong
+to the set of bounded linear operators $\mathcal{B}(H_s)$ on a $d$-dimensional Hilbert space
+$H_s$, and such set forms a $d^2$-dimensional vector space.
+Therefore to correct every possible error on the system $H_s$ it will be needed to
+correct just $d^2$ operation elements as all other possible errors can be written
+as linear combinations of these elements.
 
 \subsection{Some examples of quantum codes}
 
@@ -1071,11 +1088,47 @@ Quantum repetition codes are similar to classical ones with the difference that,
 above mentioned reasons, they use entanglement instead of cloning.
 Simple repetition codes cannot correct an arbitrary error on a single qubit but they can
 be constructed to correct errors on some quantum channels.
-Some examples are the bit-flip correcting code and the phase-flip correcting code.
+Some examples are the bit-flip correcting code in Figure \ref{bfc}
+and the phase-flip correcting code in Figure \ref{pfc}.
+
+\begin{figure}[H]
+
+	\begin{subfigure}{0.5\textwidth}
+		\includegraphics[scale = 0.23]{bit-flip-encode.png}
+	\end{subfigure}
+	\hspace{-60pt}
+	\begin{subfigure}{0.5\textwidth}
+		\includegraphics[scale = 0.23]{bit-flip-detect.png}
+	\end{subfigure}
+
+	\caption{Bit flip correcting code}\label{bfc}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{subfigure}{0.5\textwidth}
+		\includegraphics[scale = 0.20]{phase-flip-encode.png}
+	\end{subfigure}
+	\hspace{-50pt}
+	\begin{subfigure}{0.5\textwidth}
+		\includegraphics[scale = 0.18]{phase-flip-detect.png}
+	\end{subfigure}
+	\caption{Phase flip correcting code}\label{pfc}
+\end{figure}
+
 
 \subsubsection{The Shor code}
-The 9 qubits Shor code combines the bit-flip correcting code with the phase-flip
+The 9 qubits Shor code, whose encoding procedure is shown in Figure \ref{9sc}, combines the bit-flip correcting code with the phase-flip
 correcting code in order to be able to correct an arbitrary error on one qubit.
+It is a first example of the concept of concatenation of quantum codes that will be
+used again later.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[scale = 0.25]{shor-code-encode.png}
+	\end{center}
+	\caption{9 qubits Shor code encoding}\label{9sc}
+\end{figure}
+
 
 \subsubsection{Degenerate codes}
 
@@ -1110,18 +1163,59 @@ $\ket{x+C_2}$ for all $x \in C_1$
 
 \subsubsection{Stabilizer codes}
 When talking about classical linear codes it is possible, as discussed above,
-to have a compact description.
-Such propriety is not present in every quantum code but a specific class of
-codes that happens to include most of the codes seen above has it.
-This class is "the stabilizer codes" and is founded on the concept of
-"the stabilizer".
-A stabilizer of a quantum state is a set of operators that, if applied to a
-quantum state, keep it unchanged.
+to have a compact description of them.
+The same cannot be said for every quantum code but a specific class of
+codes, which happens to include most of the codes seen above, has it.
+This class is "the stabilizer codes" and is founded on the concept a
+"stabilizer".
+Let's define $G_n$ to be the group that contains the n-fold tensor
+products of operators from the group $G_1$ defined in Equation \ref{pauligrup}.
+Then, introducing $V_S$ as the set of n-qubit states which are fixed by every element of $S$,
+where $S$ is a subgroup of $G_n$, $V_S$ will be called the \textit{vector space stabilized by} $S$,
+and $S$ will be called the \textit{stabilizer} of the vector space $V_S$.
+Being $S$ a subgroup it will not be necessary to communicate all of its elements because
+they can all be inferred from just the set of its generators.
+If now $V_S$ is chosen to be the code space of a quantum code the generators of
+$S$ become a new way to describe such code.
+The stabilizer formalism is also useful because the generators of the stabilizer group
+partition the Hilbert space of the channel in many orthogonal subspaces that include the
+coding subspace and the error subspaces.
+This in turn divides the operations that can happen to the systems in ones that shift
+from the code space to error spaces, which are errors, ones that shift from the error
+spaces to the code space, which are recovery operations, and finally those that keep
+the state to which they are applied to in the same subspace, which are a new type
+of operator that is called \textit{normalizer}.
+It should be noted that the stabilizers of a subspace are also normalizers for it
+because acting as an identity for vectors in that subspace they don't shift the state
+to other subspaces.
+Operators that are normalizers but not stabilizers are particularly interesting because
+they cannot be corrected if unwanted, they allow to apply logical operations directly to
+physical qubits without decoding.
 
 
 
 
 \subsection{Fault tolerant quantum computation}
 
+The possibility of producing quantum gates that allow to apply logical operations directly
+to the encoded qubits allows for the idea of concatenating quantum codes to have multiple
+levels of encoding.
+This interesting idea leaves some questions about its practicality, which translates in the
+possibility of getting a fairly low rate of error without sacrificing too much the number
+of gates needed.
+A partial answer to such question is given by the following result:
+
+\newpage
+
+\begin{theorem}[Threshold theorem for quantum computation]
+	A quantum circuit containing $p(n)$ gates may be simulated with probability of error at most $\epsilon$ using
+	$O\left(\text{poly}\left(\log \frac{p(n)}{\epsilon}\right)p(n)\right)$
+	gates on hardware whose components fail with probability at most $p$, provided $p$ is
+	below some constant threshold, $p < p_{\text{th}}$, and given reasonable assumptions about
+	the noise in the underlying hardware.
+\end{theorem}
+
+Unfortunately, with current knowledge, some quantum gates cannot still be produced with
+the required reliability but the Threshold theorem certainly gives hope for future developments.
 
 \end{document}
