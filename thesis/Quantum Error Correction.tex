@@ -13,7 +13,7 @@
 \pgfplotsset{compat=1.18}
 \title{Quantum Error Correction Tecniques}
 \author{Alessio Delli Colli}
-\date{May 2024}
+\date{September 2024}
 
 \newtheorem{theorem}{Theorem}
 
@@ -26,6 +26,8 @@ urlcolor=black
 }
 
 \begin{document}
+
+\nocite{nielsen2010quantum}
 
 \maketitle
 
@@ -244,7 +246,7 @@ projective measurement on that state will yield a positive result.
 	\centering
 
 	\includegraphics[scale=0.5]{bloch-sphere.png}
-	\caption{Bloch sphere with notable quantum states}
+	\caption{Bloch sphere with notable quantum states, illustration from \cite{wyrd2021bloch}}
 	\label{blsphere}
 \end{figure}
 The Bloch sphere, in Figure \ref{blsphere},
@@ -360,8 +362,8 @@ In quantum information interference is used to enhance the probability of
 obtaining a desired state at the end of the computation by employing quantum gates
 to create constructive interference around solution states and destructive
 interference around non solution states.
-The following example will show how to create constructive or destructive interference
-around a state in a simple one qubit system.
+The following example from \cite{ekert_quantum_information_2020} will show how to create
+constructive or destructive interference around a state in a simple one qubit system.
 \vspace{10pt}
 \begin{figure}[H]
 	\centering
@@ -381,21 +383,21 @@ around a state in a simple one qubit system.
 that follows the notation of quantum computing of the Ramsey interferometer and consists of
 two Hadamard gates with a phase gate in between.\\
 
+\begin{samepage}
+	\noindent Below is the time analisys of the circuit.
+	\begin{itemize}
 
-\noindent Below is the time analisys of the circuit.
-\begin{itemize}
-
-	\item $\ket{\psi_{t0}} = \ket{0}$
-	\item $\ket{\psi_{t1}} = \dfrac{\ket{0}+\ket{1}}{\sqrt{2}}$
-	\item $\ket{\psi_{t2}} = \dfrac{\ket{0}+e^{i\phi}\ket{1}}{\sqrt{2}}$
-	\item $\ket{\psi_{t3}} = \dfrac{\dfrac{\ket{0}+\ket{1}}{\sqrt{2}}+e^{i\phi}\dfrac{\ket{0}-\ket{1}}
-		      {\sqrt{2}}}{\sqrt{2}}   = \dfrac{(1+e^{i\phi})\ket{0}+(1-e^{i\phi})\ket{1}}{2}$
-
-
+		\item $\ket{\psi_{t0}} = \ket{0}$
+		\item $\ket{\psi_{t1}} = \dfrac{\ket{0}+\ket{1}}{\sqrt{2}}$
+		\item $\ket{\psi_{t2}} = \dfrac{\ket{0}+e^{i\phi}\ket{1}}{\sqrt{2}}$
+		\item $\ket{\psi_{t3}} = \dfrac{\dfrac{\ket{0}+\ket{1}}{\sqrt{2}}+e^{i\phi}\dfrac{\ket{0}-\ket{1}}
+			      {\sqrt{2}}}{\sqrt{2}}   = \dfrac{(1+e^{i\phi})\ket{0}+(1-e^{i\phi})\ket{1}}{2}$
 
 
-\end{itemize}
 
+
+	\end{itemize}
+\end{samepage}
 \vspace{20pt}
 \noindent So the probability of measuring $\ket{1}$ at the end is the module squared of it's\\
 coefficient that is:\\
@@ -517,7 +519,7 @@ Often using many qubit gates the states of the output qubits are no longer
 independent from each other so the probability of measuring a possible result
 on one qubit depends on the states of other qubits involved in the transformation.
 In this case we called this "bonded" qubits entangled.
-A clear example of this can be found in the circuit in Figure \ref{entanglement}.\\
+A clear example of this, taken from \cite{ekert_quantum_information_2020}, can be found in the circuit in Figure \ref{entanglement}.\\
 
 \begin{figure}[H]
 	\centering
@@ -552,7 +554,7 @@ every single quantum circuit it could be interesting to discover if this result
 can be extended to the many qubits case and how many gates are needed to reach this goal.\\
 Such extension can be achieved simply by adding the C-NOT gate to the ones listed in
 Theorem \ref{univone} while an answer to the second question can be found
-thanks to an amazing result by Solovay and Kitaev, which
+thanks to an amazing result by Solovay and Kitaev, which was presented in \cite{kitaev2002classical}
 states that the number of ports we need to approximate a circuit with a certain
 precision grows logaritmically with the precision we want to achieve and exponentially
 whith the number of qubits involved.
@@ -662,7 +664,7 @@ information and has a Bloch vector of norm 0.
 
 \subsubsection{System environment interaction}
 
-Often the  the quantum system is embedded in an environment that can't be
+Often the quantum system is embedded in an environment that can't be
 controlled therefore it is important to consider the interaction
 between the system and such environment.
 Suppose the system starts in an initial state $\rho$ and the environment
@@ -694,6 +696,7 @@ If $d$ is the dimension of the Hilbert space whose state is described by
 $\rho$ it is always possible to describe every admissible quantum operation
 with at most $d^2$ terms being the space of $d \times d $ matrices $d^2$-dimensional
 vector space.
+This representation was introduced by Hellwig and Kraus in \cite{hellwig1969pure}.
 
 \subsubsection{Unitary freedom in the operator sum representation}
 
@@ -890,7 +893,8 @@ The solution presented in the previous paragraph would be impossible to
 apply if the possible error syndromes, and thus measurement operator required, would be
 infinite as it would be natural to imagine.
 Fortunately this is not the case but to understand the reason for such
-an unexpected result it is necessary to introduce an intermediary step.
+an unexpected result it is necessary to introduce an intermediary step introduced
+by Knill and Laflamme in \cite{knill1997theory}.
 
 \begin{theorem}[Knill-Laflamme condition 1997]
 	\label{conditions}
@@ -1101,7 +1105,7 @@ and the phase-flip correcting code in Figure \ref{pfc}.
 		\includegraphics[scale = 0.23]{bit-flip-detect.png}
 	\end{subfigure}
 
-	\caption{Bit flip correcting code}\label{bfc}
+	\caption{Bit flip correcting code illustration from \cite{prefetch_repetition_code}}\label{bfc}
 \end{figure}
 
 \begin{figure}[H]
@@ -1112,21 +1116,22 @@ and the phase-flip correcting code in Figure \ref{pfc}.
 	\begin{subfigure}{0.5\textwidth}
 		\includegraphics[scale = 0.18]{phase-flip-detect.png}
 	\end{subfigure}
-	\caption{Phase flip correcting code}\label{pfc}
+	\caption{Phase flip correcting code illustration from \cite{prefetch_repetition_code}}\label{pfc}
 \end{figure}
 
 
 \subsubsection{The Shor code}
-The 9 qubits Shor code, whose encoding procedure is shown in Figure \ref{9sc}, combines the bit-flip correcting code with the phase-flip
-correcting code in order to be able to correct an arbitrary error on one qubit.
-It is a first example of the concept of concatenation of quantum codes that will be
-used again later.
+The 9 qubits Shor code, whose encoding procedure is shown in Figure \ref{9sc},
+combines the bit-flip correcting code with the phase-flip correcting code in order
+to be able to correct an arbitrary error on one qubit.
+It was introduced by Shor in \cite{shor1995scheme} and is a first example of the concept of concatenation of
+quantum codes that will allow later developments.
 
 \begin{figure}[H]
 	\begin{center}
 		\includegraphics[scale = 0.25]{shor-code-encode.png}
 	\end{center}
-	\caption{9 qubits Shor code encoding}\label{9sc}
+	\caption{9 qubits Shor code encoding illustration from \cite{prefetch_repetition_code}}\label{9sc}
 \end{figure}
 
 
@@ -1141,7 +1146,7 @@ information in fewer physical qubits because distinct errors don't necessarily n
 to take the code space to orthogonal spaces.
 \subsubsection{CSS codes}
 
-The Calderbank-Shor-Steane codes are quantum codes constructed using classical linear codes.
+The Calderbank-Shor-Steane codes, introduced in \cite{calderbank1996good} are quantum codes constructed using classical linear codes.
 Suppose fpr example $C_1$ and $C_2$ are $[n,k_1]$ and $[n,k_2]$ classical linear codes such that $C_2 \subset C_1$
 and $C_1$ and $C_2$ both correct t errors.
 It is possible to define a $[n, k_1 - k_2]$ quantum code called $CSS(C_1, C_2)$ capable of
@@ -1165,57 +1170,56 @@ $\ket{x+C_2}$ for all $x \in C_1$
 When talking about classical linear codes it is possible, as discussed above,
 to have a compact description of them.
 The same cannot be said for every quantum code but a specific class of
-codes, which happens to include most of the codes seen above, has it.
-This class is "the stabilizer codes" and is founded on the concept a
-"stabilizer".
+codes, formalized by Gottesman in \cite{gottesman1996class}, has it.
+This class, the stabilizer codes, is founded on the concept a "stabilizer".
 Let's define $G_n$ to be the group that contains the n-fold tensor
 products of operators from the group $G_1$ defined in Equation \ref{pauligrup}.
 Then, introducing $V_S$ as the set of n-qubit states which are fixed by every element of $S$,
 where $S$ is a subgroup of $G_n$, $V_S$ will be called the \textit{vector space stabilized by} $S$,
 and $S$ will be called the \textit{stabilizer} of the vector space $V_S$.
-Being $S$ a subgroup it will not be necessary to communicate all of its elements because
-they can all be inferred from just the set of its generators.
+Since $S$ is a subgroup, it will not be necessary to communicate all of its elements,
+as they can all be inferred from just the set of its generators.
 If now $V_S$ is chosen to be the code space of a quantum code the generators of
 $S$ become a new way to describe such code.
 The stabilizer formalism is also useful because the generators of the stabilizer group
 partition the Hilbert space of the channel in many orthogonal subspaces that include the
 coding subspace and the error subspaces.
-This in turn divides the operations that can happen to the systems in ones that shift
-from the code space to error spaces, which are errors, ones that shift from the error
-spaces to the code space, which are recovery operations, and finally those that keep
-the state to which they are applied to in the same subspace, which are a new type
-of operator that is called \textit{normalizer}.
+This in turn divides the operations that can happen to the systems in three categories:
+the ones that shift from the code space to error spaces, which are errors;
+the ones that shift from the error spaces to the code space, which are recovery operations;
+and finally those that keep the state to which they are applied to in the same subspace,
+which are a new type of operator that is called \textit{normalizer}.
 It should be noted that the stabilizers of a subspace are also normalizers for it
-because acting as an identity for vectors in that subspace they don't shift the state
-to other subspaces.
-Operators that are normalizers but not stabilizers are particularly interesting because
-they cannot be corrected if unwanted, they allow to apply logical operations directly to
-physical qubits without decoding.
-
-
-
+because, acting as an identity for vectors in that subspace, they don't shift the state
+to other subspaces;
+meanwhile, operators that are normalizers but not stabilizers are particularly interesting
+because, while they cannot be corrected if unwanted, they allow to apply logical operations
+directly to physical qubits without decoding.
 
 \subsection{Fault tolerant quantum computation}
 
-The possibility of producing quantum gates that allow to apply logical operations directly
+The possibility of producing quantum gates that apply logical operations directly
 to the encoded qubits allows for the idea of concatenating quantum codes to have multiple
 levels of encoding.
-This interesting idea leaves some questions about its practicality, which translates in the
-possibility of getting a fairly low rate of error without sacrificing too much the number
-of gates needed.
-A partial answer to such question is given by the following result:
+This intriguing concept code concatenation raises questions about its practicality, particularly regarding the
+potential to achieve a relatively low error rate without significantly increasing the number
+of gates required.
+A partial answer to such questions is given by the following result presented by Aharonov and
+Ben-Or in \cite{aharonov1997fault}:
 
-\newpage
 
 \begin{theorem}[Threshold theorem for quantum computation]
-	A quantum circuit containing $p(n)$ gates may be simulated with probability of error at most $\epsilon$ using
-	$O\left(\text{poly}\left(\log \frac{p(n)}{\epsilon}\right)p(n)\right)$
+	A quantum circuit containing $p(n)$ gates may be simulated with probability of error
+	at most $\epsilon$ using $O\left(\text{poly}\left(\log \frac{p(n)}{\epsilon}\right)p(n)\right)$
 	gates on hardware whose components fail with probability at most $p$, provided $p$ is
 	below some constant threshold, $p < p_{\text{th}}$, and given reasonable assumptions about
 	the noise in the underlying hardware.
 \end{theorem}
 
-Unfortunately, with current knowledge, some quantum gates cannot still be produced with
-the required reliability but the Threshold theorem certainly gives hope for future developments.
+\noindent Unfortunately, with current knowledge, some quantum gates cannot yet be produced with
+the required reliability;
+however, the Threshold theorem certainly gives hope for future developments.
 
+\bibliographystyle{IEEEtran}
+\bibliography{references}
 \end{document}
