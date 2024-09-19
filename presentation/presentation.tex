@@ -1,0 +1,161 @@
+%allocazione tempo 
+%
+%2 minuti "a cosa servono"
+%2 minuti "qubit e porte+ full adder e sqrt not"
+%2 minuti "interferenza e entanglement + errori quantistici + confronto computazione analogica"
+%2 minuti "error correction e teorema della soglia"
+%
+
+
+
+
+%uno speedup polinomiale non rompe la barriera della trattabilità 
+%o intrattabilità dei problemi 
+
+
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{braket}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{subcaption}
+\usetikzlibrary{quantikz2}
+\usepackage{pgfplots}
+\usetheme{Copenhagen}
+\usecolortheme{beaver}
+
+\title{Quantum errors and error corretion tecniques}
+
+\author{Alessio Delli Colli}
+
+\date{September 2024}
+
+\begin{document}
+
+\maketitle
+
+%i numeri sono tutti figli legittimi della matematica
+%l'algoritmo di Shor o sue opportune varianti potrebbero risolvere 
+%il problema della Fattorizzazione e il problema del lograritmo discreto anche su 
+%curve ellittiche. 
+%potrebbero e non possono perchè l'hardware disponibile al momento non è ancora adatto 
+%a questo tipo di computazione. 
+%il numero più alto che si è riusciti a fattorizzare con l'algoritmo di Shor è 21,
+%anche il 35 è stato tentato ma senza successo perche la propagazione degli 
+%errori ha reso il risultato inutilizzabile
+%
+
+\begin{frame}
+	\frametitle{The need for quantum computation}
+	\textbf{It grants speedup for "difficult" computational problems}
+
+	\pause
+	\vspace{30pt}
+	\begin{itemize}
+		\item Search problems with Grover's algorithm
+		      \vspace{30pt}
+		      \pause
+		\item Factorization and discrete logarithm with Shor's algorithm.
+
+
+	\end{itemize}
+	\vspace{20pt}
+	\pause
+	But there is a catch...
+	\pause
+	Errors
+\end{frame}
+
+
+%parla del nome circuito
+%descrizione del 
+\begin{frame}
+	\frametitle{Qubits}
+	\begin{itemize}
+		\item simple quantum systems
+		      \pause
+		\item modeled by a 2-dimensional Hilbert space
+		      \pause
+		\item their state can be represented in many ways:
+		      \pause
+	\end{itemize}
+
+	\vspace{10pt}
+
+	\noindent
+	\begin{minipage}{0.5\textwidth}
+		\begin{center}
+			\textbf{state vector}
+		\end{center}
+		\begin{equation*}
+			\alpha \ket{0} + \beta \ket{1}
+		\end{equation*}
+	\end{minipage}
+	\hfill
+	\pause
+	\begin{minipage}{0.48\textwidth}
+		\begin{center}
+			\textbf{Bloch sphere}
+		\end{center}
+		Right column content goes here.
+		sdvbskdvbksdbvksdbvkjdsbvsdkfbv
+	\end{minipage}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Porte e circuiti quantistici}
+
+	\begin{minipage}{0.31\textwidth}
+		\begin{center}
+			\textbf{Bloch sphere}
+		\end{center}
+		Right column content goes here.
+		sdvbskdvbksdbvksdbvkjdsbvsdkfbv
+	\end{minipage}	\begin{minipage}{0.31\textwidth}
+		\begin{center}
+			\textbf{Bloch sphere}
+		\end{center}
+		Right column content goes here.
+		sdvbskdvbksdbvksdbvkjdsbvsdkfbv
+	\end{minipage}	\begin{minipage}{0.31\textwidth}
+		\begin{center}
+			\textbf{Bloch sphere}
+		\end{center}
+		Right column content goes here.
+		sdvbskdvbksdbvksdbvkjdsbvsdkfbv
+	\end{minipage}
+\end{frame}
+
+%nonostante il sistema sia inesorabilmente legato con il mondo esterno noi vogliamo 
+%perdere questo legame all'interno della nostra rappresentazione. 
+%perche il ondo esterno non lo possiamo misurare, non lo possiamo influenzare in 
+%maniera apprezzabile. 
+
+\begin{frame}
+	\frametitle{Quantum errors}
+\end{frame}
+
+%il mondo dei qubits continuo assomiglia molto di piu al mondo discreto dei bits 
+%che al mondo continuo dei qubit 
+
+\begin{frame}
+	\frametitle{Classical error correction}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Challenges in the quantum case}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Quantum codes}
+\end{frame}
+
+\begin{frame}
+
+\end{frame}
+\end{document}
