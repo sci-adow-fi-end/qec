@@ -13,7 +13,7 @@
 %o intrattabilità dei problemi 
 
 
-\documentclass{beamer}
+\documentclass[aspectratio=169]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{amssymb}
@@ -51,24 +51,24 @@
 %
 
 \begin{frame}
-	\frametitle{The need for quantum computation}
-	\textbf{It grants speedup for "difficult" computational problems}
+	\frametitle{Scopo del calcolo quantistico}
+	\textbf{Permette di affrontare problemi computazionali "difficili"}
 
 	\pause
 	\vspace{30pt}
 	\begin{itemize}
-		\item Search problems with Grover's algorithm
+		\item Problemi di ricerca con l'algoritmo di Grover
 		      \vspace{30pt}
 		      \pause
-		\item Factorization and discrete logarithm with Shor's algorithm.
+		\item Fattorizzazione e calcolo del logaritmo discreto con l'algoritmo di Shor.
 
 
 	\end{itemize}
 	\vspace{20pt}
 	\pause
-	But there is a catch...
+	Ma presenta delle criticità...
 	\pause
-	Errors
+	gli errori.
 \end{frame}
 
 
@@ -77,11 +77,11 @@
 \begin{frame}
 	\frametitle{Qubits}
 	\begin{itemize}
-		\item simple quantum systems
+		\item semplici sistemi quantistici
 		      \pause
-		\item modeled by a 2-dimensional Hilbert space
+		\item modellati da uno spazio di Hilbert 2-dimensionale
 		      \pause
-		\item their state can be represented in many ways:
+		\item il loro stato può essere rappresentato in vari modi:
 		      \pause
 	\end{itemize}
 
@@ -90,72 +90,131 @@
 	\noindent
 	\begin{minipage}{0.5\textwidth}
 		\begin{center}
-			\textbf{state vector}
+			\textbf{Vettore di stato}
 		\end{center}
 		\begin{equation*}
 			\alpha \ket{0} + \beta \ket{1}
 		\end{equation*}
+		\vspace{10pt}
+
+		le due rappresentazioni sono legate dalla seguente relazione:
+
+		\begin{equation*}
+			\ket{\psi} = \cos{\dfrac{\theta}{2}}\ket{0}+e^{i\phi}\sin{\dfrac{\theta}{2}}\ket{1} \\
+		\end{equation*}
 	\end{minipage}
 	\hfill
-	\pause
 	\begin{minipage}{0.48\textwidth}
 		\begin{center}
-			\textbf{Bloch sphere}
+			\textbf{Sfera di Bloch}
 		\end{center}
-		Right column content goes here.
-		sdvbskdvbksdbvksdbvkjdsbvsdkfbv
+		\begin{figure}
+			\includegraphics[scale=0.3]{bloch-sphere.png}
+		\end{figure}
 	\end{minipage}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Porte e circuiti quantistici}
+	\frametitle{Porte quantistiche}
 
-	\begin{minipage}{0.31\textwidth}
+	\begin{itemize}
+		\item I qubit sono fatti interagire grazie a delle porte.
+		      \pause
+		\item Queste modificano lo stato applicando ad esso un operatore unitario.
+		      \pause
+		\item possono essere viste come rotazioni della sfera di Bloch.
+	\end{itemize}
+
+	\vspace{10pt}
+
+	\pause
+
+	\begin{minipage}{0.24\textwidth}
 		\begin{center}
-			\textbf{Bloch sphere}
+			\textbf{Porte di Pauli}\\
+			\vspace{10pt}
+			\begin{quantikz}
+				\gate{X}
+			\end{quantikz}
+			\begin{quantikz}
+				\gate{Y}
+			\end{quantikz}
+			\begin{quantikz}
+				\gate{Z}
+			\end{quantikz}
 		\end{center}
-		Right column content goes here.
-		sdvbskdvbksdbvksdbvkjdsbvsdkfbv
-	\end{minipage}	\begin{minipage}{0.31\textwidth}
-		\begin{center}
-			\textbf{Bloch sphere}
-		\end{center}
-		Right column content goes here.
-		sdvbskdvbksdbvksdbvkjdsbvsdkfbv
-	\end{minipage}	\begin{minipage}{0.31\textwidth}
-		\begin{center}
-			\textbf{Bloch sphere}
-		\end{center}
-		Right column content goes here.
-		sdvbskdvbksdbvksdbvkjdsbvsdkfbv
+
 	\end{minipage}
+	\begin{minipage}{0.24\textwidth}
+		\begin{center}
+			\textbf{Porte di Fase}\\
+			\vspace{10pt}
+			\begin{quantikz}
+				\gate{S}
+			\end{quantikz}
+			\begin{quantikz}
+				\gate{T}
+			\end{quantikz}
+			\begin{quantikz}
+				\gate{P}
+			\end{quantikz}
+		\end{center}
+
+	\end{minipage}
+	\begin{minipage}{0.24\textwidth}
+		\begin{center}
+			\textbf{Porta di Hadamard}\\
+			\vspace{10pt}
+			\begin{quantikz}
+				\gate{H}
+			\end{quantikz}
+		\end{center}
+	\end{minipage}
+	\begin{minipage}{0.24\textwidth}
+		\begin{center}
+			\textbf{Not controllato}\\
+			\vspace{10pt}
+			\begin{quantikz}
+				\ctrl{1} & \qw \\
+				\targ{} & \qw
+			\end{quantikz}
+		\end{center}
+	\end{minipage}
+
+\end{frame}
+
+%attenzione questo non vuol dire che un computer quantistico possa calcolare una funzione
+%non calcolabile da una macchina di Turing ma solamente che si ha una maggiore flessibilità 
+%a livello circuitale
+%
+\begin{frame}{Esempi di reti}
+
+
 \end{frame}
 
 %nonostante il sistema sia inesorabilmente legato con il mondo esterno noi vogliamo 
 %perdere questo legame all'interno della nostra rappresentazione. 
 %perche il ondo esterno non lo possiamo misurare, non lo possiamo influenzare in 
 %maniera apprezzabile. 
-
-\begin{frame}
-	\frametitle{Quantum errors}
-\end{frame}
-
 %il mondo dei qubits continuo assomiglia molto di piu al mondo discreto dei bits 
 %che al mondo continuo dei qubit 
 
 \begin{frame}
-	\frametitle{Classical error correction}
+	\frametitle{Correzione degli errori su sistemi classici}
+
 \end{frame}
 
 \begin{frame}
-	\frametitle{Challenges in the quantum case}
+	\frametitle{Difficoltà nel caso quantistico}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Quantum codes}
+	\frametitle{Codici di correzione quantistici}
 \end{frame}
 
 \begin{frame}
-
+	\begin{center}
+		\textbf{\LARGE Grazie per l'attenzione.}
+	\end{center}
 \end{frame}
 \end{document}
