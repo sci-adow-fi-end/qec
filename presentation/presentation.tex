@@ -29,7 +29,7 @@
 \usetheme{Copenhagen}
 \usecolortheme{beaver}
 
-\title{Quantum errors and error corretion tecniques}
+\title{Quantum errors and error correction tecniques}
 
 \author{Alessio Delli Colli}
 
@@ -57,10 +57,10 @@
 	\pause
 	\vspace{30pt}
 	\begin{itemize}
-		\item Problemi di ricerca con l'algoritmo di Grover
+		\item problemi di ricerca con l'algoritmo di Grover
 		      \vspace{30pt}
 		      \pause
-		\item Fattorizzazione e calcolo del logaritmo discreto con l'algoritmo di Shor.
+		\item fattorizzazione e calcolo del logaritmo discreto con l'algoritmo di Shor.
 
 
 	\end{itemize}
@@ -82,7 +82,7 @@
 		\item modellati da uno spazio di Hilbert 2-dimensionale
 		      \pause
 		\item il loro stato può essere rappresentato in vari modi:
-		      \pause
+
 	\end{itemize}
 
 	\vspace{10pt}
@@ -118,16 +118,18 @@
 	\frametitle{Porte quantistiche}
 
 	\begin{itemize}
-		\item I qubit sono fatti interagire grazie a delle porte.
+		\item i qubit sono fatti interagire grazie a delle porte.
 		      \pause
-		\item Queste modificano lo stato applicando ad esso un operatore unitario.
+		\item queste modificano lo stato applicando ad esso un operatore unitario.
 		      \pause
 		\item possono essere viste come rotazioni della sfera di Bloch.
+		      \pause
+		\item vengono composte a formare reti
+		      \pause
+		\item le porte più comuni sono:
 	\end{itemize}
 
 	\vspace{10pt}
-
-	\pause
 
 	\begin{minipage}{0.24\textwidth}
 		\begin{center}
@@ -175,8 +177,8 @@
 			\textbf{Not controllato}\\
 			\vspace{10pt}
 			\begin{quantikz}
-				\ctrl{1} & \qw \\
-				\targ{} & \qw
+				\qw & \ctrl{1} & \qw \\
+				\qw & \targ{} & \qw
 			\end{quantikz}
 		\end{center}
 	\end{minipage}
@@ -188,10 +190,58 @@
 %a livello circuitale
 %
 \begin{frame}{Esempi di reti}
+	\begin{minipage}{0.6\textwidth}
+		\centering
+		\textbf{Full adder quantistico}
+		\scalebox{1.5}{
+			\begin{quantikz}
+				\lstick{$\ket{a}$}     & \ctrl{2}  & \ctrl{1}  & \qw      & \qw      & \ctrl{1}  & \rstick{$\ket{a}$} \qw \\
+				\lstick{$\ket{b}$}     & \ctrl{2}  & \targ{}   & \ctrl{1} & \ctrl{1} & \targ{}   & \rstick{$\ket{b}$} \qw \\
+				\lstick{$\ket{c_{in}}$} & \qw      & \qw      & \ctrl{1} & \targ{}  & \qw       & \rstick{$\ket{s}$} \qw \\
+				\lstick{$\ket{0}$}     & \targ{}   & \qw      & \targ{}  & \qw      & \qw       & \rstick{$\ket{c_{out}}$} \qw \\
+			\end{quantikz}
+		}
+	\end{minipage}
+	\pause
+	\vspace{-20pt}
+	\begin{flushright}
+		\begin{minipage}{0.6\textwidth}
+			\centering
+			\textbf{Radice quadrata del not}\\
+			\scalebox{2}{
+				\begin{quantikz}
+					\qw & \gate{H} & \gate{S} & \gate{H} & \qw
+				\end{quantikz}
+			}
+		\end{minipage}
+	\end{flushright}
+\end{frame}
+\begin{frame}{Esempi di reti}
+	\begin{minipage}{0.48\textwidth}
+		\centering
+		\textbf{Interferometro di Ramsey}
+		\scalebox{2}{
+			\begin{quantikz}
+				\qw & \gate{H} & \gate{P}	& \gate{H} & \qw
+			\end{quantikz}
+		}
+	\end{minipage}
+	\pause
+	\begin{flushright}
+		\begin{minipage}{0.5\textwidth}
+			\centering
+			\textbf{Generatore degli stati di Bell}
+			\scalebox{2}{
+				\begin{quantikz}
+					\qw & \gate{H} & \ctrl{1}	& \qw \\
+					\qw &    \qw   & \targ{} &  \qw
+				\end{quantikz}
+			}
+		\end{minipage}
+	\end{flushright}
 
 
 \end{frame}
-
 %nonostante il sistema sia inesorabilmente legato con il mondo esterno noi vogliamo 
 %perdere questo legame all'interno della nostra rappresentazione. 
 %perche il ondo esterno non lo possiamo misurare, non lo possiamo influenzare in 
@@ -200,7 +250,37 @@
 %che al mondo continuo dei qubit 
 
 \begin{frame}
-	\frametitle{Correzione degli errori su sistemi classici}
+	\frametitle{Correzione degli errori su sistemi classici e quantistici}
+
+	\begin{minipage}{0.32\textwidth}
+		\centering
+		\textbf{Calcolatore digitale}
+		\begin{figure}
+			\includegraphics[scale=0.215]{digitale.jpg}
+		\end{figure}
+		finiti stati, \\
+		finite sindromi
+	\end{minipage}
+	\pause
+	\begin{minipage}{0.32\textwidth}
+		\centering
+		\textbf{Calcolatore analogico}
+		\begin{figure}
+			\includegraphics[scale=0.175]{analogico.jpg}
+		\end{figure}
+		infiniti stati, \\
+		infinite sindromi
+	\end{minipage}
+	\pause
+	\begin{minipage}{0.32\textwidth}
+		\centering
+		\textbf{Calcolatore quantistico}
+		\begin{figure}
+			\includegraphics[scale=0.08]{quantistico.jpeg}
+		\end{figure}
+		infiniti stati, \\
+		finite sindromi
+	\end{minipage}
 
 \end{frame}
 

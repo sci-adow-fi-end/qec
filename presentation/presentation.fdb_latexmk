@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1726931923.7951 "presentation.tex" "presentation.pdf" "presentation" 1726931926.24157 0
+["pdflatex"] 1727035865.3037 "presentation.tex" "presentation.pdf" "presentation" 1727035871.46994 0
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1716849630 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1716849630 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1716849630 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -290,11 +290,14 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1716849630 41588 b43d3e860a4f94167ee1e725ff526a72 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1726903133.51313 5312047 b07fcd2a9090df96fc745b92a3db793b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1726903062 7112993 b12f2516f2ad5cc3433b2de71087a4ba ""
+  "analogico.jpg" 1727027624.0749 150299 e5a1d5dad866cd95e4abece8e65b59f8 ""
   "bloch-sphere.png" 1726731193.11807 89454 98a89d49ac6d9668bf68f155d537abca ""
-  "presentation.aux" 1726931926.09696 1618 90239b2fd9ec6f1597d192fd746741d0 "pdflatex"
-  "presentation.nav" 1726931926.09796 1041 bca9585976ce873fbbc1b6d735702e1d "pdflatex"
-  "presentation.out" 1726931924.75397 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "presentation.tex" 1726931923.34298 5076 e9770e1cd481ee6fc3c43da49c7ec89f ""
+  "digitale.jpg" 1727028220.90071 845347 7cad0a0a3b77e1108d3cf0941e26f83a ""
+  "presentation.aux" 1727035871.28539 1746 55cea7230601cc1a18286ccca72d1772 "pdflatex"
+  "presentation.nav" 1727035871.28639 1133 4584f9bf7754ca51bafa35d7ce770536 "pdflatex"
+  "presentation.out" 1727035866.67543 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "presentation.tex" 1727035864.13246 7274 3a6d1e56a9fef77a902f27ed0d806b7c ""
+  "quantistico.jpeg" 1727027499.10429 1640780 bd81f35c4efd4b218deb2452f7077258 ""
   (generated)
   "presentation.aux"
   "presentation.log"
