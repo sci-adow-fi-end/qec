@@ -217,7 +217,7 @@
 	\end{flushright}
 \end{frame}
 \begin{frame}{Esempi di reti}
-	\begin{minipage}{0.48\textwidth}
+	\begin{minipage}{0.60\textwidth}
 		\centering
 		\textbf{Interferometro di Ramsey}
 		\scalebox{2}{
@@ -284,12 +284,83 @@
 
 \end{frame}
 
+
 \begin{frame}
-	\frametitle{Difficoltà nel caso quantistico}
+	\frametitle{Codici di correzione quantistici}
+	\begin{minipage}{\textwidth}
+		\textbf{Codice di correzione di bit-flip a 3 qubit}\\
+		\centering
+		\begin{minipage}{0.30\textwidth}
+			\centering
+			\includegraphics[scale=0.22]{bit-flip-encode.png}
+		\end{minipage}
+		\begin{minipage}{0.68\textwidth}
+			\centering
+			\includegraphics[scale=0.23]{bit-flip-detect.png}
+
+		\end{minipage}
+		\vspace{20pt}
+
+		\pause
+		\hspace{-45pt}\textbf{Codice di correzione di phase-flip a 3 qubit}\\
+		\begin{minipage}{0.30\textwidth}
+			\centering
+			\includegraphics[scale=0.22]{phase-flip-encode.png}
+		\end{minipage}
+		\begin{minipage}{0.68\textwidth}
+			\centering
+			\includegraphics[scale=0.2]{phase-flip-detect.png}
+		\end{minipage}
+
+	\end{minipage}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Codici di correzione quantistici}
+	\begin{minipage}{0.35\textwidth}
+		\centering
+		\textbf{Codice di Shor}
+		\begin{figure}
+			\includegraphics[scale=0.175]{shor-code-encode.png}
+		\end{figure}
+
+	\end{minipage}
+	\pause
+	\begin{minipage}{0.63\textwidth}
+		\centering
+		\textbf{Codice di Steane}
+		\begin{figure}
+			\includegraphics[scale=0.4]{encoding_circuit_for_Steane_code.png}
+		\end{figure}
+
+	\end{minipage}
+
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Teorema di soglia per la computazione quantistica}
+
+	\begin{minipage}{0.4\textwidth}
+		\centering
+		\textbf{Porta Hadamard sul codice di Steane}
+		\begin{figure}
+			\includegraphics[scale=0.6]{transversal_Hadamard_gate_based_on_Steane_code.png}
+		\end{figure}
+	\end{minipage}
+	\pause
+	\begin{minipage}{0.58\textwidth} %TODO controllare capibilità enunciato
+		\centering
+		\textbf{Teorema di soglia}
+		\begin{figure}
+			Un circuito quantistico contenente
+			p(n) può essere simulato con errore al più $\epsilon$ usando
+			$O(log^c (p(n)/\epsilon)p(n))$
+			porte, data una costante intera c, su hardware i quali componenti falliscono con
+			probabilità al più $p$ assunto che p sia minore di una soglia costante $p_{th}$.
+		\end{figure}
+	\end{minipage}
+
 \end{frame}
 
 \begin{frame}

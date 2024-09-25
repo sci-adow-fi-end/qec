@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1727035865.3037 "presentation.tex" "presentation.pdf" "presentation" 1727035871.46994 0
+["pdflatex"] 1727222668.75535 "presentation.tex" "presentation.pdf" "presentation" 1727222672.59318 0
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1716849630 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1716849630 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1716849630 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -291,13 +291,20 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1726903133.51313 5312047 b07fcd2a9090df96fc745b92a3db793b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1726903062 7112993 b12f2516f2ad5cc3433b2de71087a4ba ""
   "analogico.jpg" 1727027624.0749 150299 e5a1d5dad866cd95e4abece8e65b59f8 ""
+  "bit-flip-detect.png" 1727205120.74497 8481 8d5ecf0e081506380ec712dccbbac0c5 ""
+  "bit-flip-encode.png" 1727205111.81305 4451 b9c962496913cf36f809a8ede9f8ea20 ""
   "bloch-sphere.png" 1726731193.11807 89454 98a89d49ac6d9668bf68f155d537abca ""
   "digitale.jpg" 1727028220.90071 845347 7cad0a0a3b77e1108d3cf0941e26f83a ""
-  "presentation.aux" 1727035871.28539 1746 55cea7230601cc1a18286ccca72d1772 "pdflatex"
-  "presentation.nav" 1727035871.28639 1133 4584f9bf7754ca51bafa35d7ce770536 "pdflatex"
-  "presentation.out" 1727035866.67543 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "presentation.tex" 1727035864.13246 7274 3a6d1e56a9fef77a902f27ed0d806b7c ""
+  "encoding_circuit_for_Steane_code.png" 1727205692.03858 15633 360eae706349b61bfe22fc7e8cc228cc ""
+  "phase-flip-detect.png" 1727205137.72782 12356 5d1d1b980b5a8880e9fc32c001ce37b9 ""
+  "phase-flip-encode.png" 1727205128.9659 6106 6cafa610270f437291d5cb144c5b7fd0 ""
+  "presentation.aux" 1727222672.45268 1875 a7856fad3bc5d3905c5e267bf2eefd0d "pdflatex"
+  "presentation.nav" 1727222672.45268 1226 cd0439f8c95fc39b935d1a10462e3e02 "pdflatex"
+  "presentation.out" 1727222669.59172 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "presentation.tex" 1727222666.96575 9146 c05875be473ea498439b8b583e9ab702 ""
   "quantistico.jpeg" 1727027499.10429 1640780 bd81f35c4efd4b218deb2452f7077258 ""
+  "shor-code-encode.png" 1727205069.58444 15021 b8034f6831aa84e62829e0f3fbcd99ac ""
+  "transversal_Hadamard_gate_based_on_Steane_code.png" 1727205857.15509 14400 a7157400e65a0fcbf3cca17ef2ab7b96 ""
   (generated)
   "presentation.aux"
   "presentation.log"

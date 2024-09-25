@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.9.21)  22 SEP 2024 22:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.9.21)  25 SEP 2024 02:04
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1003,14 +1003,14 @@ Overfull \hbox (0.7565pt too wide) in paragraph at lines 218--218
 [16
 
 ]
-Overfull \hbox (50.18645pt too wide) in paragraph at lines 244--244
+Overfull \hbox (2.38168pt too wide) in paragraph at lines 244--244
  [] 
  []
 
 [17
 
 ]
-Overfull \hbox (50.18645pt too wide) in paragraph at lines 244--244
+Overfull \hbox (2.38168pt too wide) in paragraph at lines 244--244
  [] 
  []
 
@@ -1079,11 +1079,118 @@ Package pdftex.def Info: quantistico.jpeg  used on input line 285.
 (pdftex.def)             Requested size: 76.4873pt x 120.45245pt.
 [21
 
-] [22
+]
+<bit-flip-encode.png, id=594, 499.8675pt x 236.885pt>
+File: bit-flip-encode.png Graphic file (type png)
+<use bit-flip-encode.png>
+Package pdftex.def Info: bit-flip-encode.png  used on input line 316.
+(pdftex.def)             Requested size: 109.97118pt x 52.11485pt.
+<bit-flip-detect.png, id=595, 923.45pt x 273.02pt>
+File: bit-flip-detect.png Graphic file (type png)
+<use bit-flip-detect.png>
+Package pdftex.def Info: bit-flip-detect.png  used on input line 316.
+(pdftex.def)             Requested size: 212.38902pt x 62.79327pt.
+<phase-flip-encode.png, id=596, 626.34pt x 238.8925pt>
+File: phase-flip-encode.png Graphic file (type png)
+<use phase-flip-encode.png>
+Package pdftex.def Info: phase-flip-encode.png  used on input line 316.
+(pdftex.def)             Requested size: 137.79521pt x 52.5565pt.
 
-] [23
+Overfull \hbox (18.29242pt too wide) in paragraph at lines 316--316
+ [][] 
+ []
 
-] [24
+<phase-flip-detect.png, id=597, 1108.14pt x 410.53375pt>
+File: phase-flip-detect.png Graphic file (type png)
+<use phase-flip-detect.png>
+Package pdftex.def Info: phase-flip-detect.png  used on input line 316.
+(pdftex.def)             Requested size: 221.62407pt x 82.10529pt.
+[22
+
+ <./bit-flip-encode.png (PNG copy)> <./bit-flip-detect.png (PNG copy)> <./phase-flip-encode.png (PNG copy)> <./phase-flip-detect.png (PNG copy)>]
+File: bit-flip-encode.png Graphic file (type png)
+<use bit-flip-encode.png>
+Package pdftex.def Info: bit-flip-encode.png  used on input line 316.
+(pdftex.def)             Requested size: 109.97118pt x 52.11485pt.
+File: bit-flip-detect.png Graphic file (type png)
+<use bit-flip-detect.png>
+Package pdftex.def Info: bit-flip-detect.png  used on input line 316.
+(pdftex.def)             Requested size: 212.38902pt x 62.79327pt.
+File: phase-flip-encode.png Graphic file (type png)
+<use phase-flip-encode.png>
+Package pdftex.def Info: phase-flip-encode.png  used on input line 316.
+(pdftex.def)             Requested size: 137.79521pt x 52.5565pt.
+
+Overfull \hbox (18.29242pt too wide) in paragraph at lines 316--316
+ [][] 
+ []
+
+File: phase-flip-detect.png Graphic file (type png)
+<use phase-flip-detect.png>
+Package pdftex.def Info: phase-flip-detect.png  used on input line 316.
+(pdftex.def)             Requested size: 221.62407pt x 82.10529pt.
+[23
+
+]
+<shor-code-encode.png, id=651, 809.0225pt x 699.61375pt>
+File: shor-code-encode.png Graphic file (type png)
+<use shor-code-encode.png>
+Package pdftex.def Info: shor-code-encode.png  used on input line 339.
+(pdftex.def)             Requested size: 141.58105pt x 122.43423pt.
+
+Overfull \hbox (2.16013pt too wide) in paragraph at lines 339--339
+ [] 
+ []
+
+<encoding_circuit_for_Steane_code.png, id=652, 688.5725pt x 264.99pt>
+File: encoding_circuit_for_Steane_code.png Graphic file (type png)
+<use encoding_circuit_for_Steane_code.png>
+Package pdftex.def Info: encoding_circuit_for_Steane_code.png  used on input line 339.
+(pdftex.def)             Requested size: 275.4241pt x 105.99411pt.
+
+Overfull \hbox (24.46886pt too wide) in paragraph at lines 339--339
+ [] 
+ []
+
+[24
+
+ <./shor-code-encode.png (PNG copy)> <./encoding_circuit_for_Steane_code.png>]
+File: shor-code-encode.png Graphic file (type png)
+<use shor-code-encode.png>
+Package pdftex.def Info: shor-code-encode.png  used on input line 339.
+(pdftex.def)             Requested size: 141.58105pt x 122.43423pt.
+
+Overfull \hbox (2.16013pt too wide) in paragraph at lines 339--339
+ [] 
+ []
+
+File: encoding_circuit_for_Steane_code.png Graphic file (type png)
+<use encoding_circuit_for_Steane_code.png>
+Package pdftex.def Info: encoding_circuit_for_Steane_code.png  used on input line 339.
+(pdftex.def)             Requested size: 275.4241pt x 105.99411pt.
+
+Overfull \hbox (24.46886pt too wide) in paragraph at lines 339--339
+ [] 
+ []
+
+[25
+
+]
+<transversal_Hadamard_gate_based_on_Steane_code.png, id=710, 263.48438pt x 182.18062pt>
+File: transversal_Hadamard_gate_based_on_Steane_code.png Graphic file (type png)
+<use transversal_Hadamard_gate_based_on_Steane_code.png>
+Package pdftex.def Info: transversal_Hadamard_gate_based_on_Steane_code.png  used on input line 364.
+(pdftex.def)             Requested size: 158.09183pt x 109.3092pt.
+ [26
+
+ <./transversal_Hadamard_gate_based_on_Steane_code.png>]
+File: transversal_Hadamard_gate_based_on_Steane_code.png Graphic file (type png)
+<use transversal_Hadamard_gate_based_on_Steane_code.png>
+Package pdftex.def Info: transversal_Hadamard_gate_based_on_Steane_code.png  used on input line 364.
+(pdftex.def)             Requested size: 158.09183pt x 109.3092pt.
+ [27
+
+] [28
 
 ]
 \tf@nav=\write6
@@ -1104,18 +1211,18 @@ Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 43186 strings out of 476076
- 1022991 string characters out of 5793775
+ 43245 strings out of 476076
+ 1024721 string characters out of 5793775
  1996187 words of memory out of 5000000
- 64492 multiletter control sequences out of 15000+600000
+ 64543 multiletter control sequences out of 15000+600000
  566007 words of font info for 64 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  128i,21n,123p,1937b,1495s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on presentation.pdf (24 pages, 2874871 bytes).
+Output written on presentation.pdf (28 pages, 2957450 bytes).
 PDF statistics:
- 725 PDF objects out of 1000 (max. 8388607)
- 652 compressed objects within 7 object streams
- 49 named destinations out of 1000 (max. 500000)
- 69 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 842 PDF objects out of 1000 (max. 8388607)
+ 755 compressed objects within 8 object streams
+ 57 named destinations out of 1000 (max. 500000)
+ 104 words of extra memory for PDF output out of 10000 (max. 10000000)
 
